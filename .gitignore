@@ -45,3 +45,6 @@ _deps
 
 # Executable Ignore
 SDL2MechGame
+/extern
+/out/build/x64-Debug
+/.vs
