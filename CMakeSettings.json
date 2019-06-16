@@ -4,7 +4,7 @@
       "name": "x64-Debug",
       "generator": "Ninja",
       "configurationType": "Debug",
-      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "inheritEnvironments": [ "msvc_x64" ],
       "buildRoot": "${projectDir}\\out\\build\\${name}",
       "installRoot": "${projectDir}\\out\\install\\${name}",
       "cmakeCommandArgs": "",
@@ -15,16 +15,6 @@
           "name": "SDL2_DIR",
           "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/SDL2-2.0.9",
           "type": "PATH"
-        },
-        {
-          "name": "SDL2_IMAGE_INCLUDE_DIR",
-          "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/SDL2_image-2.0.4/include",
-          "type": "PATH"
-        },
-        {
-          "name": "SDL2_IMAGE_LIBRARY",
-          "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/SDL2_image-2.0.4/lib/x64/SDL2_image.lib",
-          "type": "FILEPATH"
         },
         {
           "name": "SDL2_INCLUDE_DIR",
@@ -42,10 +32,20 @@
           "type": "STRING"
         },
         {
+          "name": "SDL2_IMAGE_INCLUDE_DIR",
+          "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/SDL2_image-2.0.4/include",
+          "type": "PATH"
+        },
+        {
+          "name": "SDL2_IMAGE_LIBRARY",
+          "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/SDL2_image-2.0.4/lib/x64/SDL2_image.lib",
+          "type": "FILEPATH"
+        },
+        {
           "name": "CMAKE_MAKE_PROGRAM",
           "value": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
           "type": "FILEPATH"
-        },
+        }
       ]
     }
   ]
