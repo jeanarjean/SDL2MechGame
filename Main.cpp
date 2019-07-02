@@ -14,6 +14,9 @@ const int SCREEN_HEIGHT = 480;
 //Particle count
 const int TOTAL_PARTICLES = 20;
 
+// Phyiscs numbers
+const int GRAVITY_SPEED = 2;
+
 //Texture wrapper class
 class LTexture
 {
@@ -400,12 +403,14 @@ void Dot::move()
 
 	//Move the dot up or down
 	mPosY += mVelY;
+	mPosY += GRAVITY_SPEED;
 
 	//If the dot went too far up or down
 	if ((mPosY < 0) || (mPosY + DOT_HEIGHT > SCREEN_HEIGHT))
 	{
 		//Move back
 		mPosY -= mVelY;
+		mPosY -= GRAVITY_SPEED;
 	}
 }
 
