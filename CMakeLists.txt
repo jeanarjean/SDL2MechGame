@@ -5,15 +5,20 @@ project(SDL2MechGame)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
 file(GLOB_RECURSE data resources/*)
+file(GLOB SOURCES
+    ${CMAKE_SOURCE_DIR}/src/*.h
+    ${CMAKE_SOURCE_DIR}/src/*.cpp
+	)
+
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${SDL2_IMAGE_INCLUDE_DIRS})
-include_directories("${CMAKE_SOURCE_DIR}/src/")
+
 include_directories("${CMAKE_SOURCE_DIR}/data/")
 file(COPY ${data} DESTINATION resources)
 
 
-add_executable(SDL2MechGame WIN32 Main.cpp)
+add_executable(SDL2MechGame WIN32 Main.cpp ${SOURCES})
 target_link_libraries(SDL2MechGame ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
