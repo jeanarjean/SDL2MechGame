@@ -13,6 +13,7 @@ public:
     static const int GRAVITY_SPEED = 2;
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
+    double rotation = 0;
 	LTexture* particleTextures;
 	LTexture* gDotTexture;
 

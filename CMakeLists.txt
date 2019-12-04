@@ -13,8 +13,10 @@ file(GLOB SOURCES
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
+# find_package(Eigen REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 include_directories(${SDL2_IMAGE_INCLUDE_DIRS})
+# include_directories(${EIGEN_INCLUDE_DIRS})
 
 include_directories("${CMAKE_SOURCE_DIR}/data/")
 file(COPY ${data} DESTINATION resources)

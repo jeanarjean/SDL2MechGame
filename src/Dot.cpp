@@ -1,7 +1,13 @@
 #include "Dot.h"
 #include "Particle.h"
 
-Dot::Dot(const int SCREEN_WIDTH, const int SCREEN_HEIGHT, LTexture* particleTextures, LTexture* gDotTexture)
+#include <Eigen/Dense>
+#include <iostream>
+
+using namespace std;
+using namespace Eigen;
+
+Dot::Dot(const int SCREEN_WIDTH, const int SCREEN_HEIGHT, LTexture *particleTextures, LTexture *gDotTexture)
 {
 	//Initialize the offsets
 	mPosX = 0;
@@ -31,7 +37,7 @@ Dot::~Dot()
 	}
 }
 
-void Dot::handleEvent(SDL_Event& e)
+void Dot::handleEvent(SDL_Event &e)
 {
 	//If a key was pressed
 	if (e.type == SDL_KEYDOWN && e.key.repeat == 0)
@@ -39,10 +45,18 @@ void Dot::handleEvent(SDL_Event& e)
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY -= DOT_VEL; break;
-		case SDLK_DOWN: mVelY += DOT_VEL; break;
-		case SDLK_LEFT: mVelX -= DOT_VEL; break;
-		case SDLK_RIGHT: mVelX += DOT_VEL; break;
+		case SDLK_UP:
+			mVelY -= DOT_VEL;
+			break;
+		case SDLK_DOWN:
+			mVelY += DOT_VEL;
+			break;
+		case SDLK_LEFT:
+			mVelX -= DOT_VEL;
+			break;
+		case SDLK_RIGHT:
+			mVelX += DOT_VEL;
+			break;
 		}
 	}
 	//If a key was released
@@ -51,10 +65,18 @@ void Dot::handleEvent(SDL_Event& e)
 		//Adjust the velocity
 		switch (e.key.keysym.sym)
 		{
-		case SDLK_UP: mVelY += DOT_VEL; break;
-		case SDLK_DOWN: mVelY -= DOT_VEL; break;
-		case SDLK_LEFT: mVelX += DOT_VEL; break;
-		case SDLK_RIGHT: mVelX -= DOT_VEL; break;
+		case SDLK_UP:
+			mVelY += DOT_VEL;
+			break;
+		case SDLK_DOWN:
+			mVelY -= DOT_VEL;
+			break;
+		case SDLK_LEFT:
+			mVelX += DOT_VEL;
+			break;
+		case SDLK_RIGHT:
+			mVelX -= DOT_VEL;
+			break;
 		}
 	}
 }
@@ -84,16 +106,34 @@ void Dot::move()
 	}
 }
 
-void Dot::render(SDL_Renderer* gRenderer)
+void Dot::render(SDL_Renderer *gRenderer)
 {
+	Vector2d horizontal(0, 1);
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	Vector2d lineToMouse(x - mPosX, y - mPosY);
+
+	cout << "Dot product: " << horizontal.dot(lineToMouse) << endl;
+	cout << "Norm:" << lineToMouse.norm() << endl;
+
+	double angle = acos(horizontal.dot(lineToMouse) / (horizontal.norm() * lineToMouse.norm())) / 0.0174533;
+	cout << "Angle:" << acos(horizontal.dot(lineToMouse) / (horizontal.norm() * lineToMouse.norm())) / 0.0174533  << endl;
+	if(x > mPosX)
+	{
+		angle = -angle;
+	}
+	SDL_Rect resize = {mPosX, mPosY, 50, 50};
+	rotation++;
 	//Show the dot
-	gDotTexture->render(mPosX, mPosY, gRenderer);
+	gDotTexture->render(mPosX, mPosY, gRenderer, NULL, &resize, angle);
+	SDL_SetRenderDrawColor(gRenderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
+	SDL_RenderDrawLine(gRenderer, mPosX, mPosY, x, y);
 
 	//Show particles on top of dot
 	renderParticles(gRenderer);
 }
 
-void Dot::renderParticles(SDL_Renderer* gRenderer)
+void Dot::renderParticles(SDL_Renderer *gRenderer)
 {
 	//Go through particles
 	for (int i = 0; i < TOTAL_PARTICLES; ++i)

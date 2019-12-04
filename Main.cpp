@@ -10,6 +10,8 @@ and may not be redistributed without written permission.*/
 #include "src/Particle.h"
 #include "src/LTexture.h"
 
+
+
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -19,8 +21,6 @@ const int TOTAL_PARTICLES = 20;
 
 // Phyiscs numbers
 const int GRAVITY_SPEED = 2;
-
-
 
 //Starts up SDL and creates window
 bool init();
@@ -32,15 +32,14 @@ bool loadMedia();
 void close();
 
 //The window we'll be rendering to
-SDL_Window* gWindow = NULL;
+SDL_Window *gWindow = NULL;
 
 //The window renderer
-SDL_Renderer* gRenderer = NULL;
+SDL_Renderer *gRenderer = NULL;
 
 //Scene textures
 LTexture gDotTexture;
 LTexture particleTextures[4];
-
 
 bool init()
 {
@@ -102,7 +101,7 @@ bool loadMedia()
 	bool success = true;
 
 	//Load dot texture
-	if (!gDotTexture.loadFromFile("resources/dot.bmp", gRenderer))
+	if (!gDotTexture.loadFromFile("resources/doommarine.jpg", gRenderer))
 	{
 		printf("Failed to load dot texture!\n");
 		success = false;
@@ -155,7 +154,7 @@ void close()
 	particleTextures[3].free();
 	particleTextures->free();
 
-	//Destroy window	
+	//Destroy window
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
 	gWindow = NULL;
@@ -166,9 +165,8 @@ void close()
 	SDL_Quit();
 }
 
-int main(int argc, char* args[])
+int main(int argc, char *args[])
 {
-	//Start up SDL and create window
 	if (!init())
 	{
 		printf("Failed to initialize!\n");
