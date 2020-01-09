@@ -1,8 +1,8 @@
+#ifndef LTEXTURE_H
+#define LTEXTURE_H
 #include <string>
 #include <SDL_video.h>
 #include <SDL_image.h>
-#ifndef LTEXTURE_H
-#define LTEXTURE_H
 //Texture wrapper class
 class LTexture
 {

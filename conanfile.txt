@@ -1,0 +1,8 @@
+[requires]
+entt/3.2.2@skypjack/stable
+eigen/3.3.7@conan/stable
+sdl2/2.0.10@bincrafters/stable
+sdl2_image/2.0.5@bincrafters/stable
+
+[generators]
+cmake

@@ -45,6 +45,11 @@
           "name": "CMAKE_MAKE_PROGRAM",
           "value": "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe",
           "type": "FILEPATH"
+        },
+        {
+          "name": "EIGEN3_INCLUDE_DIR",
+          "value": "D:/alone/Documents/GitHub/SDL2MechGame/extern/Eigen",
+          "type": "PATH"
         }
       ]
     }

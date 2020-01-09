@@ -1,0 +1,69 @@
+{
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=16\ncppstd=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n",
+ "graph_lock": {
+  "nodes": {
+   "0": {
+    "pref": null,
+    "options": "libjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=False\nsdl2:sdl2main=True\nsdl2:shared=False\nsdl2_image:bmp=True\nsdl2_image:gif=True\nsdl2_image:jpg=True\nsdl2_image:lbm=True\nsdl2_image:pcx=True\nsdl2_image:png=True\nsdl2_image:pnm=True\nsdl2_image:shared=False\nsdl2_image:svg=True\nsdl2_image:tga=True\nsdl2_image:tif=True\nsdl2_image:webp=True\nsdl2_image:xcf=True\nsdl2_image:xpm=True\nsdl2_image:xv=True\nzlib:minizip=False\nzlib:shared=False",
+    "requires": {
+     "entt/3.2.2@skypjack/stable#0": "1",
+     "eigen/3.3.7@conan/stable#0": "2",
+     "sdl2/2.0.10@bincrafters/stable#0": "3",
+     "sdl2_image/2.0.5@bincrafters/stable#0": "4"
+    },
+    "path": "D:\\alone\\Documents\\GitHub\\SDL2MechGame\\conanfile.txt"
+   },
+   "1": {
+    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0",
+    "options": ""
+   },
+   "2": {
+    "pref": "eigen/3.3.7@conan/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0",
+    "options": ""
+   },
+   "3": {
+    "pref": "sdl2/2.0.10@bincrafters/stable#0:1207f517a702731f7bcbfd9d309d0b8237719e8f#0",
+    "options": "directx=True\niconv=False\nsdl2main=True\nshared=False"
+   },
+   "4": {
+    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:6a12eeddffcf36acfa2713ebee68ad908d3a2eb3#0",
+    "options": "bmp=True\ngif=True\njpg=True\nlbm=True\npcx=True\npng=True\npnm=True\nshared=False\nsvg=True\ntga=True\ntif=True\nwebp=True\nxcf=True\nxpm=True\nxv=True\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=False\nsdl2:sdl2main=True\nsdl2:shared=False\nzlib:minizip=False\nzlib:shared=False",
+    "requires": {
+     "sdl2/2.0.10@bincrafters/stable#0": "3",
+     "libtiff/4.0.9#0": "5",
+     "libjpeg/9c#0": "7",
+     "libpng/1.6.37#0": "8",
+     "libwebp/1.0.3#0": "9",
+     "zlib/1.2.11#0": "6"
+    }
+   },
+   "5": {
+    "pref": "libtiff/4.0.9#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0",
+    "options": "shared=False\nzlib:minizip=False\nzlib:shared=False",
+    "requires": {
+     "zlib/1.2.11#0": "6"
+    }
+   },
+   "6": {
+    "pref": "zlib/1.2.11#0:3fb49604f9c2f729b85ba3115852006824e72cab#0",
+    "options": "minizip=False\nshared=False"
+   },
+   "7": {
+    "pref": "libjpeg/9c#0:3fb49604f9c2f729b85ba3115852006824e72cab#0",
+    "options": "shared=False"
+   },
+   "8": {
+    "pref": "libpng/1.6.37#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0",
+    "options": "api_prefix=None\nshared=False\nzlib:minizip=False\nzlib:shared=False",
+    "requires": {
+     "zlib/1.2.11#0": "6"
+    }
+   },
+   "9": {
+    "pref": "libwebp/1.0.3#0:638042d3fd356128c913f5e725646a0c2af264c7#0",
+    "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
+   }
+  }
+ },
+ "version": "0.2"
+}

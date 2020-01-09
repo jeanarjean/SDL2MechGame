@@ -3,24 +3,18 @@ cmake_minimum_required(VERSION 3.10)
 project(SDL2MechGame)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 file(GLOB_RECURSE data resources/*)
-file(GLOB SOURCES
+file(GLOB_RECURSE SOURCES
     ${CMAKE_SOURCE_DIR}/src/*.h
     ${CMAKE_SOURCE_DIR}/src/*.cpp
 	)
-
-
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
-# find_package(Eigen REQUIRED)
-include_directories(${SDL2_INCLUDE_DIRS})
-include_directories(${SDL2_IMAGE_INCLUDE_DIRS})
-# include_directories(${EIGEN_INCLUDE_DIRS})
-
-include_directories("${CMAKE_SOURCE_DIR}/data/")
 file(COPY ${data} DESTINATION resources)
 
+include(${PROJECT_SOURCE_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
 
 add_executable(SDL2MechGame WIN32 Main.cpp ${SOURCES})
-target_link_libraries(SDL2MechGame ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(SDL2MechGame ${CONAN_LIBS})

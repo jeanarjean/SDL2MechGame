@@ -9,12 +9,16 @@ and may not be redistributed without written permission.*/
 #include "src/Dot.h"
 #include "src/Particle.h"
 #include "src/LTexture.h"
-
-
+#include "src/PhysicsSystem.h"
+#include "src/EntityManager.h"
+#include "src/System/RenderSystem.h"
+#include "src/Component/Position.h"
+#include "src/Component/Velocity.h"
+#include <entt/entt.hpp>
 
 //Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+const int SCREEN_WIDTH = 1600;
+const int SCREEN_HEIGHT = 1000;
 
 //Particle count
 const int TOTAL_PARTICLES = 20;
@@ -32,10 +36,10 @@ bool loadMedia();
 void close();
 
 //The window we'll be rendering to
-SDL_Window *gWindow = NULL;
+SDL_Window* gWindow = NULL;
 
 //The window renderer
-SDL_Renderer *gRenderer = NULL;
+SDL_Renderer* gRenderer = NULL;
 
 //Scene textures
 LTexture gDotTexture;
@@ -101,35 +105,35 @@ bool loadMedia()
 	bool success = true;
 
 	//Load dot texture
-	if (!gDotTexture.loadFromFile("resources/doommarine.jpg", gRenderer))
+	if (!gDotTexture.loadFromFile("../resources/doommarine.jpg", gRenderer))
 	{
 		printf("Failed to load dot texture!\n");
 		success = false;
 	}
 
 	//Load red texture
-	if (!particleTextures[0].loadFromFile("resources/red.bmp", gRenderer))
+	if (!particleTextures[0].loadFromFile("../resources/red.bmp", gRenderer))
 	{
 		printf("Failed to load red texture!\n");
 		success = false;
 	}
 
 	//Load green texture
-	if (!particleTextures[1].loadFromFile("resources/green.bmp", gRenderer))
+	if (!particleTextures[1].loadFromFile("../resources/green.bmp", gRenderer))
 	{
 		printf("Failed to load green texture!\n");
 		success = false;
 	}
 
 	//Load blue texture
-	if (!particleTextures[2].loadFromFile("resources/blue.bmp", gRenderer))
+	if (!particleTextures[2].loadFromFile("../resources/blue.bmp", gRenderer))
 	{
 		printf("Failed to load blue texture!\n");
 		success = false;
 	}
 
 	//Load shimmer texture
-	if (!particleTextures[3].loadFromFile("resources/shimmer.bmp", gRenderer))
+	if (!particleTextures[3].loadFromFile("../resources/shimmer.bmp", gRenderer))
 	{
 		printf("Failed to load shimmer texture!\n");
 		success = false;
@@ -165,7 +169,43 @@ void close()
 	SDL_Quit();
 }
 
-int main(int argc, char *args[])
+void update(entt::registry& registry) {
+	auto view = registry.view<position, velocity>();
+
+	for (auto entity : view) {
+		// gets only the components that are going to be used ...
+
+		auto& vel = view.get<velocity>(entity);
+
+		vel.dx += 1.;
+		vel.dy += 1.;
+
+		// ...
+	}
+}
+
+void update(std::uint64_t dt, entt::registry& registry) {
+	//registry.view<position, velocity>().each([dt](auto& pos, auto& vel) {
+	//	// gets all the components of the view at once ...
+
+	//	pos.x += 0.1;
+	//	pos.y += 0.1;
+
+	//	// ...
+	//	});
+
+	registry.view<position>().each([dt](auto& pos) {
+		// gets all the components of the view at once ...
+
+		pos.x += 0.1;
+		pos.y += 0.1;
+
+		// ...
+		});
+}
+
+
+int main(int argc, char* args[])
 {
 	if (!init())
 	{
@@ -188,6 +228,16 @@ int main(int argc, char *args[])
 
 			//The dot that will be moving around on the screen
 			Dot dot(SCREEN_WIDTH, SCREEN_HEIGHT, particleTextures, &gDotTexture);
+			EntityManager entityManager;
+			entt::registry registry;
+			std::uint64_t dt = 16;
+
+			for (auto i = 0; i < 2; ++i) {
+				auto entity = registry.create();
+				registry.assign<position>(entity, i * 1.f, i * 1.f);
+				if (i % 2 == 0) { registry.assign<velocity>(entity, i * .1f, i * .1f); }
+			}
+
 
 			//While application is running
 			while (!quit)
@@ -205,12 +255,24 @@ int main(int argc, char *args[])
 					dot.handleEvent(e);
 				}
 
+				Entity entity = entityManager.create();
+				Entity entityToTest{ 2 };
+				bool alive = entityManager.alive(entityToTest);
+				int size = 5;
+				//HandlePhysics(&phys1);
+
 				//Move the dot
 				dot.move();
+				update(dt, registry);
+				update(registry);
+
 
 				//Clear screen
 				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(gRenderer);
+
+				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xAA, 0x99, 0xFF);
+				Render(registry, gRenderer);
 
 				//Render objects
 				dot.render(gRenderer);

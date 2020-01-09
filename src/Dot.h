@@ -11,9 +11,10 @@ public:
     static const int DOT_HEIGHT = 20;
     static const int TOTAL_PARTICLES = 20;
     static const int GRAVITY_SPEED = 2;
+    static const int MAXSPEED = -30;
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
-    double rotation = 0;
+    double angle = 0;
 	LTexture* particleTextures;
 	LTexture* gDotTexture;
 
