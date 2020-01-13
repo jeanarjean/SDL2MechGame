@@ -1,6 +1,6 @@
 #ifndef VELOCITY_H
 #define VELOCITY_H
-struct velocity {
+struct Velocity {
 	float dx;
 	float dy;
 };

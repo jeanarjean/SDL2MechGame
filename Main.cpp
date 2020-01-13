@@ -9,12 +9,13 @@ and may not be redistributed without written permission.*/
 #include "src/Dot.h"
 #include "src/Particle.h"
 #include "src/LTexture.h"
-#include "src/PhysicsSystem.h"
-#include "src/EntityManager.h"
 #include "src/System/RenderSystem.h"
-#include "src/Component/Position.h"
-#include "src/Component/Velocity.h"
 #include <entt/entt.hpp>
+#include "src/Utils/TextureUtils.h"
+#include "src/Component/Position.h"
+#include "src/Component/Player.h"
+#include "src/Component/Velocity.h"
+#include "src/Component/Acceleration.cpp"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -170,12 +171,12 @@ void close()
 }
 
 void update(entt::registry& registry) {
-	auto view = registry.view<position, velocity>();
+	auto view = registry.view<Position, Velocity>();
 
 	for (auto entity : view) {
 		// gets only the components that are going to be used ...
 
-		auto& vel = view.get<velocity>(entity);
+		auto& vel = view.get<Velocity>(entity);
 
 		vel.dx += 1.;
 		vel.dy += 1.;
@@ -194,11 +195,11 @@ void update(std::uint64_t dt, entt::registry& registry) {
 	//	// ...
 	//	});
 
-	registry.view<position>().each([dt](auto& pos) {
+	registry.view<Position>().each([dt](auto& pos) {
 		// gets all the components of the view at once ...
 
-		pos.x += 0.1;
-		pos.y += 0.1;
+		pos.x += 0.1f;
+		pos.y += 0.1f;
 
 		// ...
 		});
@@ -228,15 +229,27 @@ int main(int argc, char* args[])
 
 			//The dot that will be moving around on the screen
 			Dot dot(SCREEN_WIDTH, SCREEN_HEIGHT, particleTextures, &gDotTexture);
-			EntityManager entityManager;
 			entt::registry registry;
 			std::uint64_t dt = 16;
 
+			// Init Player
+			auto entity = registry.create();
+			registry.assign<Player>(entity);
+			Renderable renderable { NULL, 0, 0 };
+			if (!LoadFromFile("../resources/doommarine.jpg", gRenderer, renderable))
+				printf("Failed to load dot texture!\n");
+			registry.assign<Renderable>(entity, renderable);
+			registry.assign<Position>(entity, 250.f, 250.f);
+			registry.assign<Velocity>(entity, 0.f, 0.f);
+			registry.assign<Acceleration>(entity, 0.f, 0.f);
+
+
 			for (auto i = 0; i < 2; ++i) {
 				auto entity = registry.create();
-				registry.assign<position>(entity, i * 1.f, i * 1.f);
-				if (i % 2 == 0) { registry.assign<velocity>(entity, i * .1f, i * .1f); }
+				registry.assign<Position>(entity, i * 1.f, i * 1.f);
+				if (i % 2 == 0) { registry.assign<Velocity>(entity, i * .1f, i * .1f); }
 			}
+
 
 
 			//While application is running
@@ -255,12 +268,6 @@ int main(int argc, char* args[])
 					dot.handleEvent(e);
 				}
 
-				Entity entity = entityManager.create();
-				Entity entityToTest{ 2 };
-				bool alive = entityManager.alive(entityToTest);
-				int size = 5;
-				//HandlePhysics(&phys1);
-
 				//Move the dot
 				dot.move();
 				update(dt, registry);
@@ -276,6 +283,7 @@ int main(int argc, char* args[])
 
 				//Render objects
 				dot.render(gRenderer);
+				Render(registry, gRenderer);
 
 				//Update screen
 				SDL_RenderPresent(gRenderer);
