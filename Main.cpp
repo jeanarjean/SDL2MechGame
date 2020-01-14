@@ -230,7 +230,6 @@ int main(int argc, char* args[])
 			//The dot that will be moving around on the screen
 			Dot dot(SCREEN_WIDTH, SCREEN_HEIGHT, particleTextures, &gDotTexture);
 			entt::registry registry;
-			std::uint64_t dt = 16;
 
 			// Init Player
 			auto entity = registry.create();
@@ -250,11 +249,29 @@ int main(int argc, char* args[])
 				if (i % 2 == 0) { registry.assign<Velocity>(entity, i * .1f, i * .1f); }
 			}
 
-
+			Uint64 t = 0;
+			Uint64 dt = 16;
+			Uint64 currentTime = SDL_GetPerformanceCounter();
+			Uint64 accumulator = 0;
 
 			//While application is running
 			while (!quit)
 			{
+				Uint64 newTime = SDL_GetPerformanceCounter();
+				Uint64 frameTime = newTime - currentTime;
+				if (frameTime > 25)
+					frameTime = 25;
+				currentTime = newTime;
+
+
+				accumulator += frameTime;
+				while (accumulator >= dt)
+				{
+					//simulate phyisics
+					t += dt;
+					accumulator -= dt;
+				}
+
 				//Handle events on queue
 				while (SDL_PollEvent(&e) != 0)
 				{
