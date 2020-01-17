@@ -104,14 +104,14 @@ set(CONAN_LIBS_EIGEN3 ${CONAN_PKG_LIBS_EIGEN3} ${CONAN_SYSTEM_LIBS_EIGEN3} ${CON
 set(CONAN_LIBS_FRAMEWORKS_EIGEN3 ${CONAN_PKG_LIBS_EIGEN3} ${CONAN_FRAMEWORKS_FOUND_EIGEN3})
 
 
-set(CONAN_SDL2_IMAGE_ROOT "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3")
-set(CONAN_INCLUDE_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include"
-			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include/SDL2")
-set(CONAN_LIB_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/lib")
+set(CONAN_SDL2_IMAGE_ROOT "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd")
+set(CONAN_INCLUDE_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include"
+			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include/SDL2")
+set(CONAN_LIB_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/lib")
 set(CONAN_BIN_DIRS_SDL2_IMAGE )
 set(CONAN_RES_DIRS_SDL2_IMAGE )
 set(CONAN_SRC_DIRS_SDL2_IMAGE )
-set(CONAN_BUILD_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/")
+set(CONAN_BUILD_DIRS_SDL2_IMAGE "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/")
 set(CONAN_FRAMEWORK_DIRS_SDL2_IMAGE )
 set(CONAN_LIBS_SDL2_IMAGE SDL2_image)
 set(CONAN_PKG_LIBS_SDL2_IMAGE SDL2_image)
@@ -142,14 +142,51 @@ set(CONAN_LIBS_SDL2_IMAGE ${CONAN_PKG_LIBS_SDL2_IMAGE} ${CONAN_SYSTEM_LIBS_SDL2_
 set(CONAN_LIBS_FRAMEWORKS_SDL2_IMAGE ${CONAN_PKG_LIBS_SDL2_IMAGE} ${CONAN_FRAMEWORKS_FOUND_SDL2_IMAGE})
 
 
-set(CONAN_SDL2_ROOT "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f")
-set(CONAN_INCLUDE_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include"
-			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include/SDL2")
-set(CONAN_LIB_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/lib")
+set(CONAN_BOX2D_ROOT "C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714")
+set(CONAN_INCLUDE_DIRS_BOX2D "C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/include")
+set(CONAN_LIB_DIRS_BOX2D "C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/lib")
+set(CONAN_BIN_DIRS_BOX2D )
+set(CONAN_RES_DIRS_BOX2D )
+set(CONAN_SRC_DIRS_BOX2D )
+set(CONAN_BUILD_DIRS_BOX2D "C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/")
+set(CONAN_FRAMEWORK_DIRS_BOX2D )
+set(CONAN_LIBS_BOX2D Box2D)
+set(CONAN_PKG_LIBS_BOX2D Box2D)
+set(CONAN_SYSTEM_LIBS_BOX2D )
+set(CONAN_FRAMEWORKS_BOX2D )
+set(CONAN_FRAMEWORKS_FOUND_BOX2D "")  # Will be filled later
+set(CONAN_DEFINES_BOX2D )
+set(CONAN_BUILD_MODULES_PATHS_BOX2D )
+# COMPILE_DEFINITIONS are equal to CONAN_DEFINES without -D, for targets
+set(CONAN_COMPILE_DEFINITIONS_BOX2D )
+
+set(CONAN_C_FLAGS_BOX2D "")
+set(CONAN_CXX_FLAGS_BOX2D "")
+set(CONAN_SHARED_LINKER_FLAGS_BOX2D "")
+set(CONAN_EXE_LINKER_FLAGS_BOX2D "")
+
+# For modern cmake targets we use the list variables (separated with ;)
+set(CONAN_C_FLAGS_BOX2D_LIST "")
+set(CONAN_CXX_FLAGS_BOX2D_LIST "")
+set(CONAN_SHARED_LINKER_FLAGS_BOX2D_LIST "")
+set(CONAN_EXE_LINKER_FLAGS_BOX2D_LIST "")
+
+# Apple Frameworks
+conan_find_apple_frameworks(CONAN_FRAMEWORKS_FOUND_BOX2D "${CONAN_FRAMEWORKS_BOX2D}")
+# Append to aggregated values variable
+set(CONAN_LIBS_BOX2D ${CONAN_PKG_LIBS_BOX2D} ${CONAN_SYSTEM_LIBS_BOX2D} ${CONAN_FRAMEWORKS_FOUND_BOX2D})
+# Aggregate package libs and frameworks for conan_package_library_targets()
+set(CONAN_LIBS_FRAMEWORKS_BOX2D ${CONAN_PKG_LIBS_BOX2D} ${CONAN_FRAMEWORKS_FOUND_BOX2D})
+
+
+set(CONAN_SDL2_ROOT "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264")
+set(CONAN_INCLUDE_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include"
+			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include/SDL2")
+set(CONAN_LIB_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/lib")
 set(CONAN_BIN_DIRS_SDL2 )
 set(CONAN_RES_DIRS_SDL2 )
 set(CONAN_SRC_DIRS_SDL2 )
-set(CONAN_BUILD_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/")
+set(CONAN_BUILD_DIRS_SDL2 "C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/")
 set(CONAN_FRAMEWORK_DIRS_SDL2 )
 set(CONAN_LIBS_SDL2 SDL2 SDL2main)
 set(CONAN_PKG_LIBS_SDL2 SDL2 SDL2main)
@@ -180,16 +217,16 @@ set(CONAN_LIBS_SDL2 ${CONAN_PKG_LIBS_SDL2} ${CONAN_SYSTEM_LIBS_SDL2} ${CONAN_FRA
 set(CONAN_LIBS_FRAMEWORKS_SDL2 ${CONAN_PKG_LIBS_SDL2} ${CONAN_FRAMEWORKS_FOUND_SDL2})
 
 
-set(CONAN_LIBTIFF_ROOT "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63")
-set(CONAN_INCLUDE_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include")
-set(CONAN_LIB_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib")
+set(CONAN_LIBTIFF_ROOT "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b")
+set(CONAN_INCLUDE_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include")
+set(CONAN_LIB_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib")
 set(CONAN_BIN_DIRS_LIBTIFF )
 set(CONAN_RES_DIRS_LIBTIFF )
 set(CONAN_SRC_DIRS_LIBTIFF )
-set(CONAN_BUILD_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/")
+set(CONAN_BUILD_DIRS_LIBTIFF "C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/")
 set(CONAN_FRAMEWORK_DIRS_LIBTIFF )
-set(CONAN_LIBS_LIBTIFF tiff tiffxx)
-set(CONAN_PKG_LIBS_LIBTIFF tiff tiffxx)
+set(CONAN_LIBS_LIBTIFF tiffd tiffxxd)
+set(CONAN_PKG_LIBS_LIBTIFF tiffd tiffxxd)
 set(CONAN_SYSTEM_LIBS_LIBTIFF )
 set(CONAN_FRAMEWORKS_LIBTIFF )
 set(CONAN_FRAMEWORKS_FOUND_LIBTIFF "")  # Will be filled later
@@ -217,13 +254,13 @@ set(CONAN_LIBS_LIBTIFF ${CONAN_PKG_LIBS_LIBTIFF} ${CONAN_SYSTEM_LIBS_LIBTIFF} ${
 set(CONAN_LIBS_FRAMEWORKS_LIBTIFF ${CONAN_PKG_LIBS_LIBTIFF} ${CONAN_FRAMEWORKS_FOUND_LIBTIFF})
 
 
-set(CONAN_LIBJPEG_ROOT "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab")
-set(CONAN_INCLUDE_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include")
-set(CONAN_LIB_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib")
+set(CONAN_LIBJPEG_ROOT "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714")
+set(CONAN_INCLUDE_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include")
+set(CONAN_LIB_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib")
 set(CONAN_BIN_DIRS_LIBJPEG )
 set(CONAN_RES_DIRS_LIBJPEG )
 set(CONAN_SRC_DIRS_LIBJPEG )
-set(CONAN_BUILD_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/")
+set(CONAN_BUILD_DIRS_LIBJPEG "C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/")
 set(CONAN_FRAMEWORK_DIRS_LIBJPEG )
 set(CONAN_LIBS_LIBJPEG libjpeg)
 set(CONAN_PKG_LIBS_LIBJPEG libjpeg)
@@ -254,16 +291,16 @@ set(CONAN_LIBS_LIBJPEG ${CONAN_PKG_LIBS_LIBJPEG} ${CONAN_SYSTEM_LIBS_LIBJPEG} ${
 set(CONAN_LIBS_FRAMEWORKS_LIBJPEG ${CONAN_PKG_LIBS_LIBJPEG} ${CONAN_FRAMEWORKS_FOUND_LIBJPEG})
 
 
-set(CONAN_LIBPNG_ROOT "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63")
-set(CONAN_INCLUDE_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include")
-set(CONAN_LIB_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib")
+set(CONAN_LIBPNG_ROOT "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b")
+set(CONAN_INCLUDE_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include")
+set(CONAN_LIB_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib")
 set(CONAN_BIN_DIRS_LIBPNG )
 set(CONAN_RES_DIRS_LIBPNG )
 set(CONAN_SRC_DIRS_LIBPNG )
-set(CONAN_BUILD_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/")
+set(CONAN_BUILD_DIRS_LIBPNG "C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/")
 set(CONAN_FRAMEWORK_DIRS_LIBPNG )
-set(CONAN_LIBS_LIBPNG libpng16)
-set(CONAN_PKG_LIBS_LIBPNG libpng16)
+set(CONAN_LIBS_LIBPNG libpng16d)
+set(CONAN_PKG_LIBS_LIBPNG libpng16d)
 set(CONAN_SYSTEM_LIBS_LIBPNG )
 set(CONAN_FRAMEWORKS_LIBPNG )
 set(CONAN_FRAMEWORKS_FOUND_LIBPNG "")  # Will be filled later
@@ -291,13 +328,13 @@ set(CONAN_LIBS_LIBPNG ${CONAN_PKG_LIBS_LIBPNG} ${CONAN_SYSTEM_LIBS_LIBPNG} ${CON
 set(CONAN_LIBS_FRAMEWORKS_LIBPNG ${CONAN_PKG_LIBS_LIBPNG} ${CONAN_FRAMEWORKS_FOUND_LIBPNG})
 
 
-set(CONAN_LIBWEBP_ROOT "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7")
-set(CONAN_INCLUDE_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/include")
-set(CONAN_LIB_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/lib")
+set(CONAN_LIBWEBP_ROOT "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e")
+set(CONAN_INCLUDE_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/include")
+set(CONAN_LIB_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/lib")
 set(CONAN_BIN_DIRS_LIBWEBP )
 set(CONAN_RES_DIRS_LIBWEBP )
 set(CONAN_SRC_DIRS_LIBWEBP )
-set(CONAN_BUILD_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/")
+set(CONAN_BUILD_DIRS_LIBWEBP "C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/")
 set(CONAN_FRAMEWORK_DIRS_LIBWEBP )
 set(CONAN_LIBS_LIBWEBP webpmux webpdemux webpdecoder webp)
 set(CONAN_PKG_LIBS_LIBWEBP webpmux webpdemux webpdecoder webp)
@@ -328,13 +365,13 @@ set(CONAN_LIBS_LIBWEBP ${CONAN_PKG_LIBS_LIBWEBP} ${CONAN_SYSTEM_LIBS_LIBWEBP} ${
 set(CONAN_LIBS_FRAMEWORKS_LIBWEBP ${CONAN_PKG_LIBS_LIBWEBP} ${CONAN_FRAMEWORKS_FOUND_LIBWEBP})
 
 
-set(CONAN_ZLIB_ROOT "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab")
-set(CONAN_INCLUDE_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include")
-set(CONAN_LIB_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib")
+set(CONAN_ZLIB_ROOT "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714")
+set(CONAN_INCLUDE_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include")
+set(CONAN_LIB_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib")
 set(CONAN_BIN_DIRS_ZLIB )
 set(CONAN_RES_DIRS_ZLIB )
 set(CONAN_SRC_DIRS_ZLIB )
-set(CONAN_BUILD_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/")
+set(CONAN_BUILD_DIRS_ZLIB "C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/")
 set(CONAN_FRAMEWORK_DIRS_ZLIB )
 set(CONAN_LIBS_ZLIB zlib)
 set(CONAN_PKG_LIBS_ZLIB zlib)
@@ -372,15 +409,15 @@ set(CONAN_PACKAGE_VERSION None)
 
 set(CONAN_SETTINGS_ARCH "x86_64")
 set(CONAN_SETTINGS_ARCH_BUILD "x86_64")
-set(CONAN_SETTINGS_BUILD_TYPE "Release")
+set(CONAN_SETTINGS_BUILD_TYPE "Debug")
 set(CONAN_SETTINGS_COMPILER "Visual Studio")
-set(CONAN_SETTINGS_COMPILER_RUNTIME "MD")
+set(CONAN_SETTINGS_COMPILER_RUNTIME "MDd")
 set(CONAN_SETTINGS_COMPILER_VERSION "16")
 set(CONAN_SETTINGS_CPPSTD "17")
 set(CONAN_SETTINGS_OS "Windows")
 set(CONAN_SETTINGS_OS_BUILD "Windows")
 
-set(CONAN_DEPENDENCIES entt eigen sdl2_image sdl2 libtiff libjpeg libpng libwebp zlib)
+set(CONAN_DEPENDENCIES entt eigen sdl2_image box2d sdl2 libtiff libjpeg libpng libwebp zlib)
 # Storing original command line args (CMake helper) flags
 set(CONAN_CMD_CXX_FLAGS ${CONAN_CXX_FLAGS})
 
@@ -390,27 +427,29 @@ set(CONAN_CMD_C_FLAGS ${CONAN_C_FLAGS})
 
 set(CONAN_INCLUDE_DIRS "C:/Users/calm/.conan/data/entt/3.2.2/skypjack/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include"
 			"C:/Users/calm/.conan/data/eigen/3.3.7/conan/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include/eigen3"
-			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include"
-			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include/SDL2"
-			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include"
-			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include/SDL2"
-			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include"
-			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include"
-			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include"
-			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/include"
-			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include" ${CONAN_INCLUDE_DIRS})
-set(CONAN_LIB_DIRS "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/lib"
-			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/lib"
-			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib"
-			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib"
-			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib"
-			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/lib"
-			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib" ${CONAN_LIB_DIRS})
+			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include"
+			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include/SDL2"
+			"C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/include"
+			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include"
+			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include/SDL2"
+			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include"
+			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include"
+			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include"
+			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/include"
+			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include" ${CONAN_INCLUDE_DIRS})
+set(CONAN_LIB_DIRS "C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/lib"
+			"C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/lib"
+			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/lib"
+			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib"
+			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib"
+			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib"
+			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/lib"
+			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib" ${CONAN_LIB_DIRS})
 set(CONAN_BIN_DIRS  ${CONAN_BIN_DIRS})
 set(CONAN_RES_DIRS  ${CONAN_RES_DIRS})
 set(CONAN_FRAMEWORK_DIRS  ${CONAN_FRAMEWORK_DIRS})
-set(CONAN_LIBS SDL2_image SDL2 SDL2main tiff tiffxx libjpeg libpng16 webpmux webpdemux webpdecoder webp zlib ${CONAN_LIBS})
-set(CONAN_PKG_LIBS SDL2_image SDL2 SDL2main tiff tiffxx libjpeg libpng16 webpmux webpdemux webpdecoder webp zlib ${CONAN_PKG_LIBS})
+set(CONAN_LIBS SDL2_image Box2D SDL2 SDL2main tiffd tiffxxd libjpeg libpng16d webpmux webpdemux webpdecoder webp zlib ${CONAN_LIBS})
+set(CONAN_PKG_LIBS SDL2_image Box2D SDL2 SDL2main tiffd tiffxxd libjpeg libpng16d webpmux webpdemux webpdecoder webp zlib ${CONAN_PKG_LIBS})
 set(CONAN_SYSTEM_LIBS user32 gdi32 winmm imm32 ole32 oleaut32 version uuid advapi32 setupapi shell32)
 set(CONAN_FRAMEWORKS  ${CONAN_FRAMEWORKS})
 set(CONAN_FRAMEWORKS_FOUND "")  # Will be filled later
@@ -418,13 +457,14 @@ set(CONAN_DEFINES  ${CONAN_DEFINES})
 set(CONAN_BUILD_MODULES_PATHS  ${CONAN_BUILD_MODULES_PATHS})
 set(CONAN_CMAKE_MODULE_PATH "C:/Users/calm/.conan/data/entt/3.2.2/skypjack/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/"
 			"C:/Users/calm/.conan/data/eigen/3.3.7/conan/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/"
-			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/"
-			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/"
-			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/"
-			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/"
-			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/"
-			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/"
-			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/" ${CONAN_CMAKE_MODULE_PATH})
+			"C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/"
+			"C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/"
+			"C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/"
+			"C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/"
+			"C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/"
+			"C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/"
+			"C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/"
+			"C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/" ${CONAN_CMAKE_MODULE_PATH})
 
 set(CONAN_CXX_FLAGS " ${CONAN_CXX_FLAGS}")
 set(CONAN_SHARED_LINKER_FLAGS " ${CONAN_SHARED_LINKER_FLAGS}")
@@ -572,6 +612,48 @@ macro(conan_define_targets)
                                                                   $<$<CONFIG:RelWithDebInfo>:${CONAN_C_FLAGS_SDL2_IMAGE_RELWITHDEBINFO_LIST} ${CONAN_CXX_FLAGS_SDL2_IMAGE_RELWITHDEBINFO_LIST}>
                                                                   $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_SDL2_IMAGE_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_SDL2_IMAGE_MINSIZEREL_LIST}>
                                                                   $<$<CONFIG:Debug>:${CONAN_C_FLAGS_SDL2_IMAGE_DEBUG_LIST}  ${CONAN_CXX_FLAGS_SDL2_IMAGE_DEBUG_LIST}>)
+
+
+    conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_BOX2D}" "${CONAN_LIB_DIRS_BOX2D}"
+                                  CONAN_PACKAGE_TARGETS_BOX2D "${CONAN_SYSTEM_LIBS_BOX2D} "
+                                  "" box2d)
+    conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_BOX2D_DEBUG}" "${CONAN_LIB_DIRS_BOX2D_DEBUG}"
+                                  CONAN_PACKAGE_TARGETS_BOX2D_DEBUG "${CONAN_SYSTEM_LIBS_BOX2D_DEBUG} "
+                                  "debug" box2d)
+    conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_BOX2D_RELEASE}" "${CONAN_LIB_DIRS_BOX2D_RELEASE}"
+                                  CONAN_PACKAGE_TARGETS_BOX2D_RELEASE "${CONAN_SYSTEM_LIBS_BOX2D_RELEASE} "
+                                  "release" box2d)
+    conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_BOX2D_RELWITHDEBINFO}" "${CONAN_LIB_DIRS_BOX2D_RELWITHDEBINFO}"
+                                  CONAN_PACKAGE_TARGETS_BOX2D_RELWITHDEBINFO "${CONAN_SYSTEM_LIBS_BOX2D_RELWITHDEBINFO} "
+                                  "relwithdebinfo" box2d)
+    conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_BOX2D_MINSIZEREL}" "${CONAN_LIB_DIRS_BOX2D_MINSIZEREL}"
+                                  CONAN_PACKAGE_TARGETS_BOX2D_MINSIZEREL "${CONAN_SYSTEM_LIBS_BOX2D_MINSIZEREL} "
+                                  "minsizerel" box2d)
+
+    add_library(CONAN_PKG::box2d INTERFACE IMPORTED)
+
+    # Property INTERFACE_LINK_FLAGS do not work, necessary to add to INTERFACE_LINK_LIBRARIES
+    set_property(TARGET CONAN_PKG::box2d PROPERTY INTERFACE_LINK_LIBRARIES ${CONAN_PACKAGE_TARGETS_BOX2D} ${CONAN_SHARED_LINKER_FLAGS_BOX2D_LIST} ${CONAN_EXE_LINKER_FLAGS_BOX2D_LIST}
+                                                                 $<$<CONFIG:Release>:${CONAN_PACKAGE_TARGETS_BOX2D_RELEASE} ${CONAN_SHARED_LINKER_FLAGS_BOX2D_RELEASE_LIST} ${CONAN_EXE_LINKER_FLAGS_BOX2D_RELEASE_LIST}>
+                                                                 $<$<CONFIG:RelWithDebInfo>:${CONAN_PACKAGE_TARGETS_BOX2D_RELWITHDEBINFO} ${CONAN_SHARED_LINKER_FLAGS_BOX2D_RELWITHDEBINFO_LIST} ${CONAN_EXE_LINKER_FLAGS_BOX2D_RELWITHDEBINFO_LIST}>
+                                                                 $<$<CONFIG:MinSizeRel>:${CONAN_PACKAGE_TARGETS_BOX2D_MINSIZEREL} ${CONAN_SHARED_LINKER_FLAGS_BOX2D_MINSIZEREL_LIST} ${CONAN_EXE_LINKER_FLAGS_BOX2D_MINSIZEREL_LIST}>
+                                                                 $<$<CONFIG:Debug>:${CONAN_PACKAGE_TARGETS_BOX2D_DEBUG} ${CONAN_SHARED_LINKER_FLAGS_BOX2D_DEBUG_LIST} ${CONAN_EXE_LINKER_FLAGS_BOX2D_DEBUG_LIST}>
+                                                                 )
+    set_property(TARGET CONAN_PKG::box2d PROPERTY INTERFACE_INCLUDE_DIRECTORIES ${CONAN_INCLUDE_DIRS_BOX2D}
+                                                                      $<$<CONFIG:Release>:${CONAN_INCLUDE_DIRS_BOX2D_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_INCLUDE_DIRS_BOX2D_RELWITHDEBINFO}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_INCLUDE_DIRS_BOX2D_MINSIZEREL}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_INCLUDE_DIRS_BOX2D_DEBUG}>)
+    set_property(TARGET CONAN_PKG::box2d PROPERTY INTERFACE_COMPILE_DEFINITIONS ${CONAN_COMPILE_DEFINITIONS_BOX2D}
+                                                                      $<$<CONFIG:Release>:${CONAN_COMPILE_DEFINITIONS_BOX2D_RELEASE}>
+                                                                      $<$<CONFIG:RelWithDebInfo>:${CONAN_COMPILE_DEFINITIONS_BOX2D_RELWITHDEBINFO}>
+                                                                      $<$<CONFIG:MinSizeRel>:${CONAN_COMPILE_DEFINITIONS_BOX2D_MINSIZEREL}>
+                                                                      $<$<CONFIG:Debug>:${CONAN_COMPILE_DEFINITIONS_BOX2D_DEBUG}>)
+    set_property(TARGET CONAN_PKG::box2d PROPERTY INTERFACE_COMPILE_OPTIONS ${CONAN_C_FLAGS_BOX2D_LIST} ${CONAN_CXX_FLAGS_BOX2D_LIST}
+                                                                  $<$<CONFIG:Release>:${CONAN_C_FLAGS_BOX2D_RELEASE_LIST} ${CONAN_CXX_FLAGS_BOX2D_RELEASE_LIST}>
+                                                                  $<$<CONFIG:RelWithDebInfo>:${CONAN_C_FLAGS_BOX2D_RELWITHDEBINFO_LIST} ${CONAN_CXX_FLAGS_BOX2D_RELWITHDEBINFO_LIST}>
+                                                                  $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_BOX2D_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_BOX2D_MINSIZEREL_LIST}>
+                                                                  $<$<CONFIG:Debug>:${CONAN_C_FLAGS_BOX2D_DEBUG_LIST}  ${CONAN_CXX_FLAGS_BOX2D_DEBUG_LIST}>)
 
 
     conan_package_library_targets("${CONAN_LIBS_FRAMEWORKS_SDL2}" "${CONAN_LIB_DIRS_SDL2}"
@@ -825,7 +907,7 @@ macro(conan_define_targets)
                                                                   $<$<CONFIG:MinSizeRel>:${CONAN_C_FLAGS_ZLIB_MINSIZEREL_LIST} ${CONAN_CXX_FLAGS_ZLIB_MINSIZEREL_LIST}>
                                                                   $<$<CONFIG:Debug>:${CONAN_C_FLAGS_ZLIB_DEBUG_LIST}  ${CONAN_CXX_FLAGS_ZLIB_DEBUG_LIST}>)
 
-    set(CONAN_TARGETS CONAN_PKG::entt CONAN_PKG::Eigen3 CONAN_PKG::sdl2_image CONAN_PKG::sdl2 CONAN_PKG::libtiff CONAN_PKG::libjpeg CONAN_PKG::libpng CONAN_PKG::libwebp CONAN_PKG::zlib)
+    set(CONAN_TARGETS CONAN_PKG::entt CONAN_PKG::Eigen3 CONAN_PKG::sdl2_image CONAN_PKG::box2d CONAN_PKG::sdl2 CONAN_PKG::libtiff CONAN_PKG::libjpeg CONAN_PKG::libpng CONAN_PKG::libwebp CONAN_PKG::zlib)
 
 endmacro()
 

@@ -1,24 +1,26 @@
 [includedirs]
 C:/Users/calm/.conan/data/entt/3.2.2/skypjack/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include
 C:/Users/calm/.conan/data/eigen/3.3.7/conan/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/include/eigen3
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include/SDL2
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include/SDL2
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/include
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include/SDL2
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/include
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include/SDL2
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/include
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include
 
 [libdirs]
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/lib
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/lib
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/lib
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/lib
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/lib
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/lib
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
 
 [bindirs]
 
@@ -29,22 +31,24 @@ C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba311585200
 [builddirs]
 C:/Users/calm/.conan/data/entt/3.2.2/skypjack/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/
 C:/Users/calm/.conan/data/eigen/3.3.7/conan/stable/package/5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9/
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/
 
 [libs]
 SDL2_image
+Box2D
 SDL2
 SDL2main
-tiff
-tiffxx
+tiffd
+tiffxxd
 libjpeg
-libpng16
+libpng16d
 webpmux
 webpdemux
 webpdecoder
@@ -197,11 +201,11 @@ C:/Users/calm/.conan/data/eigen/3.3.7/conan/stable/package/5ab84d6acfe1f23c4fae0
 
 
 [includedirs_sdl2_image]
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/include/SDL2
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/include/SDL2
 
 [libdirs_sdl2_image]
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/lib
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/lib
 
 [bindirs_sdl2_image]
 
@@ -210,7 +214,7 @@ C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddff
 
 
 [builddirs_sdl2_image]
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3/
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd/
 
 [libs_sdl2_image]
 SDL2_image
@@ -246,15 +250,67 @@ SDL2_image
 
 
 [rootpath_sdl2_image]
-C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/6a12eeddffcf36acfa2713ebee68ad908d3a2eb3
+C:/Users/calm/.conan/data/sdl2_image/2.0.5/bincrafters/stable/package/12d51f9b6f981f5aa991686f53d433e4b1d62fbd
+
+
+[includedirs_box2d]
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/include
+
+[libdirs_box2d]
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
+
+[bindirs_box2d]
+
+
+[resdirs_box2d]
+
+
+[builddirs_box2d]
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714/
+
+[libs_box2d]
+Box2D
+
+[system_libs_box2d]
+
+
+[defines_box2d]
+
+
+[cppflags_box2d]
+
+
+[cxxflags_box2d]
+
+
+[cflags_box2d]
+
+
+[sharedlinkflags_box2d]
+
+
+[exelinkflags_box2d]
+
+
+[sysroot_box2d]
+
+
+[frameworks_box2d]
+
+
+[framework_paths_box2d]
+
+
+[rootpath_box2d]
+C:/Users/calm/.conan/data/box2d/2.3.1/conan/stable/package/d057732059ea44a47760900cb5e4855d2bea8714
 
 
 [includedirs_sdl2]
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/include/SDL2
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/include/SDL2
 
 [libdirs_sdl2]
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/lib
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/lib
 
 [bindirs_sdl2]
 
@@ -263,7 +319,7 @@ C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731
 
 
 [builddirs_sdl2]
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f/
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264/
 
 [libs_sdl2]
 SDL2
@@ -310,14 +366,14 @@ shell32
 
 
 [rootpath_sdl2]
-C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/1207f517a702731f7bcbfd9d309d0b8237719e8f
+C:/Users/calm/.conan/data/sdl2/2.0.10/bincrafters/stable/package/0e00c502f993a3f1f4917cbf8f2405ea02594264
 
 
 [includedirs_libtiff]
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include
 
 [libdirs_libtiff]
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib
 
 [bindirs_libtiff]
 
@@ -326,11 +382,11 @@ C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a55
 
 
 [builddirs_libtiff]
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/
 
 [libs_libtiff]
-tiff
-tiffxx
+tiffd
+tiffxxd
 
 [system_libs_libtiff]
 
@@ -363,14 +419,14 @@ tiffxx
 
 
 [rootpath_libtiff]
-C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63
+C:/Users/calm/.conan/data/libtiff/4.0.9/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
 
 
 [includedirs_libjpeg]
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include
 
 [libdirs_libjpeg]
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
 
 [bindirs_libjpeg]
 
@@ -379,7 +435,7 @@ C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006
 
 
 [builddirs_libjpeg]
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/
 
 [libs_libjpeg]
 libjpeg
@@ -415,14 +471,14 @@ libjpeg
 
 
 [rootpath_libjpeg]
-C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab
+C:/Users/calm/.conan/data/libjpeg/9c/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714
 
 
 [includedirs_libpng]
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/include
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/include
 
 [libdirs_libpng]
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/lib
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/lib
 
 [bindirs_libpng]
 
@@ -431,10 +487,10 @@ C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a55
 
 
 [builddirs_libpng]
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63/
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b/
 
 [libs_libpng]
-libpng16
+libpng16d
 
 [system_libs_libpng]
 
@@ -467,14 +523,14 @@ libpng16
 
 
 [rootpath_libpng]
-C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/d140711d95cc16a85766a8fc3a551dfafe84cf63
+C:/Users/calm/.conan/data/libpng/1.6.37/_/_/package/6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
 
 
 [includedirs_libwebp]
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/include
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/include
 
 [libdirs_libwebp]
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/lib
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/lib
 
 [bindirs_libwebp]
 
@@ -483,7 +539,7 @@ C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e72564
 
 
 [builddirs_libwebp]
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7/
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e/
 
 [libs_libwebp]
 webpmux
@@ -522,14 +578,14 @@ webp
 
 
 [rootpath_libwebp]
-C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/638042d3fd356128c913f5e725646a0c2af264c7
+C:/Users/calm/.conan/data/libwebp/1.0.3/_/_/package/092f77d3b4b4678d81fbffc1fccc9642b870175e
 
 
 [includedirs_zlib]
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/include
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/include
 
 [libdirs_zlib]
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/lib
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/lib
 
 [bindirs_zlib]
 
@@ -538,7 +594,7 @@ C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba311585200
 
 
 [builddirs_zlib]
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab/
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714/
 
 [libs_zlib]
 zlib
@@ -574,12 +630,13 @@ zlib
 
 
 [rootpath_zlib]
-C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba3115852006824e72cab
+C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/d057732059ea44a47760900cb5e4855d2bea8714
 
 
 [USER_entt]
 [USER_eigen]
 [USER_sdl2_image]
+[USER_box2d]
 [USER_sdl2]
 [USER_libtiff]
 [USER_libjpeg]
@@ -589,9 +646,10 @@ C:/Users/calm/.conan/data/zlib/1.2.11/_/_/package/3fb49604f9c2f729b85ba311585200
 [ENV_entt]
 [ENV_eigen]
 [ENV_sdl2_image]
+[ENV_box2d]
 [ENV_sdl2]
-SDL2_CONFIG=C:\Users\calm\.conan\data\sdl2\2.0.10\bincrafters\stable\package\1207f517a702731f7bcbfd9d309d0b8237719e8f\bin\sdl2-config
-SDL_CONFIG=C:\Users\calm\.conan\data\sdl2\2.0.10\bincrafters\stable\package\1207f517a702731f7bcbfd9d309d0b8237719e8f\bin\sdl2-config
+SDL2_CONFIG=C:\Users\calm\.conan\data\sdl2\2.0.10\bincrafters\stable\package\0e00c502f993a3f1f4917cbf8f2405ea02594264\bin\sdl2-config
+SDL_CONFIG=C:\Users\calm\.conan\data\sdl2\2.0.10\bincrafters\stable\package\0e00c502f993a3f1f4917cbf8f2405ea02594264\bin\sdl2-config
 [ENV_libtiff]
 [ENV_libjpeg]
 [ENV_libpng]

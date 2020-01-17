@@ -2,37 +2,38 @@
 #include "../Component/Position.h"
 #include "../Component/Renderable.h"
 #include "../Component/Player.h"
+#include <Box2D\Dynamics\b2Body.h>
 
 void HandleInputs(entt::registry& registry, SDL_Event event)
 {
-	registry.view<Player, Renderable, Position>().each([](auto& player, auto& renderable, auto& pos) {
-		////If a key was pressed
-		//if (event.type == SDL_KEYDOWN)
-		//{
-		//	//Adjust the velocity
-		//	switch (event.key.keysym.sym)
-		//	{
-		//	case SDLK_w:
-		//		if (mVelY > MAXSPEED)
-		//		{
-		//			mVelY -= DOT_VEL;
-		//		}
-		//		break;
-		//	case SDLK_s:
-		//		mVelY += DOT_VEL;
-		//		break;
-		//	case SDLK_a:
-		//		if (event.key.repeat == 0)
-		//		{
-		//			mVelX -= DOT_VEL;
-		//		}
-		//		break;
-		//	case SDLK_d:
-		//		if (event.key.repeat == 0)
-		//		{
-		//			mVelX += DOT_VEL;
-		//		}
-		//		break;
+	//SDL_Event previous_event()???
+	registry.view<Player, b2Body*>().each([event](auto& player, auto* body) {
+		//If a key was pressed
+		b2Vec2 position = body->GetPosition();
+		float desiredVelX = 0;
+		float desiredVelY = 0;
+		const float DOT_VEL = 100.f;
+		if (event.type == SDL_KEYDOWN)
+		{
+			b2Vec2 position = body->GetPosition();
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_w:
+				desiredVelY += DOT_VEL;
+				break;
+			case SDLK_s:
+				desiredVelY -= DOT_VEL;
+				break;
+			case SDLK_a:
+				desiredVelX += DOT_VEL;
+				break;
+			case SDLK_d:
+				desiredVelX -= DOT_VEL;
+				break;
+			}
+		}
+
+		body->SetTransform(b2Vec2(position.x + desiredVelX, position.y + desiredVelY), body->GetAngle());
 		//	}
 		//}
 		////If a key was released
@@ -48,6 +49,6 @@ void HandleInputs(entt::registry& registry, SDL_Event event)
 		//		mVelX -= DOT_VEL;
 		//		break;
 			//}
-		});
+	});
 
 }
