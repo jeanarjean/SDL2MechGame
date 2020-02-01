@@ -2,6 +2,8 @@
 #include "../Component/Position.h"
 #include "../Component/Renderable.h"
 #include "../Component/Player.h"
+#include <Eigen/Dense>
+#include "../Utils//CoordTranslator.h"
 #include <Box2D\Dynamics\b2Body.h>
 
 void HandleInputs(entt::registry& registry, SDL_Event event)
@@ -12,7 +14,7 @@ void HandleInputs(entt::registry& registry, SDL_Event event)
 		b2Vec2 position = body->GetPosition();
 		float desiredVelX = 0;
 		float desiredVelY = 0;
-		const float DOT_VEL = 100.f;
+		const float DOT_VEL = -1000.f;
 		if (event.type == SDL_KEYDOWN)
 		{
 			b2Vec2 position = body->GetPosition();
@@ -32,8 +34,18 @@ void HandleInputs(entt::registry& registry, SDL_Event event)
 				break;
 			}
 		}
+		if (event.type == SDL_MOUSEBUTTONDOWN)
+		{
+			b2Vec2 pixelPosition = coordWorldToPixels(body->GetPosition());
+			int x, y;
+			SDL_GetMouseState(&x, &y);
+			b2Vec2 mousePositionPixel{ (float32) x, (float32) y };
+			b2Vec2 forceToApply = (mousePositionPixel - pixelPosition);
 
-		body->SetTransform(b2Vec2(position.x + desiredVelX, position.y + desiredVelY), body->GetAngle());
+			body->ApplyForceToCenter(b2Vec2(forceToApply.x * 1000.f, forceToApply.y * 1000.f), true);
+		}
+
+		body->ApplyForceToCenter(b2Vec2(desiredVelX, desiredVelY), true);
 		//	}
 		//}
 		////If a key was released

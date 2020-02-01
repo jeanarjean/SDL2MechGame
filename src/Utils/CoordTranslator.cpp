@@ -1,5 +1,5 @@
 #include "CoordTranslator.h"
-const int WORLD_TO_PIXEL_RATIO = 10;
+const int WORLD_TO_PIXEL_RATIO = 5;
 
 b2Vec2 coordWorldToPixels(b2Vec2 world)
 {
