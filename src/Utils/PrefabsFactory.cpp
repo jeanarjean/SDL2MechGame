@@ -97,7 +97,6 @@ entt::entity CreateDynamicBallObject(entt::registry& registry, b2World& world, S
 	body->CreateFixture(&fixtureDef);
 	auto entity = registry.create();
 	registry.assign<DynamicBody>(entity);
-	registry.assign<Player>(entity);
 	Renderable renderable{ NULL, 0, 0 };
 	if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
 		printf("Failed to load dot texture!\n");

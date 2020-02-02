@@ -177,21 +177,6 @@ void close()
 	SDL_Quit();
 }
 
-void update(entt::registry& registry) {
-	auto view = registry.view<Position, Velocity>();
-
-	for (auto entity : view) {
-		// gets only the components that are going to be used ...
-
-		auto& vel = view.get<Velocity>(entity);
-
-		vel.dx += 1.;
-		vel.dy += 1.;
-
-		// ...
-	}
-}
-
 int main(int argc, char* args[])
 {
 	if (!init())
