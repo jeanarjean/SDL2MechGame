@@ -8,13 +8,14 @@
 
 entt::entity CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
 {
+	CoordTranslator* translator = CoordTranslator::instance();
 	b2Vec2 size{ 50.f, 50.0f };
-	size = coordPixelsToWorld(size);
+	size = translator->scalarPixelsVectorToWorld(size);
 
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(101.0f + size.x / 2, 20.0f + size.y / 2);
+	bodyDef.position.Set(20.0f + size.x / 2, 20.0f + size.y / 2);
 	b2Body* body = world.CreateBody(&bodyDef);
 
 	// Define another box shape for our dynamic body.
@@ -34,7 +35,7 @@ entt::entity CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Re
 	// Add the shape to the body.
 	body->CreateFixture(&fixtureDef);
 	auto entity = registry.create();
-	registry.assign<Player>(entity);
+	registry.assign<Player>(entity, Player{ 0 });
 	registry.assign<DynamicBody>(entity);
 	Renderable renderable{ NULL, 0, 0 };
 	if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
@@ -73,6 +74,7 @@ entt::entity CreateStaticRectangleObstacle(entt::registry& registry, b2World& wo
 
 entt::entity CreateDynamicBallObject(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
 {
+	CoordTranslator* translator = CoordTranslator::instance();
 	// Define the dynamic body. We set its position and call the body factory.
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
@@ -100,7 +102,8 @@ entt::entity CreateDynamicBallObject(entt::registry& registry, b2World& world, S
 	Renderable renderable{ NULL, 0, 0 };
 	if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
 		printf("Failed to load dot texture!\n");
-	registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)scalarWorldToPixels(radius), (int)scalarWorldToPixels(radius)});
+
+	registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)translator->scalarWorldToPixels(radius), (int)translator->scalarWorldToPixels(radius) });
 	registry.assign<b2Body*>(entity, body);
 	return entity;
 }

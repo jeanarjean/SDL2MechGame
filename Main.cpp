@@ -8,15 +8,14 @@ and may not be redistributed without written permission.*/
 #include <Box2D/Box2D.h>
 #include <stdio.h>
 #include <string>
-#include "src/Dot.h"
 #include "src/Particle.h"
 #include "src/LTexture.h"
 #include "src/System/RenderSystem.h"
+#include "src/System/MovementSystem.h"
 #include "src/EventHandler/InputHandler.h"
 #include <entt/entt.hpp>
 #include "src/Utils/TextureUtils.h"
 #include "src/Component/Position.h"
-#include "src/Component/Player.h"
 #include "src/Component/Velocity.h"
 #include "src/Component/Acceleration.cpp"
 #include "src/Component/Floor.h"
@@ -198,11 +197,10 @@ int main(int argc, char* args[])
 			//Event handler
 			SDL_Event e;
 
+			CoordTranslator* translator = CoordTranslator::instance();
+			translator->setResolution(b2Vec2(SCREEN_WIDTH, SCREEN_HEIGHT));
 			//The dot that will be moving around on the screen
-			Dot dot(SCREEN_WIDTH, SCREEN_HEIGHT, particleTextures, &gDotTexture);
 			entt::registry registry;
-
-
 
 			for (auto i = 0; i < 2; ++i) {
 				auto entity = registry.create();
@@ -218,11 +216,8 @@ int main(int argc, char* args[])
 			Uint64 currentTime = SDL_GetPerformanceCounter();
 			Uint64 accumulator = 0;
 
-
-
-
 			// Define the gravity vector.
-			b2Vec2 gravity(0.0f, 10.0f);
+			b2Vec2 gravity(0.0f, -10.0f);
 			// Construct a world object, which will hold and simulate the rigid bodies.
 			b2World world(gravity);
 
@@ -246,15 +241,7 @@ int main(int argc, char* args[])
 				currentTime = newTime;
 
 
-				accumulator += frameTime;
-				while (accumulator >= dt)
-				{
-					//simulate physics
-					world.Step(timeStep, velocityIterations, positionIterations);
-					t += dt;
-					accumulator -= dt;
-				}
-
+				bool keysHandled = true;
 				//Handle events on queue
 				while (SDL_PollEvent(&e) != 0)
 				{
@@ -265,22 +252,24 @@ int main(int argc, char* args[])
 					}
 
 					//Handle input for the dot
-					dot.handleEvent(e);
 					HandleInputs(registry, e);
 				}
+				MovePlayer(registry);
 
-				//Move the dot
-				dot.move();
+				accumulator += frameTime;
+				while (accumulator >= dt)
+				{
+
+					//simulate physics
+					world.Step(timeStep, velocityIterations, positionIterations);
+					t += dt;
+					accumulator -= dt;
+				}
+
 
 				//Clear screen
 				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(gRenderer);
-
-				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xAA, 0x99, 0xFF);
-				Render(registry, gRenderer);
-
-				//Render objects
-				dot.render(gRenderer);
 				Render(registry, gRenderer);
 
 				//Update screen
