@@ -2,7 +2,7 @@
 #include "CoordTranslator.h"
 #include "TextureUtils.h"
 #include "../Component/Renderable.h"
-#include "../Component/Floor.h"
+#include "../Component/BoundingBox.h"
 
 bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
 {
@@ -27,8 +27,8 @@ bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* g
 void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
 {
 	CoordTranslator* translator = CoordTranslator::instance();
-	CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(0, 0), b2Vec2(160, 1));
-	CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(0, 0), b2Vec2(1, 90));
-	CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(159, 0), b2Vec2(1, 90));
-	CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(0, 90 - .5), b2Vec2(160, 1));
+	CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 2), b2Vec2(160, 1));
+	CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 0), b2Vec2(1, 90));
+	CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(159, 0), b2Vec2(1, 90));
+	CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 90 - .5), b2Vec2(160, 1));
 }

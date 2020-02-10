@@ -15,13 +15,10 @@ and may not be redistributed without written permission.*/
 #include "src/EventHandler/InputHandler.h"
 #include <entt/entt.hpp>
 #include "src/Utils/TextureUtils.h"
-#include "src/Component/Position.h"
-#include "src/Component/Velocity.h"
-#include "src/Component/Acceleration.cpp"
-#include "src/Component/Floor.h"
 #include "src/Component/Background.h"
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
+#include "src/Utils/BackgroundLoader.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -202,12 +199,6 @@ int main(int argc, char* args[])
 			//The dot that will be moving around on the screen
 			entt::registry registry;
 
-			for (auto i = 0; i < 2; ++i) {
-				auto entity = registry.create();
-				registry.assign<Position>(entity, i * 1.f, i * 1.f);
-				if (i % 2 == 0) { registry.assign<Velocity>(entity, i * .1f, i * .1f); }
-			}
-
 			B2_NOT_USED(argc);
 			B2_NOT_USED(args);
 
@@ -230,6 +221,7 @@ int main(int argc, char* args[])
 
 
 			InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
+			BackgroundLoader::LoadBackground(registry, gRenderer);
 
 			//While application is running
 			while (!quit)
@@ -270,7 +262,7 @@ int main(int argc, char* args[])
 				//Clear screen
 				SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 				SDL_RenderClear(gRenderer);
-				Render(registry, gRenderer);
+				Renderer::Render(registry, gRenderer);
 
 				//Update screen
 				SDL_RenderPresent(gRenderer);

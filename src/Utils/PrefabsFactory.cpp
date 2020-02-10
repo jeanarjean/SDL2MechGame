@@ -1,10 +1,11 @@
 #include "PrefabsFactory.h"
 #include "../Component/Renderable.h"
 #include "../Component/Player.h"
-#include "TextureUtils.h"
-#include "../Component/Floor.h"
-#include "CoordTranslator.h"
+#include "../Component/Platform.h"
+#include "../Component/BoundingBox.h"
 #include "../Component/Dynamic.h"
+#include "TextureUtils.h"
+#include "CoordTranslator.h"
 
 entt::entity CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
 {
@@ -66,12 +67,38 @@ entt::entity CreateStaticRectangleObstacle(entt::registry& registry, b2World& wo
 	if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
 		printf("Failed to load dot texture!\n");
 	registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
-	registry.assign<Floor>(entity);
+	registry.assign<Platform>(entity);
 	registry.assign<b2Body*>(entity, groundBody);
 
 	return entity;
 }
 
+entt::entity CreateBoundingRectangle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
+{
+	// Define the ground body.
+	b2BodyDef groundBodyDef;
+	groundBodyDef.position.Set(position.x + size.x / 2, position.y + size.y / 2);
+	b2Body* groundBody = world.CreateBody(&groundBodyDef);
+
+	// Define the ground box shape.
+	b2PolygonShape groundBox;
+
+	// The extents are the half-widths of the box.
+	groundBox.SetAsBox(size.x / 2, size.y / 2);
+
+	// Add the ground fixture to the ground body.
+	groundBody->CreateFixture(&groundBox, 0.0f);
+
+	auto entity = registry.create();
+	Renderable renderable2{ NULL, 0, 0 };
+	if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
+		printf("Failed to load dot texture!\n");
+	registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
+	registry.assign<BoundingBox>(entity);
+	registry.assign<b2Body*>(entity, groundBody);
+
+	return entity;
+}
 entt::entity CreateDynamicBallObject(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
 {
 	CoordTranslator* translator = CoordTranslator::instance();
