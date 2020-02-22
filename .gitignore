@@ -49,3 +49,8 @@ SDL2MechGame
 /out/build/x64-Debug
 /.vs
 /build
+
+# CONAN
+conanbuildinfo.cmake
+CMakeSettings.json
+conanbuildinfo.txt

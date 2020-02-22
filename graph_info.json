@@ -1,130 +1,130 @@
 {
+ "root": {
+  "version": null, 
+  "name": null, 
+  "channel": null, 
+  "user": null
+ }, 
  "options": [
   [
-   "box2d:shared",
+   "box2d:shared", 
    "False"
-  ],
+  ], 
   [
-   "libjpeg:shared",
+   "libjpeg:shared", 
    "False"
-  ],
+  ], 
   [
-   "libpng:api_prefix",
+   "libpng:api_prefix", 
    "None"
-  ],
+  ], 
   [
-   "libpng:shared",
+   "libpng:shared", 
    "False"
-  ],
+  ], 
   [
-   "libtiff:shared",
+   "libtiff:shared", 
    "False"
-  ],
+  ], 
   [
-   "libwebp:near_lossless",
+   "libwebp:near_lossless", 
    "True"
-  ],
+  ], 
   [
-   "libwebp:shared",
+   "libwebp:shared", 
    "False"
-  ],
+  ], 
   [
-   "libwebp:swap_16bit_csp",
+   "libwebp:swap_16bit_csp", 
    "False"
-  ],
+  ], 
   [
-   "libwebp:with_simd",
+   "libwebp:with_simd", 
    "True"
-  ],
+  ], 
   [
-   "sdl2:directx",
+   "sdl2:directx", 
    "True"
-  ],
+  ], 
   [
-   "sdl2:iconv",
+   "sdl2:iconv", 
    "False"
-  ],
+  ], 
   [
-   "sdl2:sdl2main",
+   "sdl2:sdl2main", 
    "True"
-  ],
+  ], 
   [
-   "sdl2:shared",
+   "sdl2:shared", 
    "False"
-  ],
+  ], 
   [
-   "sdl2_image:bmp",
+   "sdl2_image:bmp", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:gif",
+   "sdl2_image:gif", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:jpg",
+   "sdl2_image:jpg", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:lbm",
+   "sdl2_image:lbm", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:pcx",
+   "sdl2_image:pcx", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:png",
+   "sdl2_image:png", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:pnm",
+   "sdl2_image:pnm", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:shared",
+   "sdl2_image:shared", 
    "False"
-  ],
+  ], 
   [
-   "sdl2_image:svg",
+   "sdl2_image:svg", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:tga",
+   "sdl2_image:tga", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:tif",
+   "sdl2_image:tif", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:webp",
+   "sdl2_image:webp", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:xcf",
+   "sdl2_image:xcf", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:xpm",
+   "sdl2_image:xpm", 
    "True"
-  ],
+  ], 
   [
-   "sdl2_image:xv",
+   "sdl2_image:xv", 
    "True"
-  ],
+  ], 
   [
-   "zlib:minizip",
+   "zlib:minizip", 
    "False"
-  ],
+  ], 
   [
-   "zlib:shared",
+   "zlib:shared", 
    "False"
   ]
- ],
- "root": {
-  "name": null,
-  "version": null,
-  "user": null,
-  "channel": null
- }
+ ]
 }
