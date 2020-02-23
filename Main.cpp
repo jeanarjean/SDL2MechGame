@@ -5,6 +5,7 @@ and may not be redistributed without written permission.*/
 // TODO fix this
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
 #include <Box2D/Box2D.h>
 #include <stdio.h>
 #include <string>
@@ -18,6 +19,7 @@ and may not be redistributed without written permission.*/
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
 #include "src/Utils/BackgroundLoader.h"
+#include "src/Box2DSpecific/ContactListener.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -61,7 +63,7 @@ bool init()
 		}
 
 		//Create window
-		gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+		gWindow = SDL_CreateWindow("SDL2MECHGAME", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (gWindow == NULL)
 		{
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
@@ -86,6 +88,13 @@ bool init()
 				if (!(IMG_Init(imgFlags) & imgFlags))
 				{
 					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+					success = false;
+				}
+
+				//Initialize SDL_Mixer
+				if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+				{
+					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 					success = false;
 				}
 			}
@@ -153,9 +162,14 @@ int main(int argc, char* args[])
 
 
 		GameWorldInitiator::InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
+		ContactListener contactListener(registry);
+		world.SetContactListener(&contactListener);
 		BackgroundLoader::LoadBackground(registry, gRenderer);
 		AttackSystem::AttackSystem attackSystem;
 
+		Mix_VolumeMusic(MIX_MAX_VOLUME/2);
+		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
+		Mix_PlayMusic(music, 2);
 		//While application is running
 		while (!quit)
 		{

@@ -177,11 +177,10 @@ namespace PrefabsFactory
 		body->CreateFixture(&fixtureDef);
 
 		body->ApplyForce(b2Vec2(forceToApply.x * 4000.f, forceToApply.y * 4000.f), body->GetWorldCenter(), true);
-		//b2_body->SetUserData(reinterpret_cast<void*>(entity));
-
 
 
 		auto entity = registry.create();
+		body->SetUserData(reinterpret_cast<void*>(entity));
 		registry.assign<DynamicBody>(entity);
 		Renderable renderable{ NULL, 0, 0 };
 		if (!LoadFromFile("../resources/dot.bmp", gRenderer, renderable))

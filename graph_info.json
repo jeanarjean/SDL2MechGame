@@ -11,6 +11,10 @@
    "False"
   ], 
   [
+   "libiconv:shared", 
+   "False"
+  ], 
+  [
    "libjpeg:shared", 
    "False"
   ], 
@@ -48,7 +52,7 @@
   ], 
   [
    "sdl2:iconv", 
-   "False"
+   "True"
   ], 
   [
    "sdl2:sdl2main", 

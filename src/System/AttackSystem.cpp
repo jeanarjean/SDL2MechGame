@@ -4,6 +4,7 @@
 #include <Box2D\Dynamics\b2Body.h>
 #include  "../Enums/MovementEnum.h"
 #include  "../Utils/PrefabsFactory.h"
+#include <SDL_mixer.h>
 
 namespace AttackSystem {
 	void AttackSystem::PlayerAttack(int currentTick, entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
@@ -15,10 +16,12 @@ namespace AttackSystem {
 			auto& body = view.get<b2Body*>(entity);
 			if (((player.m_controlState) >> (MECH_SHOOT_BIT)) & 1)
 			{
-				if (currentTick - lastShotBulletTick > 10)
+				if (currentTick - lastShotBulletTick > 50)
 				{
 					lastShotBulletTick = currentTick;
 					PrefabsFactory::SpawnBullet(registry, world, gRenderer, body->GetPosition());
+					Mix_Chunk* music = Mix_LoadWAV("../resources/GUN_SHOT.wav");
+					Mix_PlayChannel(-1, music, 0);
 				}
 			}
 		}

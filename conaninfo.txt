@@ -32,16 +32,18 @@
     box2d/2.3.1@conan/stable:d057732059ea44a47760900cb5e4855d2bea8714
     eigen/3.3.7@conan/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     entt/3.2.2@skypjack/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
+    libiconv/1.15:d057732059ea44a47760900cb5e4855d2bea8714
     libjpeg/9c:d057732059ea44a47760900cb5e4855d2bea8714
     libpng/1.6.37:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
     libtiff/4.0.9:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
     libwebp/1.0.3:092f77d3b4b4678d81fbffc1fccc9642b870175e
-    sdl2/2.0.10@bincrafters/stable:0e00c502f993a3f1f4917cbf8f2405ea02594264
-    sdl2_image/2.0.5@bincrafters/stable:12d51f9b6f981f5aa991686f53d433e4b1d62fbd
+    sdl2/2.0.10@bincrafters/stable:338cb52e3d13edeeec5934e0f9a1cc393ac32341
+    sdl2_image/2.0.5@bincrafters/stable:cc9462b6827b20e98ed48923fd1a93f83901b797
     zlib/1.2.11:d057732059ea44a47760900cb5e4855d2bea8714
 
 [full_options]
     box2d:shared=False
+    libiconv:shared=False
     libjpeg:shared=False
     libpng:api_prefix=None
     libpng:shared=False
@@ -51,7 +53,7 @@
     libwebp:swap_16bit_csp=False
     libwebp:with_simd=True
     sdl2:directx=True
-    sdl2:iconv=False
+    sdl2:iconv=True
     sdl2:sdl2main=True
     sdl2:shared=False
     sdl2_image:bmp=True

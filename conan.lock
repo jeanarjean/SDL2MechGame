@@ -8,13 +8,13 @@
      "1", 
      "2", 
      "3", 
-     "4", 
-     "10"
+     "5", 
+     "11"
     ], 
-    "options": "box2d:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=False\nsdl2:sdl2main=True\nsdl2:shared=False\nsdl2_image:bmp=True\nsdl2_image:gif=True\nsdl2_image:jpg=True\nsdl2_image:lbm=True\nsdl2_image:pcx=True\nsdl2_image:png=True\nsdl2_image:pnm=True\nsdl2_image:shared=False\nsdl2_image:svg=True\nsdl2_image:tga=True\nsdl2_image:tif=True\nsdl2_image:webp=True\nsdl2_image:xcf=True\nsdl2_image:xpm=True\nsdl2_image:xv=True\nzlib:minizip=False\nzlib:shared=False"
+    "options": "box2d:shared=False\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nsdl2_image:bmp=True\nsdl2_image:gif=True\nsdl2_image:jpg=True\nsdl2_image:lbm=True\nsdl2_image:pcx=True\nsdl2_image:png=True\nsdl2_image:pnm=True\nsdl2_image:shared=False\nsdl2_image:svg=True\nsdl2_image:tga=True\nsdl2_image:tif=True\nsdl2_image:webp=True\nsdl2_image:xcf=True\nsdl2_image:xpm=True\nsdl2_image:xv=True\nzlib:minizip=False\nzlib:shared=False"
    }, 
    "1": {
-    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#14badd15aa9394dbdd9b316e0083a2fc", 
+    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
     "options": ""
    }, 
    "2": {
@@ -22,49 +22,57 @@
     "options": ""
    }, 
    "3": {
-    "pref": "sdl2/2.0.10@bincrafters/stable#0:0e00c502f993a3f1f4917cbf8f2405ea02594264#0", 
-    "options": "directx=True\niconv=False\nsdl2main=True\nshared=False"
+    "pref": "sdl2/2.0.10@bincrafters/stable#0:338cb52e3d13edeeec5934e0f9a1cc393ac32341#0", 
+    "requires": [
+     "4"
+    ], 
+    "options": "directx=True\niconv=True\nsdl2main=True\nshared=False\nlibiconv:shared=False"
    }, 
    "4": {
-    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:12d51f9b6f981f5aa991686f53d433e4b1d62fbd#0", 
-    "requires": [
-     "3", 
-     "5", 
-     "7", 
-     "8", 
-     "9", 
-     "6"
-    ], 
-    "options": "bmp=True\ngif=True\njpg=True\nlbm=True\npcx=True\npng=True\npnm=True\nshared=False\nsvg=True\ntga=True\ntif=True\nwebp=True\nxcf=True\nxpm=True\nxv=True\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=False\nsdl2:sdl2main=True\nsdl2:shared=False\nzlib:minizip=False\nzlib:shared=False"
+    "pref": "libiconv/1.15#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
+    "options": "shared=False"
    }, 
    "5": {
+    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#7f4db50d7a6e263aedd64470e83c8542", 
+    "requires": [
+     "3", 
+     "6", 
+     "8", 
+     "9", 
+     "10", 
+     "7"
+    ], 
+    "options": "bmp=True\ngif=True\njpg=True\nlbm=True\npcx=True\npng=True\npnm=True\nshared=False\nsvg=True\ntga=True\ntif=True\nwebp=True\nxcf=True\nxpm=True\nxv=True\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nzlib:minizip=False\nzlib:shared=False", 
+    "modified": "built"
+   }, 
+   "6": {
     "pref": "libtiff/4.0.9#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
     "requires": [
-     "6"
+     "7"
     ], 
     "options": "shared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
-   "6": {
+   "7": {
     "pref": "zlib/1.2.11#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
     "options": "minizip=False\nshared=False"
    }, 
-   "7": {
+   "8": {
     "pref": "libjpeg/9c#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
     "options": "shared=False"
    }, 
-   "8": {
+   "9": {
     "pref": "libpng/1.6.37#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
     "requires": [
-     "6"
+     "7"
     ], 
     "options": "api_prefix=None\nshared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
-   "9": {
+   "10": {
     "pref": "libwebp/1.0.3#0:092f77d3b4b4678d81fbffc1fccc9642b870175e#0", 
     "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
    }, 
-   "10": {
-    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#0f299794abd0da1b63638b5879a947c5", 
+   "11": {
+    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#f55cc5e9d523660ceb4e5b6530518f3f", 
     "options": "shared=False", 
     "modified": "built"
    }
