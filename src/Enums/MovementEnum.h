@@ -1,0 +1,21 @@
+#ifndef MOVEMENT_ENUM_H
+#define MOVEMENT_ENUM_H
+
+enum MECH_MOVEMENT {
+	MECH_LEFT = 0x1,
+	MECH_RIGHT = 0x2,
+	MECH_UP = 0x4,
+	MECH_DOWN = 0x8,
+	// 16 in decimal
+	MECH_SHOOT = 0x10
+};
+
+enum MECH_MOVEMENT_BIT {
+	MECH_LEFT_BIT,
+	MECH_RIGHT_BIT,
+	MECH_UP_BIT,
+	MECH_DOWN_BIT,
+	MECH_SHOOT_BIT
+};
+
+#endif

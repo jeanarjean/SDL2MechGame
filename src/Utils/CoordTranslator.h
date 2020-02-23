@@ -25,7 +25,7 @@ public:
 	b2Vec2 coordPixelsToWorld(b2Vec2 screen);
 	b2Vec2 coordPixelsToWorld(float pixelX, float pixelY);
 	float scalarPixelsToWorld(float val);
-	b2Vec2 CoordTranslator::scalarPixelsVectorToWorld(b2Vec2 vector);
+	b2Vec2 scalarPixelsToWorld(b2Vec2 vector);
 };
 
 #endif

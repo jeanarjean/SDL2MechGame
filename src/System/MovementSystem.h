@@ -2,5 +2,7 @@
 #define MOVEMENT_SYSTEM_H
 #include <SDL.h>
 #include <entt/entt.hpp>
-void MovePlayer(entt::registry& registry);
+namespace MovementSystem {
+	void MovePlayer(entt::registry& registry);
+}
 #endif

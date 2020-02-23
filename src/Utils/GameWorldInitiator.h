@@ -6,7 +6,9 @@
 #include <entt/entt.hpp>
 #include "PrefabsFactory.h"
 
-bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
-void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+namespace GameWorldInitiator {
+	bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+	void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+}
 
 #endif

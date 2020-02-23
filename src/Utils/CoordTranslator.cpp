@@ -33,7 +33,7 @@ float CoordTranslator::scalarPixelsToWorld(float val)
 	return val / WORLD_TO_PIXEL_RATIO;
 }
 
-b2Vec2 CoordTranslator::scalarPixelsVectorToWorld(b2Vec2 vector)
+b2Vec2 CoordTranslator::scalarPixelsToWorld(b2Vec2 vector)
 {
 	return b2Vec2(vector.x / WORLD_TO_PIXEL_RATIO, vector.y / WORLD_TO_PIXEL_RATIO);
 }

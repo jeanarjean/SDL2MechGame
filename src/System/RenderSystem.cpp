@@ -59,7 +59,6 @@ namespace Renderer
 
 			SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 			SDL_RenderCopyEx(gRenderer, renderable.mTexture, NULL, &resize, angle, NULL, SDL_FLIP_NONE);
-
 			});
 
 	}
