@@ -6,6 +6,7 @@
 #include "../Component/Dynamic.h"
 #include "TextureUtils.h"
 #include "CoordTranslator.h"
+#include "../Component/Bullet.h"
 
 namespace PrefabsFactory
 {
@@ -33,11 +34,13 @@ namespace PrefabsFactory
 		fixtureDef.density = 1.0f;
 
 		// Override the default friction.
-		fixtureDef.friction = 0.3f;
+		fixtureDef.friction = .3f;
 
 		// Add the shape to the body.
 		body->CreateFixture(&fixtureDef);
 		auto entity = registry.create();
+		body->SetUserData(reinterpret_cast<void*>(entity));
+
 		registry.assign<Player>(entity, Player{ 0 });
 		registry.assign<DynamicBody>(entity);
 		Renderable renderable{ NULL, 0, 0 };
@@ -53,7 +56,7 @@ namespace PrefabsFactory
 		// Define the ground body.
 		b2BodyDef groundBodyDef;
 		groundBodyDef.position.Set(position.x + size.x / 2, position.y + size.y / 2);
-		b2Body* groundBody = world.CreateBody(&groundBodyDef);
+		b2Body* body = world.CreateBody(&groundBodyDef);
 
 		// Define the ground box shape.
 		b2PolygonShape groundBox;
@@ -62,15 +65,17 @@ namespace PrefabsFactory
 		groundBox.SetAsBox(size.x / 2, size.y / 2);
 
 		// Add the ground fixture to the ground body.
-		groundBody->CreateFixture(&groundBox, 0.0f);
+		body->CreateFixture(&groundBox, 0.0f);
 
 		auto entity = registry.create();
+		body->SetUserData(reinterpret_cast<void*>(entity));
+
 		Renderable renderable2{ NULL, 0, 0 };
 		if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
 			printf("Failed to load dot texture!\n");
 		registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
 		registry.assign<Platform>(entity);
-		registry.assign<b2Body*>(entity, groundBody);
+		registry.assign<b2Body*>(entity, body);
 
 		return entity;
 	}
@@ -80,7 +85,7 @@ namespace PrefabsFactory
 		// Define the ground body.
 		b2BodyDef groundBodyDef;
 		groundBodyDef.position.Set(position.x + size.x / 2, position.y + size.y / 2);
-		b2Body* groundBody = world.CreateBody(&groundBodyDef);
+		b2Body* body = world.CreateBody(&groundBodyDef);
 
 		// Define the ground box shape.
 		b2PolygonShape groundBox;
@@ -89,15 +94,16 @@ namespace PrefabsFactory
 		groundBox.SetAsBox(size.x / 2, size.y / 2);
 
 		// Add the ground fixture to the ground body.
-		groundBody->CreateFixture(&groundBox, 0.0f);
+		body->CreateFixture(&groundBox, 0.0f);
 
 		auto entity = registry.create();
+		body->SetUserData(reinterpret_cast<void*>(entity));
 		Renderable renderable2{ NULL, 0, 0 };
 		if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
 			printf("Failed to load dot texture!\n");
 		registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
 		registry.assign<BoundingBox>(entity);
-		registry.assign<b2Body*>(entity, groundBody);
+		registry.assign<b2Body*>(entity, body);
 
 		return entity;
 	}
@@ -128,6 +134,7 @@ namespace PrefabsFactory
 		// Add the shape to the body.
 		body->CreateFixture(&fixtureDef);
 		auto entity = registry.create();
+		body->SetUserData(reinterpret_cast<void*>(entity));
 		registry.assign<DynamicBody>(entity);
 		Renderable renderable{ NULL, 0, 0 };
 		if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
@@ -168,7 +175,7 @@ namespace PrefabsFactory
 		fixtureDef.shape = &dynamicBox;
 
 		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
+		fixtureDef.density = 20.0f;
 
 		// Override the default friction.
 		fixtureDef.friction = 0.3f;
@@ -176,12 +183,13 @@ namespace PrefabsFactory
 		// Add the shape to the body.
 		body->CreateFixture(&fixtureDef);
 
-		body->ApplyForce(b2Vec2(forceToApply.x * 4000.f, forceToApply.y * 4000.f), body->GetWorldCenter(), true);
+		body->ApplyForce(b2Vec2(forceToApply.x * 4000.f * 50.f, forceToApply.y * 4000.f * 50.f), body->GetWorldCenter(), true);
 
 
 		auto entity = registry.create();
 		body->SetUserData(reinterpret_cast<void*>(entity));
 		registry.assign<DynamicBody>(entity);
+		registry.assign<Bullet>(entity);
 		Renderable renderable{ NULL, 0, 0 };
 		if (!LoadFromFile("../resources/dot.bmp", gRenderer, renderable))
 			printf("Failed to load dot texture!\n");

@@ -12,6 +12,7 @@ and may not be redistributed without written permission.*/
 #include "src/System/RenderSystem.h"
 #include "src/System/MovementSystem.h"
 #include "src/System/AttackSystem.h"
+#include "src/System/BulletDestroyerSystem.h"
 #include "src/EventHandler/InputHandler.h"
 #include <entt/entt.hpp>
 #include "src/Utils/TextureUtils.h"
@@ -167,7 +168,7 @@ int main(int argc, char* args[])
 		BackgroundLoader::LoadBackground(registry, gRenderer);
 		AttackSystem::AttackSystem attackSystem;
 
-		Mix_VolumeMusic(MIX_MAX_VOLUME/2);
+		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
 		Mix_PlayMusic(music, 2);
 		//While application is running
@@ -192,6 +193,7 @@ int main(int argc, char* args[])
 				//Handle input for the dot
 				InputHandler::HandleInputs(registry, e);
 			}
+
 			MovementSystem::MovePlayer(registry);
 			attackSystem.PlayerAttack(currentTick, registry, world, gRenderer);
 
@@ -205,6 +207,8 @@ int main(int argc, char* args[])
 				accumulator -= dt;
 				currentTick++;
 			}
+			BulletDestroyerSystem::ProcessBullets(registry, world, gRenderer);
+
 
 
 			//Clear screen

@@ -1,5 +1,4 @@
 #include "RenderSystem.h"
-#include "../Component/Position.h"
 #include "../Component/BoundingBox.h"
 #include "../Component/Renderable.h"
 #include "../Component/Player.h"

@@ -1,5 +1,4 @@
 #include "AttackSystem.h"
-#include "../Component/Position.h"
 #include "../Component/Player.h"
 #include <Box2D\Dynamics\b2Body.h>
 #include  "../Enums/MovementEnum.h"
@@ -16,7 +15,7 @@ namespace AttackSystem {
 			auto& body = view.get<b2Body*>(entity);
 			if (((player.m_controlState) >> (MECH_SHOOT_BIT)) & 1)
 			{
-				if (currentTick - lastShotBulletTick > 50)
+				if (currentTick - lastShotBulletTick > 10)
 				{
 					lastShotBulletTick = currentTick;
 					PrefabsFactory::SpawnBullet(registry, world, gRenderer, body->GetPosition());

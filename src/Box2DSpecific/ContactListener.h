@@ -9,7 +9,7 @@ public:
 	ContactListener(entt::registry& registry) : registry(registry) {};
 
 
-	void BeginContact(b2Contact* contact);
+	void ContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
 private:
 	entt::registry& registry;
 };
