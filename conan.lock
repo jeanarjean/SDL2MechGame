@@ -8,71 +8,76 @@
      "1", 
      "2", 
      "3", 
-     "5", 
-     "11"
+     "4", 
+     "6", 
+     "12"
     ], 
     "options": "box2d:shared=False\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nsdl2_image:bmp=True\nsdl2_image:gif=True\nsdl2_image:jpg=True\nsdl2_image:lbm=True\nsdl2_image:pcx=True\nsdl2_image:png=True\nsdl2_image:pnm=True\nsdl2_image:shared=False\nsdl2_image:svg=True\nsdl2_image:tga=True\nsdl2_image:tif=True\nsdl2_image:webp=True\nsdl2_image:xcf=True\nsdl2_image:xpm=True\nsdl2_image:xv=True\nzlib:minizip=False\nzlib:shared=False"
    }, 
    "1": {
-    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "pref": "jsonformoderncpp/3.7.3@vthiery/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
     "options": ""
    }, 
    "2": {
-    "pref": "eigen/3.3.7@conan/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
     "options": ""
    }, 
    "3": {
+    "pref": "eigen/3.3.7@conan/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "options": ""
+   }, 
+   "4": {
     "pref": "sdl2/2.0.10@bincrafters/stable#0:338cb52e3d13edeeec5934e0f9a1cc393ac32341#0", 
     "requires": [
-     "4"
+     "5"
     ], 
     "options": "directx=True\niconv=True\nsdl2main=True\nshared=False\nlibiconv:shared=False"
    }, 
-   "4": {
+   "5": {
     "pref": "libiconv/1.15#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
     "options": "shared=False"
    }, 
-   "5": {
-    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#7f4db50d7a6e263aedd64470e83c8542", 
+   "6": {
+    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#6fb657f46ae1b7f2a3f2d4a777ba484d", 
     "requires": [
-     "3", 
-     "6", 
-     "8", 
+     "4", 
+     "7", 
      "9", 
      "10", 
-     "7"
+     "11", 
+     "8"
     ], 
     "options": "bmp=True\ngif=True\njpg=True\nlbm=True\npcx=True\npng=True\npnm=True\nshared=False\nsvg=True\ntga=True\ntif=True\nwebp=True\nxcf=True\nxpm=True\nxv=True\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nzlib:minizip=False\nzlib:shared=False", 
     "modified": "built"
    }, 
-   "6": {
+   "7": {
     "pref": "libtiff/4.0.9#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
     "requires": [
-     "7"
+     "8"
     ], 
     "options": "shared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
-   "7": {
+   "8": {
     "pref": "zlib/1.2.11#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
     "options": "minizip=False\nshared=False"
    }, 
-   "8": {
+   "9": {
     "pref": "libjpeg/9c#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
     "options": "shared=False"
    }, 
-   "9": {
+   "10": {
     "pref": "libpng/1.6.37#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
     "requires": [
-     "7"
+     "8"
     ], 
     "options": "api_prefix=None\nshared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
-   "10": {
+   "11": {
     "pref": "libwebp/1.0.3#0:092f77d3b4b4678d81fbffc1fccc9642b870175e#0", 
     "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
    }, 
-   "11": {
-    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#f55cc5e9d523660ceb4e5b6530518f3f", 
+   "12": {
+    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#fbed2dc20b77b4f7bc66888168c7c4cc", 
     "options": "shared=False", 
     "modified": "built"
    }

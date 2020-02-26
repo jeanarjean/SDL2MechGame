@@ -11,6 +11,7 @@
     box2d/2.Y.Z
     eigen/3.Y.Z
     entt/3.Y.Z
+    jsonformoderncpp/3.Y.Z
     sdl2/2.Y.Z
     sdl2_image/2.Y.Z
 
@@ -32,6 +33,7 @@
     box2d/2.3.1@conan/stable:d057732059ea44a47760900cb5e4855d2bea8714
     eigen/3.3.7@conan/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     entt/3.2.2@skypjack/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
+    jsonformoderncpp/3.7.3@vthiery/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     libiconv/1.15:d057732059ea44a47760900cb5e4855d2bea8714
     libjpeg/9c:d057732059ea44a47760900cb5e4855d2bea8714
     libpng/1.6.37:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b

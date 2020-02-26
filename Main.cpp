@@ -21,6 +21,11 @@ and may not be redistributed without written permission.*/
 #include "src/Utils/GameWorldInitiator.h"
 #include "src/Utils/BackgroundLoader.h"
 #include "src/Box2DSpecific/ContactListener.h"
+#include <nlohmann/json.hpp>
+#include <fstream>
+
+using json = nlohmann::json;
+
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -167,6 +172,16 @@ int main(int argc, char* args[])
 		world.SetContactListener(&contactListener);
 		BackgroundLoader::LoadBackground(registry, gRenderer);
 		AttackSystem::AttackSystem attackSystem;
+
+		json ja;
+
+		std::ifstream iaasda("../resources/Sprite-0003.json");
+		json j = json::parse(iaasda);
+
+		json jframes = j["frames"];
+
+
+		int rotated = jframes["Sprite-0003 0.aseprite"]["frame"]["w"];
 
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
 		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
