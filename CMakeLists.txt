@@ -19,6 +19,9 @@ file(COPY ${data} DESTINATION resources)
 find_package(SDL2_mixer REQUIRED)
 include_directories(${SDL2_MIXER_INCLUDE_DIR})
 
+find_package(SDL2_ttf REQUIRED)
+include_directories(${SDL2_TTF_INCLUDE_DIR})
+
 include(${PROJECT_SOURCE_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 # WHAT I NEED TO DO IS NOT SET THE BOX2D TO DEBUG, IT IS TO SET THE PROPER FLAGS IN MY SETUP
@@ -26,4 +29,4 @@ conan_basic_setup()
 #add_definitions(-_ITERATOR_DEBUG_LEVEL=2)
 
 add_executable(SDL2MechGame WIN32 Main.cpp ${SOURCES})
-target_link_libraries(SDL2MechGame ${CONAN_LIBS} ${SDL2_MIXER_LIBRARIES})
+target_link_libraries(SDL2MechGame ${CONAN_LIBS} ${SDL2_MIXER_LIBRARIES} ${SDL2_TTF_LIBRARIES})

@@ -38,7 +38,7 @@
     "options": "shared=False"
    }, 
    "6": {
-    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#6fb657f46ae1b7f2a3f2d4a777ba484d", 
+    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#182ca7d6812fe57812e021be1a290e3c", 
     "requires": [
      "4", 
      "7", 
@@ -77,7 +77,7 @@
     "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
    }, 
    "12": {
-    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#fbed2dc20b77b4f7bc66888168c7c4cc", 
+    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#5ce16dc26d9130181be3b802025649ca", 
     "options": "shared=False", 
     "modified": "built"
    }

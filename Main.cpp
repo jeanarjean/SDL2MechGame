@@ -6,6 +6,7 @@ and may not be redistributed without written permission.*/
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
+#include <SDL_ttf.h>
 #include <Box2D/Box2D.h>
 #include <stdio.h>
 #include <string>
@@ -19,12 +20,8 @@ and may not be redistributed without written permission.*/
 #include "src/Component/Background.h"
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
-#include "src/Utils/BackgroundLoader.h"
-#include "src/Box2DSpecific/ContactListener.h"
-#include <nlohmann/json.hpp>
-#include <fstream>
 
-using json = nlohmann::json;
+using namespace std;
 
 
 //Screen dimension constants
@@ -48,6 +45,8 @@ SDL_Window* gWindow = NULL;
 
 //The window renderer
 SDL_Renderer* gRenderer = NULL;
+
+TTF_Font* font;
 
 bool init()
 {
@@ -103,6 +102,18 @@ bool init()
 					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 					success = false;
 				}
+
+				if (TTF_Init() < 0) {
+					SDL_LogCritical(1, "Error initializing SDL_ttf: %s", TTF_GetError());
+					success = false;
+				}
+
+
+				font = TTF_OpenFont("../resources/ariblk.ttf", 24);
+				if (!font) {
+					SDL_LogCritical(1, "Error loading font: %s", TTF_GetError());
+					success = false;
+				}
 			}
 		}
 	}
@@ -110,14 +121,30 @@ bool init()
 	return success;
 }
 
+void renderText(string text, SDL_Rect dest, SDL_Renderer* gRenderer) {
+	SDL_Color fg = { 0, 0, 0 };
+	SDL_Surface* surf = TTF_RenderText_Solid(font, text.c_str(), fg);
+
+	dest.w = surf->w;
+	dest.h = surf->h;
+
+	SDL_Texture* tex = SDL_CreateTextureFromSurface(gRenderer, surf);
+
+	SDL_RenderCopy(gRenderer, tex, NULL, &dest);
+	//SDL_DestroyTexture(tex);
+	//SDL_FreeSurface(surf);
+}
 
 void close()
 {
 	//Destroy window
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
+	//TTF_CloseFont(font);
+
 	gWindow = NULL;
 	gRenderer = NULL;
+	//font = NULL;
 
 	//Quit SDL subsystems
 	IMG_Quit();
@@ -146,10 +173,6 @@ int main(int argc, char* args[])
 		B2_NOT_USED(argc);
 		B2_NOT_USED(args);
 
-		Uint64 t = 0;
-		Uint64 dt = 16;
-		Uint64 currentTime = SDL_GetPerformanceCounter();
-		Uint64 accumulator = 0;
 
 		// Define the gravity vector.
 		b2Vec2 gravity(0.0f, -10.0f);
@@ -160,41 +183,28 @@ int main(int argc, char* args[])
 		// second (60Hz) and 10 iterations. This provides a high quality simulation
 		// in most game scenarios.
 		float32 timeStep = 1.0f / 60.0f;
-		int32 velocityIterations = 1;
-		int32 positionIterations = 1;
+		int32 velocityIterations = 2;
+		int32 positionIterations = 6;
+		Uint64 t = 0;
+		Uint64 dt = 16;
+		Uint64 currentTime = SDL_GetPerformanceCounter();
+		Uint64 accumulator = 0;
 
 		// Potential Problem if integer overflows./
 		int currentTick = 0;
 
 
 		GameWorldInitiator::InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
-		ContactListener contactListener(registry);
-		world.SetContactListener(&contactListener);
-		BackgroundLoader::LoadBackground(registry, gRenderer);
 		AttackSystem::AttackSystem attackSystem;
-
-		json ja;
-
-		std::ifstream iaasda("../resources/Sprite-0003.json");
-		json j = json::parse(iaasda);
-
-		json jframes = j["frames"];
-
-
-		int rotated = jframes["Sprite-0003 0.aseprite"]["frame"]["w"];
-
-		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
-		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
-		Mix_PlayMusic(music, 2);
 		//While application is running
 		while (!quit)
 		{
 			Uint64 newTime = SDL_GetPerformanceCounter();
-			Uint64 frameTime = newTime - currentTime;
+			Uint64 frameTime = ((newTime - currentTime) * 1000) / SDL_GetPerformanceFrequency();
+			SDL_Log("%d ms frame time", frameTime);
 			if (frameTime > 16)
 				frameTime = 16;
 			currentTime = newTime;
-
 
 			//Handle events on queue
 			while (SDL_PollEvent(&e) != 0)
@@ -209,7 +219,8 @@ int main(int argc, char* args[])
 				InputHandler::HandleInputs(registry, e);
 			}
 
-			MovementSystem::MovePlayer(registry);
+			if (currentTick % 2 == 0)
+				MovementSystem::MovePlayer(registry);
 			attackSystem.PlayerAttack(currentTick, registry, world, gRenderer);
 
 			accumulator += frameTime;
@@ -231,6 +242,12 @@ int main(int argc, char* args[])
 			SDL_RenderClear(gRenderer);
 			Renderer::Render(registry, gRenderer);
 
+			// Strings to display
+			string fps = "Current FPS: " + to_string(1000.0f / frameTime);
+			SDL_Rect dest = { 10, 10, 0, 0 };
+			renderText(fps, dest, gRenderer);
+
+
 			//Update screen
 			SDL_RenderPresent(gRenderer);
 		}
@@ -241,3 +258,4 @@ int main(int argc, char* args[])
 
 	return 0;
 }
+

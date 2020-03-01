@@ -4,9 +4,17 @@
 #include "../Component/Platform.h"
 #include "../Component/BoundingBox.h"
 #include "../Component/Dynamic.h"
+#include "../Component/Sprite.h"
+#include "../Component/Animation.h"
 #include "TextureUtils.h"
 #include "CoordTranslator.h"
 #include "../Component/Bullet.h"
+#include <nlohmann/json.hpp>
+#include <fstream>
+#include "../Component/Frame.h"
+
+using json = nlohmann::json;
+
 
 namespace PrefabsFactory
 {
@@ -42,10 +50,44 @@ namespace PrefabsFactory
 		body->SetUserData(reinterpret_cast<void*>(entity));
 
 		registry.assign<Player>(entity, Player{ 0 });
-		registry.assign<DynamicBody>(entity);
+		// this should be fixed at some point
+		//registry.assign<DynamicBody>(entity);
+
+
+
+		json ja;
+
+		std::ifstream iaasda("../resources/Sprite-0004.json");
+		json j = json::parse(iaasda);
+		json jframes = j["frames"];
+		int x = jframes["Sprite-0003 0.aseprite"]["frame"]["x"];
+		int y = jframes["Sprite-0003 0.aseprite"]["frame"]["y"];
+		int w = jframes["Sprite-0003 0.aseprite"]["frame"]["w"];
+		int h = jframes["Sprite-0003 0.aseprite"]["frame"]["h"];
+		Uint8 duration = jframes["Sprite-0003 0.aseprite"]["duration"];
+
+		Frame frame1{ x , y , h , w, duration, 0 };
+
+		x = jframes["Sprite-0003 1.aseprite"]["frame"]["x"];
+		y = jframes["Sprite-0003 1.aseprite"]["frame"]["y"];
+		w = jframes["Sprite-0003 1.aseprite"]["frame"]["w"];
+		h = jframes["Sprite-0003 1.aseprite"]["frame"]["h"];
+		h = jframes["Sprite-0003 1.aseprite"]["frame"]["h"];
+		duration = jframes["Sprite-0003 1.aseprite"]["duration"];
+
+
+
+		Frame frame2{ x , y , h , w, duration, 0 };
+
+		std::vector<Frame> frames{ frame1, frame2 };
 		Renderable renderable{ NULL, 0, 0 };
-		if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
+		if (!LoadFromFile("../resources/Sprite-0004.png", gRenderer, renderable))
 			printf("Failed to load dot texture!\n");
+		Animation animation{ frames, renderable };
+
+		registry.assign<Animation>(entity, animation);
+
+
 		registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)size.x, (int)size.y });
 		registry.assign<b2Body*>(entity, body);
 		return entity;
