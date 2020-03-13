@@ -1,5 +1,5 @@
 { "frames": {
-   "Sprite-0003 0.aseprite": {
+   "Sprite-0004 0.aseprite": {
     "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -7,7 +7,7 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 500
    },
-   "Sprite-0003 1.aseprite": {
+   "Sprite-0004 1.aseprite": {
     "frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -15,7 +15,7 @@
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 500
    },
-   "Sprite-0003 2.aseprite": {
+   "Sprite-0004 2.aseprite": {
     "frame": { "x": 64, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
