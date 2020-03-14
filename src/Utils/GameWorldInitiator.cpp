@@ -27,9 +27,13 @@ namespace GameWorldInitiator {
 		CreatePlayerPrefab(registry, world, gRenderer);
 		CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(25, 25), b2Vec2(2, 2));
 		float32 initialX = 250.f;
-		CreateDynamicBallObject(registry, world, gRenderer, b2Vec2(82, 82), 1.f);
-		CreateDynamicBallObject(registry, world, gRenderer, b2Vec2(80, 80), 1.f);
-		CreateDynamicBallObject(registry, world, gRenderer, b2Vec2(90, 80), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(82, 82), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(80, 80), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(90, 80), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(20, 80), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(30, 5), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(40, 80), 1.f);
+		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(50, 80), 1.f);
 
 		return true;
 	}

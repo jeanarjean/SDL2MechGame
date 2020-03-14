@@ -10,6 +10,8 @@
 #include "CoordTranslator.h"
 #include "../Component/Bullet.h"
 #include "AnimationLoader.h"
+#include "../Component/Enemy.h"
+#include "../Component/Health.h"
 
 namespace PrefabsFactory
 {
@@ -120,7 +122,7 @@ namespace PrefabsFactory
 		return entity;
 	}
 
-	entt::entity CreateDynamicBallObject(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
+	entt::entity CreateBasicEnemy(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
 		// Define the dynamic body. We set its position and call the body factory.
@@ -154,6 +156,9 @@ namespace PrefabsFactory
 
 		registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)translator->scalarWorldToPixels(radius), (int)translator->scalarWorldToPixels(radius) });
 		registry.assign<b2Body*>(entity, body);
+		registry.assign<Enemy>(entity);
+		Health health{ 5 };
+		registry.assign<Health>(entity, health);
 		return entity;
 	}
 

@@ -20,6 +20,7 @@ and may not be redistributed without written permission.*/
 #include "src/Component/Background.h"
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
+#include "src/System/HealthSystem.h"
 
 using namespace std;
 
@@ -234,6 +235,7 @@ int main(int argc, char* args[])
 				currentTick++;
 			}
 			BulletDestroyerSystem::ProcessBullets(registry, world, gRenderer);
+			HealthSystem::ProcessHealth(registry, world, gRenderer);
 
 
 

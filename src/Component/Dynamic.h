@@ -1,5 +1,3 @@
-#ifndef DYNAMIC_H
-#define DYNAMIC_H
+#pragma once
 struct DynamicBody {
 };
-#endif
