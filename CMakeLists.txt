@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 SET( CMAKE_BUILD_TYPE Debug) 
 
 
-file(GLOB_RECURSE data resources/*)
+file(GLOB_RECURSE data  ${CMAKE_SOURCE_DIR}/resources/*)
 file(GLOB_RECURSE SOURCES
     ${CMAKE_SOURCE_DIR}/src/*.h
     ${CMAKE_SOURCE_DIR}/src/*.cpp

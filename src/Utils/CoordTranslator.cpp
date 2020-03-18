@@ -19,6 +19,11 @@ float CoordTranslator::scalarWorldToPixels(float val)
 	return val * WORLD_TO_PIXEL_RATIO;
 }
 
+b2Vec2 CoordTranslator::scalarWorldToPixels(b2Vec2 vector)
+{
+	return b2Vec2(vector.x * WORLD_TO_PIXEL_RATIO, vector.y * WORLD_TO_PIXEL_RATIO);
+}
+
 b2Vec2 CoordTranslator::coordPixelsToWorld(b2Vec2 pixelScreenCoordinates)
 {
 	return b2Vec2(pixelScreenCoordinates.x / WORLD_TO_PIXEL_RATIO, (resolution.y - pixelScreenCoordinates.y) / WORLD_TO_PIXEL_RATIO);

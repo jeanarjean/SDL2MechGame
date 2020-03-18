@@ -6,12 +6,13 @@
 #include "../Component/Dynamic.h"
 #include "../Component/Sprite.h"
 #include "../Component/Animation.h"
-#include "TextureUtils.h"
-#include "CoordTranslator.h"
 #include "../Component/Bullet.h"
-#include "AnimationLoader.h"
 #include "../Component/Enemy.h"
 #include "../Component/Health.h"
+#include "TextureUtils.h"
+#include "CoordTranslator.h"
+#include "AnimationLoader.h"
+#include "MouseUtil.h"
 
 namespace PrefabsFactory
 {
@@ -51,10 +52,7 @@ namespace PrefabsFactory
 		//registry.assign<DynamicBody>(entity);
 
 
-
-
-
-		Animation animation = AnimationLoader::LoadAnimation("Sprite-0004", gRenderer);
+		Animation animation = AnimationLoader::LoadAnimation("SamuraiShowdownSamurai", gRenderer);
 		registry.assign<Animation>(entity, animation);
 
 
@@ -140,7 +138,7 @@ namespace PrefabsFactory
 		fixtureDef.shape = &dynamicBox;
 
 		// Set the box density to be non-zero, so it will be dynamic.
-		fixtureDef.density = 1.0f;
+		fixtureDef.density = 0.01;
 
 		// Override the default friction.
 		fixtureDef.friction = 0.3f;
@@ -166,11 +164,7 @@ namespace PrefabsFactory
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
 
-		// SET FORCE TO THE BULLET
-		int x, y;
-		SDL_GetMouseState(&x, &y);
-		b2Vec2 mousePosition = translator->coordPixelsToWorld(b2Vec2((float32)x, (float32)y));
-		b2Vec2 forceToApply = mousePosition - position;
+		b2Vec2 forceToApply = MouseUtil::GetVectorBetweenPositionAndMouse(position);
 		forceToApply.Normalize();
 
 

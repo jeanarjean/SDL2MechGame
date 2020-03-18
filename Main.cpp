@@ -18,6 +18,7 @@ and may not be redistributed without written permission.*/
 #include <entt/entt.hpp>
 #include "src/Utils/TextureUtils.h"
 #include "src/Component/Background.h"
+#include "src/Component/Player.h"
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
 #include "src/System/HealthSystem.h"
@@ -36,10 +37,10 @@ const int TOTAL_PARTICLES = 20;
 const int GRAVITY_SPEED = 2;
 
 //Starts up SDL and creates window
-bool init();
+bool initSDL();
 
 //Frees media and shuts down SDL
-void close();
+void closeSDL();
 
 //The window we'll be rendering to
 SDL_Window* gWindow = NULL;
@@ -47,9 +48,30 @@ SDL_Window* gWindow = NULL;
 //The window renderer
 SDL_Renderer* gRenderer = NULL;
 
+entt::registry registry;
+
 TTF_Font* font;
 
-bool init()
+//Main loop flag
+bool quit = false;
+
+// Define the gravity vector.
+b2Vec2 gravity(0.0f, -10.0f);
+// Construct a world object, which will hold and simulate the rigid bodies.
+b2World world(gravity);
+
+// Prepare for simulation. Typically we use a time step of 1/60 of a
+// second (60Hz) and 10 iterations. This provides a high quality simulation
+// in most game scenarios.
+float32 timeStep = 1.0f / 60.0f;
+int32 velocityIterations = 2;
+int32 positionIterations = 6;
+Uint64 t = 0;
+Uint64 dt = 16;
+Uint64 currentTime = SDL_GetPerformanceCounter();
+Uint64 accumulator = 0;
+
+bool initSDL()
 {
 	//Initialization flag
 	bool success = true;
@@ -136,16 +158,16 @@ void renderText(string text, SDL_Rect dest, SDL_Renderer* gRenderer) {
 	//SDL_FreeSurface(surf);
 }
 
-void close()
+void closeSDL()
 {
 	//Destroy window
 	SDL_DestroyRenderer(gRenderer);
 	SDL_DestroyWindow(gWindow);
-	//TTF_CloseFont(font);
+	TTF_CloseFont(font);
 
 	gWindow = NULL;
 	gRenderer = NULL;
-	//font = NULL;
+	font = NULL;
 
 	//Quit SDL subsystems
 	IMG_Quit();
@@ -154,14 +176,12 @@ void close()
 
 int main(int argc, char* args[])
 {
-	if (!init())
+	if (!initSDL())
 	{
 		printf("Failed to initialize!\n");
 	}
 	else
 	{
-		//Main loop flag
-		bool quit = false;
 
 		//Event handler
 		SDL_Event e;
@@ -169,27 +189,10 @@ int main(int argc, char* args[])
 		CoordTranslator* translator = CoordTranslator::instance();
 		translator->setResolution(b2Vec2(SCREEN_WIDTH, SCREEN_HEIGHT));
 		//The dot that will be moving around on the screen
-		entt::registry registry;
 
 		B2_NOT_USED(argc);
 		B2_NOT_USED(args);
 
-
-		// Define the gravity vector.
-		b2Vec2 gravity(0.0f, -10.0f);
-		// Construct a world object, which will hold and simulate the rigid bodies.
-		b2World world(gravity);
-
-		// Prepare for simulation. Typically we use a time step of 1/60 of a
-		// second (60Hz) and 10 iterations. This provides a high quality simulation
-		// in most game scenarios.
-		float32 timeStep = 1.0f / 60.0f;
-		int32 velocityIterations = 2;
-		int32 positionIterations = 6;
-		Uint64 t = 0;
-		Uint64 dt = 16;
-		Uint64 currentTime = SDL_GetPerformanceCounter();
-		Uint64 accumulator = 0;
 
 		// Potential Problem if integer overflows./
 		int currentTick = 0;
@@ -238,7 +241,6 @@ int main(int argc, char* args[])
 			HealthSystem::ProcessHealth(registry, world, gRenderer);
 
 
-
 			//Clear screen
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(gRenderer);
@@ -250,13 +252,23 @@ int main(int argc, char* args[])
 			renderText(fps, dest, gRenderer);
 
 
+			//auto view = registry.view<Player, b2Body*>();
+
+			//for (auto entity : view) {
+			//	auto& body = view.get<b2Body*>(entity);
+			//	b2Vec2 position = body->GetPosition();
+			//	position = translator->coordWorldToPixels(position);
+			//	SDL_Rect m_render_viewport = { position.x-50, position.y-50, SCREEN_WIDTH, SCREEN_HEIGHT };
+			//	SDL_RenderSetViewport(gRenderer, &m_render_viewport);
+			//}
+
 			//Update screen
 			SDL_RenderPresent(gRenderer);
 		}
 	}
 
 	//Free resources and close SDL
-	close();
+	closeSDL();
 
 	return 0;
 }

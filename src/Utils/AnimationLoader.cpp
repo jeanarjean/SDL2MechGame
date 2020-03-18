@@ -29,7 +29,7 @@ namespace AnimationLoader {
 			int w = el.value()["frame"]["w"];
 			int h = el.value()["frame"]["h"];
 			Uint8 duration = el.value()["duration"];
-			Frame frame1{ x , y , h , w, duration, 0 };
+			Frame frame1{ x , y , w , h, duration, 0 };
 			frames.push_back(frame1);
 			SDL_Log(debugIteratorString.str().c_str());
 		}

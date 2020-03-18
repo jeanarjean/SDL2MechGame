@@ -2,7 +2,7 @@
 #include "CoordTranslator.h"
 #include "TextureUtils.h"
 #include "../Utils/BackgroundLoader.h"
-#include "../Box2DSpecific/ContactListener.h"
+#include "../Physic/ContactListener.h"
 #include "../Component/Renderable.h"
 #include "../Component/BoundingBox.h"
 #include <SDL_mixer.h>
@@ -16,7 +16,7 @@ namespace GameWorldInitiator {
 		BackgroundLoader::LoadBackground(registry, gRenderer);
 
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
-		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
+		Mix_Music* music = Mix_LoadMUS("../resources/untitled.ogg");
 		Mix_PlayMusic(music, 2);
 
 

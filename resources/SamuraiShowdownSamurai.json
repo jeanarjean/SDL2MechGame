@@ -1,0 +1,98 @@
+{ "frames": {
+   "SamuraiShowdownSamurai 0.aseprite": {
+    "frame": { "x": 3, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 1.aseprite": {
+    "frame": { "x": 109, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 2.aseprite": {
+    "frame": { "x": 220, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 3.aseprite": {
+    "frame": { "x": 330, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 4.aseprite": {
+    "frame": { "x": 436, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 5.aseprite": {
+    "frame": { "x": 541, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 6.aseprite": {
+    "frame": { "x": 648, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 7.aseprite": {
+    "frame": { "x": 758, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 8.aseprite": {
+    "frame": { "x": 866, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   },
+   "SamuraiShowdownSamurai 9.aseprite": {
+    "frame": { "x": 972, "y": 0, "w": 90, "h": 120 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 90, "h": 120 },
+    "sourceSize": { "w": 1058, "h": 120 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "http://www.aseprite.org/",
+  "version": "1.2.17-x64",
+  "image": "SamuraiShowdownSamurai.png",
+  "format": "RGBA8888",
+  "size": { "w": 1058, "h": 120 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+  ],
+  "slices": [
+  ]
+ }
+}
