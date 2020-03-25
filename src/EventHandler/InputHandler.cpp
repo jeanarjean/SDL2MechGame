@@ -49,12 +49,27 @@ namespace InputHandler {
 			}
 			if (event.type == SDL_MOUSEBUTTONDOWN)
 			{
-				player.m_controlState |= MECH_SHOOT;
-
+				switch (event.button.button)
+				{
+				case SDL_BUTTON_LEFT:
+					player.m_controlState |= MECH_SHOOT;
+					break;
+				case SDL_BUTTON_RIGHT:
+					player.m_controlState |= MECH_SWORD;
+					break;
+				}
 			}
 			if (event.type == SDL_MOUSEBUTTONUP)
 			{
-				player.m_controlState &= ~MECH_SHOOT;
+				switch (event.button.button)
+				{
+				case SDL_BUTTON_LEFT:
+					player.m_controlState &= ~MECH_SHOOT;
+					break;
+				case SDL_BUTTON_RIGHT:
+					player.m_controlState &= ~MECH_SWORD;
+					break;
+				}
 
 			}
 		});

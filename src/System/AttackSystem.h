@@ -1,8 +1,9 @@
-#ifndef ATTACK_SYSTEM_H
-#define ATTACK_SYSTEM_H
+#pragma once
+
 #include <SDL.h>
 #include <entt/entt.hpp>
 #include <Box2D/Box2D.h>
+
 namespace AttackSystem
 {
 	class AttackSystem
@@ -14,4 +15,3 @@ namespace AttackSystem
 		int lastShotBulletTick;
 	};
 }
-#endif

@@ -1,5 +1,4 @@
-#ifndef PREFABS_FACTORY_H
-#define PREFABS_FACTORY_H
+#pragma once
 
 #include <SDL.h>
 #include <Box2D/Box2D.h>
@@ -14,4 +13,3 @@ namespace PrefabsFactory
 	entt::entity SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position);
 }
 
-#endif

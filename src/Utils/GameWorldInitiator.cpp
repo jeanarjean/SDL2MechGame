@@ -5,7 +5,9 @@
 #include "../Physic/ContactListener.h"
 #include "../Component/Renderable.h"
 #include "../Component/BoundingBox.h"
+#include "Factories/PrefabsFactory.h"
 #include <SDL_mixer.h>
+
 using namespace PrefabsFactory;
 
 namespace GameWorldInitiator {

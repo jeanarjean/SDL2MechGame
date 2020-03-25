@@ -223,8 +223,7 @@ int main(int argc, char* args[])
 				InputHandler::HandleInputs(registry, e);
 			}
 
-			if (currentTick % 2 == 0)
-				MovementSystem::MovePlayer(registry);
+			MovementSystem::MovePlayer(registry);
 			attackSystem.PlayerAttack(currentTick, registry, world, gRenderer);
 
 			accumulator += frameTime;
@@ -251,16 +250,6 @@ int main(int argc, char* args[])
 			SDL_Rect dest = { 10, 10, 0, 0 };
 			renderText(fps, dest, gRenderer);
 
-
-			//auto view = registry.view<Player, b2Body*>();
-
-			//for (auto entity : view) {
-			//	auto& body = view.get<b2Body*>(entity);
-			//	b2Vec2 position = body->GetPosition();
-			//	position = translator->coordWorldToPixels(position);
-			//	SDL_Rect m_render_viewport = { position.x-50, position.y-50, SCREEN_WIDTH, SCREEN_HEIGHT };
-			//	SDL_RenderSetViewport(gRenderer, &m_render_viewport);
-			//}
 
 			//Update screen
 			SDL_RenderPresent(gRenderer);
