@@ -14,6 +14,8 @@ and may not be redistributed without written permission.*/
 #include "src/System/MovementSystem.h"
 #include "src/System/AttackSystem.h"
 #include "src/System/BulletDestroyerSystem.h"
+#include "src/System/GameProgressSystem.h"
+#include "src/Render/RenderLayer.h"
 #include "src/EventHandler/InputHandler.h"
 #include <entt/entt.hpp>
 #include "src/Utils/TextureUtils.h"
@@ -24,7 +26,6 @@ and may not be redistributed without written permission.*/
 #include "src/System/HealthSystem.h"
 
 using namespace std;
-
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -144,20 +145,6 @@ bool initSDL()
 	return success;
 }
 
-void renderText(string text, SDL_Rect dest, SDL_Renderer* gRenderer) {
-	SDL_Color fg = { 0, 0, 0 };
-	SDL_Surface* surf = TTF_RenderText_Solid(font, text.c_str(), fg);
-
-	dest.w = surf->w;
-	dest.h = surf->h;
-
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(gRenderer, surf);
-
-	SDL_RenderCopy(gRenderer, tex, NULL, &dest);
-	//SDL_DestroyTexture(tex);
-	//SDL_FreeSurface(surf);
-}
-
 void closeSDL()
 {
 	//Destroy window
@@ -229,7 +216,6 @@ int main(int argc, char* args[])
 			accumulator += frameTime;
 			while (accumulator >= dt)
 			{
-
 				//simulate physics
 				world.Step(timeStep, velocityIterations, positionIterations);
 				t += dt;
@@ -238,6 +224,7 @@ int main(int argc, char* args[])
 			}
 			BulletDestroyerSystem::ProcessBullets(registry, world, gRenderer);
 			HealthSystem::ProcessHealth(registry, world, gRenderer);
+			GameProgressSystem::ProcessGameState(registry, world, gRenderer, font);
 
 
 			//Clear screen
@@ -248,8 +235,26 @@ int main(int argc, char* args[])
 			// Strings to display
 			string fps = "Current FPS: " + to_string(1000.0f / frameTime);
 			SDL_Rect dest = { 10, 10, 0, 0 };
-			renderText(fps, dest, gRenderer);
 
+
+			RenderLayer::RenderText(gRenderer, dest, font, fps);
+
+			auto view = registry.view<Enemy>();
+			if (view.size() < 1)
+			{
+				string youWinText = "YOU WIN";
+				SDL_Rect dest = { 50, 50, 0, 0 };
+
+				RenderLayer::RenderText(gRenderer, dest, font, youWinText);
+			}
+			auto view2 = registry.view<Player>();
+			if (view2.size() < 1)
+			{
+				string youWinText = "YOU LOST";
+				SDL_Rect dest = { 50, 50, 0, 0 };
+
+				RenderLayer::RenderText(gRenderer, dest, font, youWinText);
+			}
 
 			//Update screen
 			SDL_RenderPresent(gRenderer);

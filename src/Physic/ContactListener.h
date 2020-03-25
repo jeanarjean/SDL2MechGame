@@ -10,6 +10,8 @@ public:
 
 
 	void ContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
+	void HandleEnemyCollisionWithBullet(entt::entity entity2, entt::entity entity1);
+	void ContactListener::HandlePlayerCollisionWithEnemy(entt::entity entity1, entt::entity entity2);
 private:
 	entt::registry& registry;
 };

@@ -13,37 +13,38 @@ void ContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 	auto* ptrBody2 = contact->GetFixtureB()->GetBody();
 	auto entity1 = (entt::entity) (std::uint32_t) (ptrBody1->GetUserData());
 	auto entity2 = (entt::entity) (std::uint32_t) (ptrBody2->GetUserData());
+	HandleEnemyCollisionWithBullet(entity1, entity2);
+	HandleEnemyCollisionWithBullet(entity2, entity1);
+	HandlePlayerCollisionWithEnemy(entity1, entity2);
+	HandlePlayerCollisionWithEnemy(entity2, entity1);
+}
+
+void ContactListener::HandlePlayerCollisionWithEnemy(entt::entity entity1, entt::entity entity2)
+{
+	if (registry.valid(entity1) && registry.has<Player>(entity1) && registry.has<Health>(entity1))
+	{
+		if (registry.valid(entity2) && registry.has<Enemy>(entity2))
+		{
+			Health health = registry.get<Health>(entity1);
+			health.hitpoints--;
+			registry.assign_or_replace<Health>(entity1, health);
+		}
+	}
+}
+
+void ContactListener::HandleEnemyCollisionWithBullet(entt::entity entity1, entt::entity entity2)
+{
 	if (registry.valid(entity1) && registry.has<Bullet>(entity1))
 	{
-		// Handle Bullet state changes
-		// TODO function this
 		Bullet bullet = registry.get<Bullet>(entity1);
 		bullet.collisionCount++;
 		registry.assign_or_replace<Bullet>(entity1, bullet);
-
 
 		if (registry.valid(entity2) && registry.has<Enemy>(entity2) && registry.has<Health>(entity2))
 		{
 			Health health = registry.get<Health>(entity2);
 			health.hitpoints--;
 			registry.assign_or_replace<Health>(entity2, health);
-
-		}
-
-	}
-	if (registry.valid(entity2) && registry.has<Bullet>(entity2))
-	{
-		// Handle Bullet state changes
-		// TODO function this
-		Bullet bullet = registry.get<Bullet>(entity2);
-		bullet.collisionCount++;
-		registry.assign_or_replace<Bullet>(entity2, bullet);
-
-		if (registry.valid(entity1) && registry.has<Enemy>(entity1) && registry.has<Health>(entity1))
-		{
-			Health health = registry.get<Health>(entity1);
-			health.hitpoints--;
-			registry.assign_or_replace<Health>(entity1, health);
 
 		}
 	}

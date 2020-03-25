@@ -1,6 +1,4 @@
 #include "RenderLayer.h"
-#include "../Utils/CoordTranslator.h"
-#include "../Component/Animation.h"
 
 namespace RenderLayer {
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, const SDL_Rect& dest, float angle) {
@@ -20,6 +18,19 @@ namespace RenderLayer {
 		SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 
 		SDL_RenderCopyEx(gRenderer, renderable.mTexture, NULL, &resize, 0.f, NULL, SDL_FLIP_NONE);
+	}
+
+	void RenderText(SDL_Renderer* gRenderer, SDL_Rect dest, TTF_Font* font, string text)
+	{
+		SDL_Color fg = { 255, 255, 255 };
+		SDL_Surface* surf = TTF_RenderText_Solid(font, text.c_str(), fg);
+
+		dest.w = surf->w;
+		dest.h = surf->h;
+
+		SDL_Texture* tex = SDL_CreateTextureFromSurface(gRenderer, surf);
+
+		SDL_RenderCopy(gRenderer, tex, NULL, &dest);
 	}
 
 	SDL_Rect AdvanceFrame(Animation& animation)
