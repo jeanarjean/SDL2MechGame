@@ -14,6 +14,13 @@ namespace AttackSystem {
 		for (auto entity : view) {
 			auto& player = view.get<Player>(entity);
 			auto& body = view.get<b2Body*>(entity);
+
+			if (currentTick - lastSwordSlashTick > 20)
+			{
+				player.invincible = false;
+				registry.assign_or_replace<Player>(entity, player);
+			}
+
 			if (BitMaskUtil::IsBitActive(player.m_controlState, MECH_SHOOT_BIT))
 			{
 				if (currentTick - lastShotBulletTick > 10)
@@ -26,13 +33,14 @@ namespace AttackSystem {
 			}
 			if (BitMaskUtil::IsBitActive(player.m_controlState, MECH_SWORD_BIT))
 			{
-				if (currentTick - lastShotBulletTick > 10)
+				if (currentTick - lastSwordSlashTick > 40)
 				{
-					lastShotBulletTick = currentTick;
+					lastSwordSlashTick = currentTick;
 					b2Vec2 forceToApply = MouseUtil::GetVectorBetweenPositionAndMouse(body->GetPosition());
 					forceToApply.Normalize();
 					body->ApplyForce(b2Vec2(forceToApply.x * 4000.f * 50.f, forceToApply.y * 4000.f * 50.f), body->GetWorldCenter(), true);
-
+					player.invincible = true;
+					registry.assign_or_replace<Player>(entity, player);
 					Mix_Chunk* music = Mix_LoadWAV("../resources/swordsheet1.wav");
 					Mix_PlayChannel(-1, music, 0);
 				}

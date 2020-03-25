@@ -29,7 +29,7 @@ namespace PrefabsFactory
 		//TODO: this is shit
 		size = translator->scalarPixelsToWorld(size);
 
-		registry.assign<Player>(entity, Player{ 0 });
+		registry.assign<Player>(entity, Player{ 0 , false});
 		registry.assign<Health>(entity, Health{ 1 });
 		Animation animation = AnimationLoader::LoadAnimation("SamuraiShowdownSamurai", gRenderer);
 		registry.assign<Animation>(entity, animation);

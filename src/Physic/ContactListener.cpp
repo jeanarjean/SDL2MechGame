@@ -25,9 +25,19 @@ void ContactListener::HandlePlayerCollisionWithEnemy(entt::entity entity1, entt:
 	{
 		if (registry.valid(entity2) && registry.has<Enemy>(entity2))
 		{
-			Health health = registry.get<Health>(entity1);
-			health.hitpoints--;
-			registry.assign_or_replace<Health>(entity1, health);
+			Player player = registry.get<Player>(entity1);
+			if (!player.invincible)
+			{
+				Health health = registry.get<Health>(entity1);
+				health.hitpoints--;
+				registry.assign_or_replace<Health>(entity1, health);
+			}
+			else
+			{
+				Health health = registry.get<Health>(entity2);
+				health.hitpoints--;
+				registry.assign_or_replace<Health>(entity2, health);
+			}
 		}
 	}
 }

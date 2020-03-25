@@ -13,6 +13,7 @@ and may not be redistributed without written permission.*/
 #include "src/System/RenderSystem.h"
 #include "src/System/MovementSystem.h"
 #include "src/System/AttackSystem.h"
+#include "src/System/EnemyMovementSystem.h"1
 #include "src/System/BulletDestroyerSystem.h"
 #include "src/System/GameProgressSystem.h"
 #include "src/Render/RenderLayer.h"
@@ -187,6 +188,7 @@ int main(int argc, char* args[])
 
 		GameWorldInitiator::InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
 		AttackSystem::AttackSystem attackSystem;
+		EnemyMovementSystem::EnemyMovementSystem enemyMovementSystem;
 		//While application is running
 		while (!quit)
 		{
@@ -212,6 +214,7 @@ int main(int argc, char* args[])
 
 			MovementSystem::MovePlayer(registry);
 			attackSystem.PlayerAttack(currentTick, registry, world, gRenderer);
+			enemyMovementSystem.MoveEnemies(currentTick, registry, world, gRenderer);
 
 			accumulator += frameTime;
 			while (accumulator >= dt)
