@@ -1,8 +1,8 @@
 [settings]
     arch=x86_64
-    build_type=Debug
+    build_type=Release
     compiler=Visual Studio
-    compiler.runtime=MDd
+    compiler.runtime=MD
     compiler.version=16
     cppstd=17
     os=Windows
@@ -21,27 +21,27 @@
 [full_settings]
     arch=x86_64
     arch_build=x86_64
-    build_type=Debug
+    build_type=Release
     compiler=Visual Studio
-    compiler.runtime=MDd
+    compiler.runtime=MD
     compiler.version=16
     cppstd=17
     os=Windows
     os_build=Windows
 
 [full_requires]
-    box2d/2.3.1@conan/stable:d057732059ea44a47760900cb5e4855d2bea8714
+    box2d/2.3.1@conan/stable:3fb49604f9c2f729b85ba3115852006824e72cab
     eigen/3.3.7@conan/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     entt/3.2.2@skypjack/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     jsonformoderncpp/3.7.3@vthiery/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
-    libiconv/1.15:d057732059ea44a47760900cb5e4855d2bea8714
-    libjpeg/9c:d057732059ea44a47760900cb5e4855d2bea8714
-    libpng/1.6.37:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
-    libtiff/4.0.9:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b
-    libwebp/1.0.3:092f77d3b4b4678d81fbffc1fccc9642b870175e
-    sdl2/2.0.10@bincrafters/stable:338cb52e3d13edeeec5934e0f9a1cc393ac32341
-    sdl2_image/2.0.5@bincrafters/stable:cc9462b6827b20e98ed48923fd1a93f83901b797
-    zlib/1.2.11:d057732059ea44a47760900cb5e4855d2bea8714
+    libiconv/1.15:3fb49604f9c2f729b85ba3115852006824e72cab
+    libjpeg/9c:3fb49604f9c2f729b85ba3115852006824e72cab
+    libpng/1.6.37:d140711d95cc16a85766a8fc3a551dfafe84cf63
+    libtiff/4.0.9:d140711d95cc16a85766a8fc3a551dfafe84cf63
+    libwebp/1.0.3:638042d3fd356128c913f5e725646a0c2af264c7
+    sdl2/2.0.10@bincrafters/stable:e00ad8bc0b74a160a9492a61277bebc5bdfa1051
+    sdl2_image/2.0.5@bincrafters/stable:1de2daee70507651a077e24bd7fb4e521c86c246
+    zlib/1.2.11:3fb49604f9c2f729b85ba3115852006824e72cab
 
 [full_options]
     box2d:shared=False

@@ -25,6 +25,7 @@ and may not be redistributed without written permission.*/
 #include "src/Utils/CoordTranslator.h"
 #include "src/Utils/GameWorldInitiator.h"
 #include "src/System/HealthSystem.h"
+#include "src/Utils/Factories/PrefabsFactory.h"
 
 using namespace std;
 
@@ -59,8 +60,11 @@ bool quit = false;
 
 // Define the gravity vector.
 b2Vec2 gravity(0.0f, -10.0f);
-// Construct a world object, which will hold and simulate the rigid bodies.
 b2World world(gravity);
+PrefabsFactory::PrefabsFactory* prefabsFactory;
+EnemyMovementSystem::EnemyMovementSystem enemyMovementSystem;
+AttackSystem::AttackSystem* attackSystem;
+GameWorldInitiator::GameWorldInitiator* gameWorldInitiator;
 
 // Prepare for simulation. Typically we use a time step of 1/60 of a
 // second (60Hz) and 10 iterations. This provides a high quality simulation
@@ -145,6 +149,24 @@ bool initSDL()
 
 	return success;
 }
+void InitOtherObjects()
+{
+	prefabsFactory = new PrefabsFactory::PrefabsFactory(gRenderer);
+	attackSystem = new AttackSystem::AttackSystem(prefabsFactory);
+	gameWorldInitiator = new GameWorldInitiator::GameWorldInitiator(prefabsFactory);
+}
+
+void DestoryOtherObjects()
+{
+	free(prefabsFactory);
+	prefabsFactory = NULL;
+
+	free(attackSystem);
+	attackSystem = NULL;
+
+	free(gameWorldInitiator);
+	gameWorldInitiator = NULL;
+}
 
 void closeSDL()
 {
@@ -170,6 +192,7 @@ int main(int argc, char* args[])
 	}
 	else
 	{
+		InitOtherObjects();
 
 		//Event handler
 		SDL_Event e;
@@ -186,9 +209,7 @@ int main(int argc, char* args[])
 		int currentTick = 0;
 
 
-		GameWorldInitiator::InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
-		AttackSystem::AttackSystem attackSystem;
-		EnemyMovementSystem::EnemyMovementSystem enemyMovementSystem;
+		gameWorldInitiator->InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
 		//While application is running
 		while (!quit)
 		{
@@ -213,7 +234,7 @@ int main(int argc, char* args[])
 			}
 
 			MovementSystem::MovePlayer(registry);
-			attackSystem.PlayerAttack(currentTick, registry, world, gRenderer);
+			attackSystem->PlayerAttack(currentTick, registry, world, gRenderer);
 			enemyMovementSystem.MoveEnemies(currentTick, registry, world, gRenderer);
 
 			accumulator += frameTime;

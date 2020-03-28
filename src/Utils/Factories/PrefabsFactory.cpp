@@ -1,5 +1,4 @@
 #include "PrefabsFactory.h"
-#include "../../Component/Renderable.h"
 #include "../../Component/Player.h"
 #include "../../Component/Platform.h"
 #include "../../Component/BoundingBox.h"
@@ -17,7 +16,35 @@
 
 namespace PrefabsFactory
 {
-	entt::entity CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
+	PrefabsFactory::PrefabsFactory(SDL_Renderer* gRenderer)
+	{
+		_renderableBlue = new Renderable{ NULL, 0, 0 };
+		if (!LoadFromFile("../resources/blue.bmp", gRenderer, *_renderableBlue))
+			printf("Failed to load dot texture!\n");
+		_renderableMech = new Renderable{ NULL, 0, 0 };
+		if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, *_renderableMech))
+			printf("Failed to load dot texture!\n");
+		_renderableDot = new Renderable{ NULL, 0, 0 };
+		if (!LoadFromFile("../resources/dot.bmp", gRenderer, *_renderableDot))
+			printf("Failed to load dot texture!\n");
+	}
+
+	PrefabsFactory::~PrefabsFactory()
+	{
+		free(_renderableBlue->mTexture);
+		free(_renderableBlue);
+		_renderableBlue = NULL;
+
+		free(_renderableMech->mTexture);
+		free(_renderableMech);
+		_renderableMech = NULL;
+
+		free(_renderableDot->mTexture);
+		free(_renderableDot);
+		_renderableDot = NULL;
+	}
+
+	entt::entity PrefabsFactory::CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
 	{
 		auto entity = registry.create();
 
@@ -29,58 +56,49 @@ namespace PrefabsFactory
 		//TODO: this is shit
 		size = translator->scalarPixelsToWorld(size);
 
-		registry.assign<Player>(entity, Player{ 0 , false});
+		registry.assign<Player>(entity, Player{ 0 , false });
 		registry.assign<Health>(entity, Health{ 1 });
-		Animation animation = AnimationLoader::LoadAnimation("SamuraiShowdownSamurai", gRenderer);
-		registry.assign<Animation>(entity, animation);
+		Animation animationSamurai = AnimationLoader::LoadAnimation("SamuraiShowdownSamurai", gRenderer);
+		registry.assign<Animation>(entity, animationSamurai);
 
 
-		animation.mTexture.mHeight = size.x;
-		animation.mTexture.mWidth = size.y;
-		registry.assign<Renderable>(entity, animation.mTexture);
+		animationSamurai.mTexture.mHeight = size.x;
+		animationSamurai.mTexture.mWidth = size.y;
+		registry.assign<Renderable>(entity, animationSamurai.mTexture);
 		registry.assign<b2Body*>(entity, body);
 		return entity;
 	}
 
-	entt::entity CreateStaticRectangleObstacle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
+	entt::entity PrefabsFactory::CreateStaticRectangleObstacle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
 	{
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateStaticBody(world, entity, position, size);
-		Renderable renderable2{ NULL, 0, 0 };
-		if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
-			printf("Failed to load dot texture!\n");
-		registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
+		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, (int)size.x, (int)size.y });
 		registry.assign<Platform>(entity);
 		registry.assign<b2Body*>(entity, body);
 
 		return entity;
 	}
 
-	entt::entity CreateBoundingRectangle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
+	entt::entity PrefabsFactory::CreateBoundingRectangle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
 	{
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateStaticBody(world, entity, position, size);
-		Renderable renderable2{ NULL, 0, 0 };
-		if (!LoadFromFile("../resources/blue.bmp", gRenderer, renderable2))
-			printf("Failed to load dot texture!\n");
-		registry.assign<Renderable>(entity, Renderable{ renderable2.mTexture, (int)size.x, (int)size.y });
+		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, (int)size.x, (int)size.y });
 		registry.assign<BoundingBox>(entity);
 		registry.assign<b2Body*>(entity, body);
 
 		return entity;
 	}
 
-	entt::entity CreateBasicEnemy(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
+	entt::entity PrefabsFactory::CreateBasicEnemy(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, float radius)
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateDynamicSphere(world, entity, position, radius);
 		registry.assign<DynamicBody>(entity);
-		Renderable renderable{ NULL, 0, 0 };
-		if (!LoadFromFile("../resources/Sprite-Mech-0002.png", gRenderer, renderable))
-			printf("Failed to load dot texture!\n");
 
-		registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)translator->scalarWorldToPixels(radius), (int)translator->scalarWorldToPixels(radius) });
+		registry.assign<Renderable>(entity, Renderable{ _renderableMech->mTexture, (int)translator->scalarWorldToPixels(radius), (int)translator->scalarWorldToPixels(radius) });
 		registry.assign<b2Body*>(entity, body);
 		registry.assign<Enemy>(entity);
 		Health health{ 5 };
@@ -88,7 +106,7 @@ namespace PrefabsFactory
 		return entity;
 	}
 
-	entt::entity SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position)
+	entt::entity PrefabsFactory::SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position)
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
 		auto entity = registry.create();

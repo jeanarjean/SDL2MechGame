@@ -6,7 +6,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Set this to release for release 
-SET( CMAKE_BUILD_TYPE Debug) 
+SET( CMAKE_BUILD_TYPE Release) 
 
 
 file(GLOB_RECURSE data  ${CMAKE_SOURCE_DIR}/resources/*)

@@ -27,18 +27,18 @@
     "options": ""
    }, 
    "4": {
-    "pref": "sdl2/2.0.10@bincrafters/stable#0:338cb52e3d13edeeec5934e0f9a1cc393ac32341#0", 
+    "pref": "sdl2/2.0.10@bincrafters/stable#0:e00ad8bc0b74a160a9492a61277bebc5bdfa1051#0", 
     "requires": [
      "5"
     ], 
     "options": "directx=True\niconv=True\nsdl2main=True\nshared=False\nlibiconv:shared=False"
    }, 
    "5": {
-    "pref": "libiconv/1.15#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
+    "pref": "libiconv/1.15#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
     "options": "shared=False"
    }, 
    "6": {
-    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:cc9462b6827b20e98ed48923fd1a93f83901b797#182ca7d6812fe57812e021be1a290e3c", 
+    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:1de2daee70507651a077e24bd7fb4e521c86c246#14b44b203ba34832700a30581b565f29", 
     "requires": [
      "4", 
      "7", 
@@ -51,38 +51,38 @@
     "modified": "built"
    }, 
    "7": {
-    "pref": "libtiff/4.0.9#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
+    "pref": "libtiff/4.0.9#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0", 
     "requires": [
      "8"
     ], 
     "options": "shared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
    "8": {
-    "pref": "zlib/1.2.11#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
+    "pref": "zlib/1.2.11#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
     "options": "minizip=False\nshared=False"
    }, 
    "9": {
-    "pref": "libjpeg/9c#0:d057732059ea44a47760900cb5e4855d2bea8714#0", 
+    "pref": "libjpeg/9c#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
     "options": "shared=False"
    }, 
    "10": {
-    "pref": "libpng/1.6.37#0:6acf24cd4adf2df742e006cc0e5f0329e3b6e60b#0", 
+    "pref": "libpng/1.6.37#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0", 
     "requires": [
      "8"
     ], 
     "options": "api_prefix=None\nshared=False\nzlib:minizip=False\nzlib:shared=False"
    }, 
    "11": {
-    "pref": "libwebp/1.0.3#0:092f77d3b4b4678d81fbffc1fccc9642b870175e#0", 
+    "pref": "libwebp/1.0.3#0:638042d3fd356128c913f5e725646a0c2af264c7#0", 
     "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
    }, 
    "12": {
-    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#5ce16dc26d9130181be3b802025649ca", 
+    "pref": "box2d/2.3.1@conan/stable#0:3fb49604f9c2f729b85ba3115852006824e72cab#ab6f40a60ec84363da17ac0f9c865748", 
     "options": "shared=False", 
     "modified": "built"
    }
   }
  }, 
  "version": "0.3", 
- "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Debug\ncompiler=Visual Studio\ncompiler.runtime=MDd\ncompiler.version=16\ncppstd=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n"
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=16\ncppstd=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n"
 }

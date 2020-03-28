@@ -4,10 +4,20 @@
 #include <SDL.h>
 #include <Box2D/Box2D.h>
 #include <entt/entt.hpp>
+#include "Factories/PrefabsFactory.h"
 
 namespace GameWorldInitiator {
-	bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
-	void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+	class GameWorldInitiator {
+
+	public:
+		GameWorldInitiator(PrefabsFactory::PrefabsFactory* prefabsFactory) { GameWorldInitiator::prefabsFactory = prefabsFactory; };
+		~GameWorldInitiator();
+
+		bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+		void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
+	private:
+		PrefabsFactory::PrefabsFactory* prefabsFactory;
+	};
 }
 
 #endif

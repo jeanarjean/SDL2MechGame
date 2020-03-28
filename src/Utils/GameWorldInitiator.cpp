@@ -5,13 +5,10 @@
 #include "../Physic/ContactListener.h"
 #include "../Component/Renderable.h"
 #include "../Component/BoundingBox.h"
-#include "Factories/PrefabsFactory.h"
 #include <SDL_mixer.h>
 
-using namespace PrefabsFactory;
-
 namespace GameWorldInitiator {
-	bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
+	bool GameWorldInitiator::InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
 	{
 		ContactListener* contactListener = new ContactListener(registry);
 		world.SetContactListener(contactListener);
@@ -26,26 +23,31 @@ namespace GameWorldInitiator {
 		CreateGameWorldBoundaries(registry, world, gRenderer, b2Vec2{ 1600,900 });
 
 		// Init Player
-		CreatePlayerPrefab(registry, world, gRenderer);
-		CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(25, 25), b2Vec2(2, 2));
+		prefabsFactory->CreatePlayerPrefab(registry, world, gRenderer);
+		prefabsFactory->CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(25, 25), b2Vec2(2, 2));
 		float32 initialX = 250.f;
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(82, 82), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(80, 80), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(90, 80), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(20, 80), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(30, 5), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(40, 80), 1.f);
-		CreateBasicEnemy(registry, world, gRenderer, b2Vec2(50, 80), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(82, 82), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(80, 80), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(90, 80), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(20, 80), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(30, 5), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(40, 80), 1.f);
+		prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(50, 80), 1.f);
 
 		return true;
 	}
 
-	void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
+	void GameWorldInitiator::CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize)
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
-		CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 2), b2Vec2(160, 1));
-		CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 0), b2Vec2(1, 90));
-		CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(159, 0), b2Vec2(1, 90));
-		CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 90 - .5), b2Vec2(160, 1));
+		prefabsFactory->CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 2), b2Vec2(160, 1));
+		prefabsFactory->CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 0), b2Vec2(1, 90));
+		prefabsFactory->CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(159, 0), b2Vec2(1, 90));
+		prefabsFactory->CreateBoundingRectangle(registry, world, gRenderer, b2Vec2(0, 90 - .5), b2Vec2(160, 1));
+	}
+
+	GameWorldInitiator::~GameWorldInitiator()
+	{
+		prefabsFactory = NULL;
 	}
 }
