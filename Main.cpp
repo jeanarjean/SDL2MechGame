@@ -46,10 +46,10 @@ bool initSDL();
 void closeSDL();
 
 //The window we'll be rendering to
-SDL_Window* gWindow = NULL;
+SDL_Window* gWindow = nullptr;
 
 //The window renderer
-SDL_Renderer* gRenderer = NULL;
+SDL_Renderer* gRenderer = nullptr;
 
 entt::registry registry;
 
@@ -159,13 +159,13 @@ void InitOtherObjects()
 void DestoryOtherObjects()
 {
 	free(prefabsFactory);
-	prefabsFactory = NULL;
+	prefabsFactory = nullptr;
 
 	free(attackSystem);
-	attackSystem = NULL;
+	attackSystem = nullptr;
 
 	free(gameWorldInitiator);
-	gameWorldInitiator = NULL;
+	gameWorldInitiator = nullptr;
 }
 
 void closeSDL()
@@ -175,9 +175,9 @@ void closeSDL()
 	SDL_DestroyWindow(gWindow);
 	TTF_CloseFont(font);
 
-	gWindow = NULL;
-	gRenderer = NULL;
-	font = NULL;
+	gWindow = nullptr;
+	gRenderer = nullptr;
+	font = nullptr;
 
 	//Quit SDL subsystems
 	IMG_Quit();

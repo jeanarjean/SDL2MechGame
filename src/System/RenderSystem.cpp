@@ -26,7 +26,7 @@ namespace Renderer
 
 	void RenderPlayer(entt::registry& registry, SDL_Renderer* gRenderer)
 	{
-		registry.view<Animation, Renderable, b2Body*, Player>().each([gRenderer](auto& animation, auto& renderable, auto* body, auto& player) {
+		registry.view<Animation, Renderable, b2Body*>().each([gRenderer](auto& animation, auto& renderable, auto* body) {
 			const SDL_Rect dest = RenderLayer::AdvanceFrame(animation);
 
 			RenderLayer::RenderGameObject(gRenderer, renderable, body->GetPosition(), dest);

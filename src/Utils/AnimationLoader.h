@@ -6,4 +6,5 @@ using namespace std;
 
 namespace AnimationLoader {
 	Animation LoadAnimation(string fileName, SDL_Renderer* gRenderer);
+	bool sortFrames(Frame i, Frame j);
 }

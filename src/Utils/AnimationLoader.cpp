@@ -3,7 +3,7 @@
 #include "TextureUtils.h"
 #include <fstream>
 #include <sstream>
-#include "../Component/Frame.h"
+#include <algorithm>    // std::sort
 #include <iostream>
 
 using json = nlohmann::json;
@@ -35,6 +35,7 @@ namespace AnimationLoader {
 		}
 
 		std::stringstream ssImageLocation;
+		std::sort(frames.begin(), frames.end(), sortFrames);     //(12 26 32 33 45 53 71 80)
 		ssImageLocation << "../resources/" << fileName << ".png";
 
 		Renderable renderable{ NULL, 0, 0 };
@@ -43,4 +44,7 @@ namespace AnimationLoader {
 		Animation animation{ frames, renderable };
 		return animation;
 	}
+
+	bool sortFrames(Frame i, Frame j) { return (i.x < j.x); }
+
 }
