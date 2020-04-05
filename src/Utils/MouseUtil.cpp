@@ -1,6 +1,6 @@
 #include "MouseUtil.h"
 #include "CoordTranslator.h"
-#include <SDL2\SDL_mouse.h>
+#include <SDL_mouse.h>
 
 b2Vec2 MouseUtil::GetVectorBetweenPositionAndMouse(b2Vec2 position)
 {
