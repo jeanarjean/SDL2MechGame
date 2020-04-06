@@ -26,6 +26,7 @@ and may not be redistributed without written permission.*/
 #include "src/Utils/GameWorldInitiator.h"
 #include "src/System/HealthSystem.h"
 #include "src/Utils/Factories/PrefabsFactory.h"
+#include "cassert"
 
 using namespace std;
 
@@ -70,8 +71,8 @@ GameWorldInitiator::GameWorldInitiator* gameWorldInitiator;
 // second (60Hz) and 10 iterations. This provides a high quality simulation
 // in most game scenarios.
 float32 timeStep = 1.0f / 60.0f;
-int32 velocityIterations = 2;
-int32 positionIterations = 6;
+int32 velocityIterations = 4;
+int32 positionIterations = 12;
 Uint64 t = 0;
 Uint64 dt = 16;
 Uint64 currentTime = SDL_GetPerformanceCounter();
@@ -85,6 +86,7 @@ bool initSDL()
 	//Initialize SDLSDL_Renderer* gRenderer
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
+		assert(false);
 		printf("SDL could not initialize! SDL Error: %s\n", SDL_GetError());
 		success = false;
 	}
@@ -100,6 +102,7 @@ bool initSDL()
 		gWindow = SDL_CreateWindow("SDL2MECHGAME", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
 		if (gWindow == NULL)
 		{
+			assert(false);
 			printf("Window could not be created! SDL Error: %s\n", SDL_GetError());
 			success = false;
 		}
@@ -109,6 +112,7 @@ bool initSDL()
 			gRenderer = SDL_CreateRenderer(gWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 			if (gRenderer == NULL)
 			{
+				assert(false);
 				printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
 				success = false;
 			}
@@ -121,6 +125,7 @@ bool initSDL()
 				int imgFlags = IMG_INIT_PNG;
 				if (!(IMG_Init(imgFlags) & imgFlags))
 				{
+					assert(false);
 					printf("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
 					success = false;
 				}
@@ -128,11 +133,13 @@ bool initSDL()
 				//Initialize SDL_Mixer
 				if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 				{
+					assert(false);
 					printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 					success = false;
 				}
 
 				if (TTF_Init() < 0) {
+					assert(false);
 					SDL_LogCritical(1, "Error initializing SDL_ttf: %s", TTF_GetError());
 					success = false;
 				}
@@ -140,6 +147,7 @@ bool initSDL()
 
 				font = TTF_OpenFont("../resources/ariblk.ttf", 24);
 				if (!font) {
+					assert(false);
 					SDL_LogCritical(1, "Error loading font: %s", TTF_GetError());
 					success = false;
 				}

@@ -8,8 +8,10 @@ class CoordTranslator
 	static CoordTranslator* _instance;
 
 public:
+	b2Vec2 m_viewCenter;
 	b2Vec2 getResolution();
 	void setResolution(b2Vec2 newResolution);
+	CoordTranslator() { m_viewCenter = b2Vec2{ 0.f, 0.f }; };
 	static CoordTranslator* instance()
 	{
 		if (!_instance)
@@ -20,13 +22,12 @@ public:
 	}
 
 	b2Vec2 coordWorldToPixels(b2Vec2 world);
-	b2Vec2 coordWorldToPixels(float worldX, float worldY);
 	float scalarWorldToPixels(float val);
 	b2Vec2 scalarWorldToPixels(b2Vec2 vector);
 	b2Vec2 coordPixelsToWorld(b2Vec2 screen);
-	b2Vec2 coordPixelsToWorld(float pixelX, float pixelY);
 	float scalarPixelsToWorld(float val);
 	b2Vec2 scalarPixelsToWorld(b2Vec2 vector);
+
 };
 
 #endif

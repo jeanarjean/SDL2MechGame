@@ -3,6 +3,7 @@
 #include <Box2D\Dynamics\b2Body.h>
 #include "../Enums/MovementEnum.h"
 #include "../Utils/BitMaskUtil.h"
+#include "../Utils/CoordTranslator.h"
 
 namespace MovementSystem
 {
@@ -37,6 +38,9 @@ namespace MovementSystem
 			{
 				//vel.x = 0;
 			}
+			// THIS IS UGLY NEEDS GETTER AND SETTER / THIS AIN'T THREAD SAFE AT ALL LOL
+			CoordTranslator* translator = CoordTranslator::instance();
+			translator->m_viewCenter = body->GetPosition();
 
 			body->SetLinearVelocity(vel);
 			});

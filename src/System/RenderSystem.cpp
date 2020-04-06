@@ -10,9 +10,7 @@
 #include "../Utils/TextureUtils.h"
 #include "../Utils/CoordTranslator.h"
 #include "../Render/RenderLayer.h"
-#include <Eigen/Dense>
-
-using namespace Eigen;
+#include <Box2D/Box2D.h>
 
 namespace Renderer
 {
@@ -22,6 +20,9 @@ namespace Renderer
 		RenderBoundingBox(registry, gRenderer);
 		RenderPlatforms(registry, gRenderer);
 		RenderPlayer(registry, gRenderer);
+#ifdef COLLISION_DEBUG 
+		DebugRender(registry, gRenderer);
+#endif
 	}
 
 	void RenderPlayer(entt::registry& registry, SDL_Renderer* gRenderer)
@@ -54,6 +55,13 @@ namespace Renderer
 	{
 		registry.view<Renderable, BoundingBox, b2Body*>().each([gRenderer](auto& renderable, auto& boundingBox, auto* body) {
 			RenderLayer::RenderGameObject(gRenderer, renderable, body->GetPosition(), NULL);
+			});
+	}
+
+	void DebugRender(entt::registry& registry, SDL_Renderer* gRenderer)
+	{
+		registry.view<Animation, Renderable, b2Body*>().each([gRenderer](auto& animation, auto& renderable, auto* body) {
+			RenderLayer::DebugRenderCollisionObject(gRenderer, body->GetFixtureList()[0].GetAABB(0).upperBound , body->GetFixtureList()[0].GetAABB(0).lowerBound);
 			});
 	}
 }

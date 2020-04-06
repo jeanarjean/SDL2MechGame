@@ -1,5 +1,12 @@
 #include "RenderLayer.h"
 
+#ifdef DRAWING_DEBUG 
+#define D(x) (x)
+#else 
+#define D(x) do{}while(0)
+#endif
+
+
 namespace RenderLayer {
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, const SDL_Rect& dest, float angle) {
 		CoordTranslator* translator = CoordTranslator::instance();
@@ -8,6 +15,9 @@ namespace RenderLayer {
 		SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 
 		SDL_RenderCopyEx(gRenderer, renderable.mTexture, &dest, &resize, 0.f, NULL, SDL_FLIP_NONE);
+#ifdef DRAWING_DEBUG 
+		SDL_RenderDrawRect(gRenderer, &resize);
+#endif
 	}
 
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, int dest, float angle)
@@ -18,6 +28,20 @@ namespace RenderLayer {
 		SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 
 		SDL_RenderCopyEx(gRenderer, renderable.mTexture, NULL, &resize, 0.f, NULL, SDL_FLIP_NONE);
+#ifdef DRAWING_DEBUG 
+		SDL_RenderDrawRect(gRenderer, &resize);
+#endif
+	}
+
+	void DebugRenderCollisionObject(SDL_Renderer* gRenderer, b2Vec2 higherBound, b2Vec2 lowerBound)
+	{
+		CoordTranslator* translator = CoordTranslator::instance();
+
+		b2Vec2 higherBoundPix = translator->coordWorldToPixels(higherBound);
+		b2Vec2 lowerBoundPix = translator->coordWorldToPixels(lowerBound);
+		SDL_Rect resize = { lowerBoundPix.x, lowerBoundPix.y, higherBoundPix.x - lowerBoundPix.x, higherBoundPix.y - lowerBoundPix.y };
+
+		SDL_RenderDrawRect(gRenderer, &resize);
 	}
 
 	void RenderText(SDL_Renderer* gRenderer, SDL_Rect dest, TTF_Font* font, string text)

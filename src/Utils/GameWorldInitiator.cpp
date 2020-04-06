@@ -15,7 +15,8 @@ namespace GameWorldInitiator {
 		BackgroundLoader::LoadBackground(registry, gRenderer);
 
 		Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
-		Mix_Music* music = Mix_LoadMUS("../resources/untitled.ogg");
+		Mix_Music* music = Mix_LoadMUS("../resources/MUSIC.wav");
+		assert(music != nullptr);
 		Mix_PlayMusic(music, 2);
 
 

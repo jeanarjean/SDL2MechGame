@@ -32,6 +32,7 @@ namespace BodiesFactory
 		// Add the shape to the body.
 		body->CreateFixture(&fixtureDef);
 		body->SetUserData(reinterpret_cast<void*>(entity));
+		auto asd = body->GetFixtureList()[0].GetAABB(0).lowerBound;
 
 		return body;
 	}
