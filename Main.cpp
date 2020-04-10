@@ -27,6 +27,13 @@ and may not be redistributed without written permission.*/
 #include "src/System/HealthSystem.h"
 #include "src/Utils/Factories/PrefabsFactory.h"
 #include "cassert"
+#include <tmxlite/Map.hpp>
+#include <tmxlite/Layer.hpp>
+#include <tmxlite/TileLayer.hpp>
+#include <tmxlite/ObjectGroup.hpp>
+#include "src/Utils/Factories/BodiesFactory.h"
+#include "src/Component/TileComponent.h"
+
 
 using namespace std;
 
@@ -66,6 +73,7 @@ PrefabsFactory::PrefabsFactory* prefabsFactory;
 EnemyMovementSystem::EnemyMovementSystem enemyMovementSystem;
 AttackSystem::AttackSystem* attackSystem;
 GameWorldInitiator::GameWorldInitiator* gameWorldInitiator;
+Renderable* tex;
 
 // Prepare for simulation. Typically we use a time step of 1/60 of a
 // second (60Hz) and 10 iterations. This provides a high quality simulation
@@ -164,6 +172,85 @@ void InitOtherObjects()
 	gameWorldInitiator = new GameWorldInitiator::GameWorldInitiator(prefabsFactory);
 }
 
+void InitMap()
+{
+	tmx::Map map;
+	if (map.load("../maps/level1.tmx"))
+	{
+		const auto& layers = map.getLayers();
+		auto map_dimensions = map.getTileCount();
+		unsigned rows = map_dimensions.y;
+		unsigned cols = map_dimensions.x;
+		auto tilesize = map.getTileSize();
+		unsigned tile_width = tilesize.x;
+		unsigned tile_height = tilesize.y;
+		int tileSize = 4;
+
+		std::map<unsigned, b2Vec2> tilesets;
+
+		auto& map_tilesets = map.getTilesets();
+		for (auto& tset : map_tilesets) {
+			auto imagePath = tset.getImagePath();
+			tex = new Renderable{ NULL, 0, 0 };
+			assert(LoadFromFile(imagePath, gRenderer, *tex));
+			prefabsFactory->_tileSet = tex;
+		}
+
+
+		for (const auto& layer : layers)
+		{
+			auto layerqwe = layer->getType();
+			if (layer->getType() == tmx::Layer::Type::Object)
+			{
+				const auto& objectLayer = layer->getLayerAs<tmx::ObjectGroup>();
+				const auto& objects = objectLayer.getObjects();
+				for (const auto& object : objects)
+				{
+					//do stuff with object properties
+				}
+			}
+			else if (layer->getType() == tmx::Layer::Type::Tile)
+			{
+				const auto& tileLayer = layer->getLayerAs<tmx::TileLayer>();
+				auto layerTiles = tileLayer.getTiles();
+				for (auto y = 0; y < rows; ++y) {
+					for (auto x = 0; x < cols; ++x) {
+						auto tile_index = x + (y * cols);
+						auto cur_gid = layerTiles[tile_index].ID;
+
+						if (cur_gid != 0)
+						{
+							auto entity = registry.create();
+							//prefabsFactory->CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(x * tileSize, cols * tileSize - y * tileSize), b2Vec2(tileSize, tileSize));
+							auto ts_width = 0;
+							auto ts_height = 0;
+
+							cur_gid = cur_gid - 1;
+
+
+							SDL_QueryTexture(tex->mTexture,
+								NULL, NULL, &ts_width, &ts_height);
+							auto region_x = (cur_gid % (ts_width / tile_width)) * tile_width;
+							auto region_y = (cur_gid / (ts_width / tile_height)) * tile_height;
+
+
+
+							const SDL_Rect tileZone{ region_x , region_y , tile_width, tile_height };
+							registry.assign<Renderable>(entity, Renderable{ tex->mTexture, (int)tileSize, (int)tileSize });
+							registry.assign<TileComponent>(entity, TileComponent{ tileZone });
+							b2Body* body = BodiesFactory::CreateStaticBody(world, entity, b2Vec2(x * tileSize, cols * tileSize - y * tileSize), b2Vec2(tileSize, tileSize));
+							registry.assign<b2Body*>(entity, body);
+						}
+					}
+				}
+
+				//read out tile layer properties etc...
+			}
+		}
+
+	}
+}
+
 void DestoryOtherObjects()
 {
 	free(prefabsFactory);
@@ -218,6 +305,7 @@ int main(int argc, char* args[])
 
 
 		gameWorldInitiator->InitiateGameWorld(registry, world, gRenderer, b2Vec2{ 1600, 900 });
+		InitMap();
 		//While application is running
 		while (!quit)
 		{

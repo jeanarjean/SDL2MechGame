@@ -15,6 +15,7 @@ namespace RenderLayer
 {
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, const SDL_Rect& dest, float angle = 0.f);
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, int dest = NULL, float angle = 0.f);
+	void RenderBackground(SDL_Renderer* gRenderer, Renderable& renderable);
 	void DebugRenderCollisionObject(SDL_Renderer* gRenderer, b2Vec2 higherBound, b2Vec2 lowerBound);
 	void RenderText(SDL_Renderer* gRenderer, SDL_Rect dest, TTF_Font* font, string text);
 	SDL_Rect AdvanceFrame(Animation& animation);

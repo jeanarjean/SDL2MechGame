@@ -12,20 +12,27 @@ set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -DCOLLISION_DEBUG")
 
 
 file(GLOB_RECURSE data  ${CMAKE_SOURCE_DIR}/resources/*)
+file(COPY ${data} DESTINATION resources)
+
+file(GLOB_RECURSE maps  ${CMAKE_SOURCE_DIR}/maps/*)
+file(COPY ${maps} DESTINATION maps)
+
 file(GLOB_RECURSE SOURCES
     ${CMAKE_SOURCE_DIR}/src/*.h
     ${CMAKE_SOURCE_DIR}/src/*.cpp
 	)
-file(COPY ${data} DESTINATION resources)
 
 find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_mixer REQUIRED)
 find_package(SDL2_ttf REQUIRED)
+find_package(TMXLITE REQUIRED)
+
 include_directories(${SDL2_INCLUDE_DIR}
 ${SDL2_IMAGE_INCLUDE_DIR}
 ${SDL2_MIXER_INCLUDE_DIR}
 ${SDL2_TTF_INCLUDE_DIR}
+${TMXLITE_INCLUDE_DIR}
 )
 
 include(${PROJECT_SOURCE_DIR}/conanbuildinfo.cmake)
@@ -36,4 +43,4 @@ conan_basic_setup()
 #add_definitions(-_ITERATOR_DEBUG_LEVEL=2)
 
 add_executable(SDL2MechGame WIN32 Main.cpp ${SOURCES})
-target_link_libraries(SDL2MechGame ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${CONAN_LIBS} )
+target_link_libraries(SDL2MechGame ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_MIXER_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${CONAN_LIBS} ${TMXLITE_LIBRARIES})

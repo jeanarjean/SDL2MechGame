@@ -17,6 +17,7 @@ namespace PrefabsFactory
 		entt::entity CreateBoundingRectangle(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size);
 		entt::entity PrefabsFactory::CreateBasicEnemy(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size);
 		entt::entity SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position);
+		Renderable* _tileSet;
 	private:
 		Renderable* _renderableBlue;
 		Renderable* _renderableMech;

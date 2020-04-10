@@ -20,6 +20,12 @@ namespace RenderLayer {
 #endif
 	}
 
+	void RenderBackground(SDL_Renderer* gRenderer, Renderable& renderable)
+	{
+		SDL_Rect resize = { 0, -800, 1600, 3200 };
+		SDL_RenderCopyEx(gRenderer, renderable.mTexture, NULL, &resize, 0.f, NULL, SDL_FLIP_NONE);
+	}
+
 	void RenderGameObject(SDL_Renderer* gRenderer, Renderable& renderable, b2Vec2 positionWorld, int dest, float angle)
 	{
 		CoordTranslator* translator = CoordTranslator::instance();

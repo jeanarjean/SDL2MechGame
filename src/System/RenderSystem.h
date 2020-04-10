@@ -9,5 +9,6 @@ namespace Renderer {
 	void RenderPlatforms(entt::registry& registry, SDL_Renderer* gRenderer);
 	void RenderBoundingBox(entt::registry& registry, SDL_Renderer* gRenderer);
 	void RenderPlayer(entt::registry& registry, SDL_Renderer* gRenderer);
+	void RenderTiles(entt::registry& registry, SDL_Renderer* gRenderer);
 	void DebugRender(entt::registry& registry, SDL_Renderer* gRenderer);
 }

@@ -11,7 +11,7 @@ namespace BackgroundLoader {
 		CoordTranslator* translator = CoordTranslator::instance();
 		b2Vec2 size = translator->getResolution();
 		Renderable renderable{ NULL, 0, 0 };
-		if (!LoadFromFile("../resources/background.png", gRenderer, renderable))
+		if (!LoadFromFile("../resources/sea.png", gRenderer, renderable))
 			printf("Failed to load dot texture!\n");
 		registry.assign<Renderable>(entity, renderable);
 		registry.assign<Background>(entity);

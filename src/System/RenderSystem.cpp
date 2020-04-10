@@ -7,6 +7,7 @@
 #include "../Component/Background.h"
 #include "../Component/Frame.h"
 #include "../Component/Animation.h"
+#include "../Component/TileComponent.h"
 #include "../Utils/TextureUtils.h"
 #include "../Utils/CoordTranslator.h"
 #include "../Render/RenderLayer.h"
@@ -20,8 +21,9 @@ namespace Renderer
 		RenderBoundingBox(registry, gRenderer);
 		RenderPlatforms(registry, gRenderer);
 		RenderPlayer(registry, gRenderer);
+		RenderTiles(registry, gRenderer);
 #ifdef COLLISION_DEBUG 
-		DebugRender(registry, gRenderer);
+		//DebugRender(registry, gRenderer);
 #endif
 	}
 
@@ -47,7 +49,7 @@ namespace Renderer
 	void RenderBackground(entt::registry& registry, SDL_Renderer* gRenderer)
 	{
 		registry.view<Renderable, Background>().each([gRenderer](auto& renderable, auto Background) {
-			RenderLayer::RenderGameObject(gRenderer, renderable, b2Vec2{ 0,0 }, NULL);
+			RenderLayer::RenderBackground(gRenderer, renderable);
 			});
 	}
 
@@ -55,6 +57,13 @@ namespace Renderer
 	{
 		registry.view<Renderable, BoundingBox, b2Body*>().each([gRenderer](auto& renderable, auto& boundingBox, auto* body) {
 			RenderLayer::RenderGameObject(gRenderer, renderable, body->GetPosition(), NULL);
+			});
+	}
+
+	void RenderTiles(entt::registry& registry, SDL_Renderer* gRenderer)
+	{
+		registry.view<Renderable, TileComponent, b2Body*>().each([gRenderer](auto& renderable, auto& boundingBox, auto* body) {
+			RenderLayer::RenderGameObject(gRenderer, renderable, body->GetPosition(), boundingBox.tileZone);
 			});
 	}
 
