@@ -1,8 +1,8 @@
 [settings]
     arch=x86_64
-    build_type=Release
+    build_type=Debug
     compiler=Visual Studio
-    compiler.runtime=MD
+    compiler.runtime=MDd
     compiler.version=16
     cppstd=17
     os=Windows
@@ -12,8 +12,6 @@
     eigen/3.Y.Z
     entt/3.Y.Z
     jsonformoderncpp/3.Y.Z
-    sdl2/2.Y.Z
-    sdl2_image/2.Y.Z
 
 [options]
 
@@ -21,60 +19,22 @@
 [full_settings]
     arch=x86_64
     arch_build=x86_64
-    build_type=Release
+    build_type=Debug
     compiler=Visual Studio
-    compiler.runtime=MD
+    compiler.runtime=MDd
     compiler.version=16
     cppstd=17
     os=Windows
     os_build=Windows
 
 [full_requires]
-    box2d/2.3.1@conan/stable:3fb49604f9c2f729b85ba3115852006824e72cab
+    box2d/2.3.1@conan/stable:d057732059ea44a47760900cb5e4855d2bea8714
     eigen/3.3.7@conan/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     entt/3.2.2@skypjack/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
     jsonformoderncpp/3.7.3@vthiery/stable:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9
-    libiconv/1.15:3fb49604f9c2f729b85ba3115852006824e72cab
-    libjpeg/9c:3fb49604f9c2f729b85ba3115852006824e72cab
-    libpng/1.6.37:d140711d95cc16a85766a8fc3a551dfafe84cf63
-    libtiff/4.0.9:d140711d95cc16a85766a8fc3a551dfafe84cf63
-    libwebp/1.0.3:638042d3fd356128c913f5e725646a0c2af264c7
-    sdl2/2.0.10@bincrafters/stable:e00ad8bc0b74a160a9492a61277bebc5bdfa1051
-    sdl2_image/2.0.5@bincrafters/stable:1de2daee70507651a077e24bd7fb4e521c86c246
-    zlib/1.2.11:3fb49604f9c2f729b85ba3115852006824e72cab
 
 [full_options]
     box2d:shared=False
-    libiconv:shared=False
-    libjpeg:shared=False
-    libpng:api_prefix=None
-    libpng:shared=False
-    libtiff:shared=False
-    libwebp:near_lossless=True
-    libwebp:shared=False
-    libwebp:swap_16bit_csp=False
-    libwebp:with_simd=True
-    sdl2:directx=True
-    sdl2:iconv=True
-    sdl2:sdl2main=True
-    sdl2:shared=False
-    sdl2_image:bmp=True
-    sdl2_image:gif=True
-    sdl2_image:jpg=True
-    sdl2_image:lbm=True
-    sdl2_image:pcx=True
-    sdl2_image:png=True
-    sdl2_image:pnm=True
-    sdl2_image:shared=False
-    sdl2_image:svg=True
-    sdl2_image:tga=True
-    sdl2_image:tif=True
-    sdl2_image:webp=True
-    sdl2_image:xcf=True
-    sdl2_image:xpm=True
-    sdl2_image:xv=True
-    zlib:minizip=False
-    zlib:shared=False
 
 [recipe_hash]
 

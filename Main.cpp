@@ -13,7 +13,7 @@ and may not be redistributed without written permission.*/
 #include "src/System/RenderSystem.h"
 #include "src/System/MovementSystem.h"
 #include "src/System/AttackSystem.h"
-#include "src/System/EnemyMovementSystem.h"1
+#include "src/System/EnemyMovementSystem.h"
 #include "src/System/BulletDestroyerSystem.h"
 #include "src/System/GameProgressSystem.h"
 #include "src/Render/RenderLayer.h"
@@ -79,8 +79,8 @@ Renderable* tex;
 // second (60Hz) and 10 iterations. This provides a high quality simulation
 // in most game scenarios.
 float32 timeStep = 1.0f / 60.0f;
-int32 velocityIterations = 4;
-int32 positionIterations = 12;
+int32 velocityIterations = 2;
+int32 positionIterations = 6;
 Uint64 t = 0;
 Uint64 dt = 16;
 Uint64 currentTime = SDL_GetPerformanceCounter();
@@ -184,7 +184,7 @@ void InitMap()
 		auto tilesize = map.getTileSize();
 		unsigned tile_width = tilesize.x;
 		unsigned tile_height = tilesize.y;
-		int tileSize = 4;
+		int tileSizeMultiplicator = 1;
 
 		std::map<unsigned, b2Vec2> tilesets;
 
@@ -196,7 +196,6 @@ void InitMap()
 			prefabsFactory->_tileSet = tex;
 		}
 
-
 		for (const auto& layer : layers)
 		{
 			auto layerqwe = layer->getType();
@@ -206,6 +205,9 @@ void InitMap()
 				const auto& objects = objectLayer.getObjects();
 				for (const auto& object : objects)
 				{
+					float left = object.getAABB().left / tilesize.x;
+					float top = rows -  object.getAABB().top / tilesize.y;
+					prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(left, top), b2Vec2(0.9f, 0.9f));
 					//do stuff with object properties
 				}
 			}
@@ -217,11 +219,16 @@ void InitMap()
 					for (auto x = 0; x < cols; ++x) {
 						auto tile_index = x + (y * cols);
 						auto cur_gid = layerTiles[tile_index].ID;
+						b2Vec2 position(x * tileSizeMultiplicator, cols * tileSizeMultiplicator - y * tileSizeMultiplicator);
+						b2Vec2 size(1.f, 1.f);
 
+						if (x == 5 && y == tile_width - 5)
+						{
+							prefabsFactory->CreatePlayerPrefab(registry, world, gRenderer, position, b2Vec2(0.9f, 0.9f));
+						}
 						if (cur_gid != 0)
 						{
 							auto entity = registry.create();
-							//prefabsFactory->CreateStaticRectangleObstacle(registry, world, gRenderer, b2Vec2(x * tileSize, cols * tileSize - y * tileSize), b2Vec2(tileSize, tileSize));
 							auto ts_width = 0;
 							auto ts_height = 0;
 
@@ -236,14 +243,13 @@ void InitMap()
 
 
 							const SDL_Rect tileZone{ region_x , region_y , tile_width, tile_height };
-							registry.assign<Renderable>(entity, Renderable{ tex->mTexture, (int)tileSize, (int)tileSize });
+							registry.assign<Renderable>(entity, Renderable{ tex->mTexture, (float)tileSizeMultiplicator, (float)tileSizeMultiplicator });
 							registry.assign<TileComponent>(entity, TileComponent{ tileZone });
-							b2Body* body = BodiesFactory::CreateStaticBody(world, entity, b2Vec2(x * tileSize, cols * tileSize - y * tileSize), b2Vec2(tileSize, tileSize));
+							b2Body* body = BodiesFactory::CreateStaticBody(world, entity, position, b2Vec2(tileSizeMultiplicator, tileSizeMultiplicator));
 							registry.assign<b2Body*>(entity, body);
 						}
 					}
 				}
-
 				//read out tile layer properties etc...
 			}
 		}

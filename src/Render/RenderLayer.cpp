@@ -12,6 +12,7 @@ namespace RenderLayer {
 		CoordTranslator* translator = CoordTranslator::instance();
 
 		b2Vec2 pixelPosition = translator->coordWorldToPixels(positionWorld);
+		//SDL_Rect resize = { (int)(pixelPosition.x) , (int)(pixelPosition.y), translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 		SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 
 		SDL_RenderCopyEx(gRenderer, renderable.mTexture, &dest, &resize, 0.f, NULL, SDL_FLIP_NONE);
@@ -31,6 +32,7 @@ namespace RenderLayer {
 		CoordTranslator* translator = CoordTranslator::instance();
 
 		b2Vec2 pixelPosition = translator->coordWorldToPixels(positionWorld);
+		//SDL_Rect resize = { (int)(pixelPosition.x), (int)(pixelPosition.y), translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 		SDL_Rect resize = { (int)(pixelPosition.x) - translator->scalarWorldToPixels(renderable.mWidth) / 2, (int)(pixelPosition.y) - translator->scalarWorldToPixels(renderable.mHeight) / 2, translator->scalarWorldToPixels(renderable.mWidth), translator->scalarWorldToPixels(renderable.mHeight) };
 
 		SDL_RenderCopyEx(gRenderer, renderable.mTexture, NULL, &resize, 0.f, NULL, SDL_FLIP_NONE);

@@ -52,17 +52,12 @@ namespace PrefabsFactory
 		_renderableDot = nullptr;
 	}
 
-	entt::entity PrefabsFactory::CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer)
+	entt::entity PrefabsFactory::CreatePlayerPrefab(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
 	{
 		auto entity = registry.create();
 
-		b2Vec2 size(50.f, 50.f);
-		b2Vec2 position(50.f, 50.f);
 		b2Body* body = BodiesFactory::CreateDynamicBody(world, entity, position, size);
 		CoordTranslator* translator = CoordTranslator::instance();
-
-		//TODO: this is shit
-		size = translator->scalarPixelsToWorld(size);
 
 		registry.assign<Player>(entity, Player{ 0 , false });
 		registry.assign<Health>(entity, Health{ 1 });
@@ -81,7 +76,7 @@ namespace PrefabsFactory
 	{
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateStaticBody(world, entity, position, size);
-		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, (int)size.x, (int)size.y });
+		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, size.x, size.y });
 		registry.assign<Platform>(entity);
 		registry.assign<b2Body*>(entity, body);
 
@@ -92,7 +87,7 @@ namespace PrefabsFactory
 	{
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateStaticBody(world, entity, position, size);
-		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, (int)size.x, (int)size.y });
+		registry.assign<Renderable>(entity, Renderable{ _renderableBlue->mTexture, size.x, size.y });
 		registry.assign<BoundingBox>(entity);
 		registry.assign<b2Body*>(entity, body);
 
@@ -101,7 +96,7 @@ namespace PrefabsFactory
 
 	entt::entity PrefabsFactory::CreateBasicEnemy(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position, b2Vec2 size)
 	{
-		size = b2Vec2{ size.x * 3, size.y * 3 };
+		size = b2Vec2{ size.x, size.y};
 		CoordTranslator* translator = CoordTranslator::instance();
 		auto entity = registry.create();
 		b2Body* body = BodiesFactory::CreateDynamicBody(world, entity, position, b2Vec2{ size.x, size.y });
@@ -110,8 +105,6 @@ namespace PrefabsFactory
 		registry.assign<Animation>(entity, animationControl);
 
 
-		size = translator->scalarPixelsToWorld(size);
-		// to fix need to be done somewhere else
 		animationControl.mTexture.mWidth = size.x;
 		animationControl.mTexture.mHeight = size.y;
 		registry.assign<Renderable>(entity, animationControl.mTexture);
@@ -120,30 +113,30 @@ namespace PrefabsFactory
 		Health health{ 5 };
 		registry.assign<Health>(entity, health);
 		return entity;
-		}
-
-			entt::entity PrefabsFactory::SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position)
-		{
-			CoordTranslator* translator = CoordTranslator::instance();
-			auto entity = registry.create();
-			float radius = 0.1f;
-
-			b2Vec2 forceToApply = MouseUtil::GetVectorBetweenPositionAndMouse(position);
-			forceToApply.Normalize();
-			position = b2Vec2{ position.x + forceToApply.x * 2, position.y + forceToApply.y * 2 };
-
-			b2Body* body = BodiesFactory::CreateDynamicSphere(world, entity, position, radius, 20.0f, 0.3f, true);
-
-			body->ApplyForce(b2Vec2(forceToApply.x * 4000.f * 50.f, forceToApply.y * 4000.f * 50.f), body->GetWorldCenter(), true);
-
-			registry.assign<DynamicBody>(entity);
-			registry.assign<Bullet>(entity);
-			Renderable renderable{ NULL, 0, 0 };
-			if (!LoadFromFile("../resources/dot.bmp", gRenderer, renderable))
-				printf("Failed to load dot texture!\n");
-
-			registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, (int)translator->scalarWorldToPixels(radius), (int)translator->scalarWorldToPixels(radius) });
-			registry.assign<b2Body*>(entity, body);
-			return entity;
-		}
 	}
+
+	entt::entity PrefabsFactory::SpawnBullet(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 position)
+	{
+		CoordTranslator* translator = CoordTranslator::instance();
+		auto entity = registry.create();
+		float radius = 0.1f;
+
+		b2Vec2 forceToApply = MouseUtil::GetVectorBetweenPositionAndMouse(position);
+		forceToApply.Normalize();
+		position = b2Vec2{ position.x + forceToApply.x * 2, position.y + forceToApply.y * 2 };
+
+		b2Body* body = BodiesFactory::CreateDynamicSphere(world, entity, position, radius, 20.0f, 0.3f, true);
+
+		body->ApplyForce(b2Vec2(forceToApply.x * 500.f, forceToApply.y * 500.f), body->GetWorldCenter(), true);
+
+		registry.assign<DynamicBody>(entity);
+		registry.assign<Bullet>(entity);
+		Renderable renderable{ NULL, 0, 0 };
+		if (!LoadFromFile("../resources/dot.bmp", gRenderer, renderable))
+			printf("Failed to load dot texture!\n");
+
+		registry.assign<Renderable>(entity, Renderable{ renderable.mTexture, radius, radius});
+		registry.assign<b2Body*>(entity, body);
+		return entity;
+	}
+}

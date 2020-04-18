@@ -1,7 +1,5 @@
 #include "CoordTranslator.h"
-const float WORLD_TO_PIXEL_RATIO = 10.0f;
-const float PIXEL_TO_WORLD_RATIO = 0.1;
-const float VIEW_VERTICAL_SPAN = 100.f;
+const float VIEW_VERTICAL_SPAN = 50.f;
 
 
 CoordTranslator* CoordTranslator::_instance;
@@ -22,12 +20,7 @@ b2Vec2 CoordTranslator::coordWorldToPixels(b2Vec2 world)
 
 float CoordTranslator::scalarWorldToPixels(float val)
 {
-	return val * WORLD_TO_PIXEL_RATIO;
-}
-
-b2Vec2 CoordTranslator::scalarWorldToPixels(b2Vec2 vector)
-{
-	return b2Vec2(vector.x * WORLD_TO_PIXEL_RATIO, vector.y * WORLD_TO_PIXEL_RATIO);
+	return val * resolution.y / VIEW_VERTICAL_SPAN;
 }
 
 b2Vec2 CoordTranslator::coordPixelsToWorld(b2Vec2 pixelScreenCoordinates)
@@ -46,12 +39,12 @@ b2Vec2 CoordTranslator::coordPixelsToWorld(b2Vec2 pixelScreenCoordinates)
 
 float CoordTranslator::scalarPixelsToWorld(float val)
 {
-	return val / WORLD_TO_PIXEL_RATIO;
+	return val * VIEW_VERTICAL_SPAN / resolution.y;
 }
 
 b2Vec2 CoordTranslator::scalarPixelsToWorld(b2Vec2 vector)
 {
-	return b2Vec2(vector.x / WORLD_TO_PIXEL_RATIO, vector.y / WORLD_TO_PIXEL_RATIO);
+	return b2Vec2(vector.x * VIEW_VERTICAL_SPAN / resolution.y, vector.y * VIEW_VERTICAL_SPAN / resolution.y);
 }
 
 b2Vec2 CoordTranslator::getResolution() {

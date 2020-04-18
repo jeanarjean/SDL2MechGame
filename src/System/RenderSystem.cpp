@@ -23,7 +23,7 @@ namespace Renderer
 		RenderPlayer(registry, gRenderer);
 		RenderTiles(registry, gRenderer);
 #ifdef COLLISION_DEBUG 
-		//DebugRender(registry, gRenderer);
+		DebugRender(registry, gRenderer);
 #endif
 	}
 
@@ -69,7 +69,7 @@ namespace Renderer
 
 	void DebugRender(entt::registry& registry, SDL_Renderer* gRenderer)
 	{
-		registry.view<Animation, Renderable, b2Body*>().each([gRenderer](auto& animation, auto& renderable, auto* body) {
+		registry.view<Renderable, b2Body*>().each([gRenderer](auto& animation, auto& renderable, auto* body) {
 			RenderLayer::DebugRenderCollisionObject(gRenderer, body->GetFixtureList()[0].GetAABB(0).upperBound , body->GetFixtureList()[0].GetAABB(0).lowerBound);
 			});
 	}

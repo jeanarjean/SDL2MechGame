@@ -12,10 +12,10 @@ namespace MovementSystem
 		registry.view<Player, b2Body*>().each([](auto& player, auto* body) {
 			b2Vec2 position = body->GetPosition();
 			//TODO: MOVE THIS TO A CONST FILE
-			const float topHorizontalVel = 20;
+			const float topHorizontalVel = 40;
 			const float topVerticalSpeed = 20;
-			float accelerationVerticalSpeed = 2.2f;
-			float accelerationHorizontalSpeed = 4.f;
+			float accelerationVerticalSpeed = 0.2f;
+			float accelerationHorizontalSpeed = 1.f;
 			b2Vec2 vel = body->GetLinearVelocity();
 			int controlState = player.m_controlState;
 			if (BitMaskUtil::IsBitActive(controlState, MECH_UP_BIT))

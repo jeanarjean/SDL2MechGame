@@ -4,7 +4,7 @@
 #include <SDL_image.h>
 struct Renderable{
 	SDL_Texture* mTexture;
-	int mWidth;
-	int mHeight;
+	float mWidth;
+	float mHeight;
 };
 #endif

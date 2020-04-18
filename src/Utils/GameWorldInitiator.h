@@ -14,7 +14,6 @@ namespace GameWorldInitiator {
 		~GameWorldInitiator();
 
 		bool InitiateGameWorld(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
-		void CreateGameWorldBoundaries(entt::registry& registry, b2World& world, SDL_Renderer* gRenderer, b2Vec2 gameWorldSize);
 	private:
 		PrefabsFactory::PrefabsFactory* prefabsFactory;
 	};

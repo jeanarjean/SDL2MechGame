@@ -1,88 +1,36 @@
 {
+ "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Debug\ncompiler=Visual Studio\ncompiler.runtime=MDd\ncompiler.version=16\ncppstd=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n",
  "graph_lock": {
   "nodes": {
    "0": {
-    "path": "D:\\alone\\Documents\\GitHub\\SDL2MechGame\\conanfile.txt", 
-    "pref": null, 
+    "pref": null,
+    "options": "box2d:shared=False",
     "requires": [
-     "1", 
-     "2", 
-     "3", 
-     "4", 
-     "6", 
-     "12"
-    ], 
-    "options": "box2d:shared=False\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nsdl2_image:bmp=True\nsdl2_image:gif=True\nsdl2_image:jpg=True\nsdl2_image:lbm=True\nsdl2_image:pcx=True\nsdl2_image:png=True\nsdl2_image:pnm=True\nsdl2_image:shared=False\nsdl2_image:svg=True\nsdl2_image:tga=True\nsdl2_image:tif=True\nsdl2_image:webp=True\nsdl2_image:xcf=True\nsdl2_image:xpm=True\nsdl2_image:xv=True\nzlib:minizip=False\nzlib:shared=False"
-   }, 
+     "1",
+     "2",
+     "3",
+     "4"
+    ],
+    "path": "D:\\alone\\Documents\\GitHub\\SDL2MechGame\\conanfile.txt"
+   },
    "1": {
-    "pref": "jsonformoderncpp/3.7.3@vthiery/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "pref": "jsonformoderncpp/3.7.3@vthiery/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0",
     "options": ""
-   }, 
+   },
    "2": {
-    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "pref": "entt/3.2.2@skypjack/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0",
     "options": ""
-   }, 
+   },
    "3": {
-    "pref": "eigen/3.3.7@conan/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0", 
+    "pref": "eigen/3.3.7@conan/stable#0:5ab84d6acfe1f23c4fae0ab88f26e3a396351ac9#0",
     "options": ""
-   }, 
+   },
    "4": {
-    "pref": "sdl2/2.0.10@bincrafters/stable#0:e00ad8bc0b74a160a9492a61277bebc5bdfa1051#0", 
-    "requires": [
-     "5"
-    ], 
-    "options": "directx=True\niconv=True\nsdl2main=True\nshared=False\nlibiconv:shared=False"
-   }, 
-   "5": {
-    "pref": "libiconv/1.15#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
-    "options": "shared=False"
-   }, 
-   "6": {
-    "pref": "sdl2_image/2.0.5@bincrafters/stable#0:1de2daee70507651a077e24bd7fb4e521c86c246#14b44b203ba34832700a30581b565f29", 
-    "requires": [
-     "4", 
-     "7", 
-     "9", 
-     "10", 
-     "11", 
-     "8"
-    ], 
-    "options": "bmp=True\ngif=True\njpg=True\nlbm=True\npcx=True\npng=True\npnm=True\nshared=False\nsvg=True\ntga=True\ntif=True\nwebp=True\nxcf=True\nxpm=True\nxv=True\nlibiconv:shared=False\nlibjpeg:shared=False\nlibpng:api_prefix=None\nlibpng:shared=False\nlibtiff:shared=False\nlibwebp:near_lossless=True\nlibwebp:shared=False\nlibwebp:swap_16bit_csp=False\nlibwebp:with_simd=True\nsdl2:directx=True\nsdl2:iconv=True\nsdl2:sdl2main=True\nsdl2:shared=False\nzlib:minizip=False\nzlib:shared=False", 
-    "modified": "built"
-   }, 
-   "7": {
-    "pref": "libtiff/4.0.9#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0", 
-    "requires": [
-     "8"
-    ], 
-    "options": "shared=False\nzlib:minizip=False\nzlib:shared=False"
-   }, 
-   "8": {
-    "pref": "zlib/1.2.11#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
-    "options": "minizip=False\nshared=False"
-   }, 
-   "9": {
-    "pref": "libjpeg/9c#0:3fb49604f9c2f729b85ba3115852006824e72cab#0", 
-    "options": "shared=False"
-   }, 
-   "10": {
-    "pref": "libpng/1.6.37#0:d140711d95cc16a85766a8fc3a551dfafe84cf63#0", 
-    "requires": [
-     "8"
-    ], 
-    "options": "api_prefix=None\nshared=False\nzlib:minizip=False\nzlib:shared=False"
-   }, 
-   "11": {
-    "pref": "libwebp/1.0.3#0:638042d3fd356128c913f5e725646a0c2af264c7#0", 
-    "options": "near_lossless=True\nshared=False\nswap_16bit_csp=False\nwith_simd=True"
-   }, 
-   "12": {
-    "pref": "box2d/2.3.1@conan/stable#0:3fb49604f9c2f729b85ba3115852006824e72cab#ab6f40a60ec84363da17ac0f9c865748", 
-    "options": "shared=False", 
+    "pref": "box2d/2.3.1@conan/stable#0:d057732059ea44a47760900cb5e4855d2bea8714#5531e7e10ef9a785c344da1e0171e397",
+    "options": "shared=False",
     "modified": "built"
    }
   }
- }, 
- "version": "0.3", 
- "profile_host": "[settings]\narch=x86_64\narch_build=x86_64\nbuild_type=Release\ncompiler=Visual Studio\ncompiler.runtime=MD\ncompiler.version=16\ncppstd=17\nos=Windows\nos_build=Windows\n[options]\n[build_requires]\n[env]\n"
+ },
+ "version": "0.3"
 }

@@ -6,9 +6,6 @@ namespace BodiesFactory
 	{
 		CoordTranslator* translator = CoordTranslator::instance();
 
-		//TODO: this is shit
-		size = translator->scalarPixelsToWorld(size);
-
 		// Define the dynamic body. We set its position and call the body factory.
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
@@ -39,7 +36,6 @@ namespace BodiesFactory
 
 	b2Body* CreateDynamicSphere(b2World& world, entt::entity entity, b2Vec2 position, float radius, float density, float friction, bool isBullet)
 	{
-		CoordTranslator* translator = CoordTranslator::instance();
 		// Define the dynamic body. We set its position and call the body factory.
 		b2BodyDef bodyDef;
 		bodyDef.type = b2_dynamicBody;
@@ -49,7 +45,7 @@ namespace BodiesFactory
 
 		// Define another box shape for our dynamic body.
 		b2CircleShape dynamicBox;
-		dynamicBox.m_radius = 2.f;
+		dynamicBox.m_radius = radius;
 
 		// Define the dynamic body fixture.
 		b2FixtureDef fixtureDef;
