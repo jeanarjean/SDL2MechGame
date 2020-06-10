@@ -56,7 +56,7 @@ namespace PrefabsFactory
 	{
 		auto entity = registry.create();
 
-		b2Body* body = BodiesFactory::CreateDynamicBody(world, entity, position, size);
+		b2Body* body = BodiesFactory::CreatePlayerBody(world, entity, position, size);
 		CoordTranslator* translator = CoordTranslator::instance();
 
 		registry.assign<Player>(entity, Player{ 0 , false });

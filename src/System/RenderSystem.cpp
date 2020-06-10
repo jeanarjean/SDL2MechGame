@@ -69,8 +69,13 @@ namespace Renderer
 
 	void DebugRender(entt::registry& registry, SDL_Renderer* gRenderer)
 	{
-		registry.view<Renderable, b2Body*>().each([gRenderer](auto& animation, auto& renderable, auto* body) {
-			RenderLayer::DebugRenderCollisionObject(gRenderer, body->GetFixtureList()[0].GetAABB(0).upperBound , body->GetFixtureList()[0].GetAABB(0).lowerBound);
+		registry.view<Renderable, b2Body*>().each([gRenderer](Renderable& renderable, b2Body* body) {
+			for (b2Fixture* f = body->GetFixtureList(); f; f = f->GetNext())
+			{
+
+				RenderLayer::DebugRenderCollisionObject(gRenderer, f->GetAABB(0).upperBound, f->GetAABB(0).lowerBound);
+			}
+
 			});
 	}
 }

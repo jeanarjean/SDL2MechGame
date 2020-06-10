@@ -1,5 +1,5 @@
 #include "CoordTranslator.h"
-const float VIEW_VERTICAL_SPAN = 50.f;
+const float VIEW_VERTICAL_SPAN = 15.f;
 
 
 CoordTranslator* CoordTranslator::_instance;

@@ -34,6 +34,47 @@ namespace BodiesFactory
 		return body;
 	}
 
+	b2Body* CreatePlayerBody(b2World& world, entt::entity entity, b2Vec2 position, b2Vec2 size, float density, float friction)
+	{
+		CoordTranslator* translator = CoordTranslator::instance();
+
+		// Define the dynamic body. We set its position and call the body factory.
+		b2BodyDef bodyDef;
+		bodyDef.type = b2_dynamicBody;
+		bodyDef.position.Set(position.x + size.x / 2, position.y + size.y / 2);
+		b2Body* body = world.CreateBody(&bodyDef);
+		body->SetFixedRotation(true);
+
+		// Define another box shape for our dynamic body.
+		b2PolygonShape dynamicBox;
+		dynamicBox.SetAsBox(size.x / 2, size.y / 2);
+
+		// Define the dynamic body fixture.
+		b2FixtureDef fixtureDef;
+		fixtureDef.shape = &dynamicBox;
+
+		// Set the box density to be non-zero, so it will be dynamic.
+		fixtureDef.density = density;
+
+		// Override the default friction.
+		fixtureDef.friction = friction;
+
+		// Add the shape to the body.
+		body->CreateFixture(&fixtureDef);
+		body->SetUserData(reinterpret_cast<void*>(entity));
+
+		//add foot sensor fixture
+		b2PolygonShape polygonShape;
+		polygonShape.SetAsBox(0.1, 0.1,  b2Vec2(0, -size.y), 0);
+		fixtureDef.isSensor = true;
+		fixtureDef.shape = &polygonShape;
+		b2Fixture* footSensorFixture = body->CreateFixture(&fixtureDef);
+		footSensorFixture->SetUserData(reinterpret_cast<void*>(3));
+
+		return body;
+	}
+
+
 	b2Body* CreateDynamicSphere(b2World& world, entt::entity entity, b2Vec2 position, float radius, float density, float friction, bool isBullet)
 	{
 		// Define the dynamic body. We set its position and call the body factory.

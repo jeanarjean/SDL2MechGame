@@ -2,6 +2,7 @@
 #define PLAYER_H
 struct Player {
 	int m_controlState;
-	bool invincible;
+	bool m_invincible;
+	bool m_isInTheAir;
 };
 #endif

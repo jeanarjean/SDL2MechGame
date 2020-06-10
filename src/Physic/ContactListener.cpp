@@ -4,6 +4,7 @@
 #include "../Component/Bullet.h"
 #include "../Component/Enemy.h"
 #include "../Component/Health.h"
+#include <SDL_log.h>
 
 void ContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
 {
@@ -17,6 +18,23 @@ void ContactListener::PostSolve(b2Contact* contact, const b2ContactImpulse* impu
 	HandleEnemyCollisionWithBullet(entity2, entity1);
 	HandlePlayerCollisionWithEnemy(entity1, entity2);
 	HandlePlayerCollisionWithEnemy(entity2, entity1);
+	CheckIfGroundIsInContact(contact->GetFixtureA());
+	CheckIfGroundIsInContact(contact->GetFixtureB());
+}
+void ContactListener::CheckIfGroundIsInContact(b2Fixture* fixture)
+{
+	if ((int)fixture->GetUserData() == 3)
+	{
+		auto* ptrBody = fixture->GetBody();
+		auto entity = (entt::entity) (std::uint32_t) (ptrBody->GetUserData());
+		if (registry.valid(entity) && registry.has<Player>(entity) && registry.has<Health>(entity)) {
+			Player player = registry.get<Player>(entity);
+			player.m_isInTheAir = false;
+			registry.assign_or_replace<Player>(entity, player);
+			SDL_Log("%b ms frame time", player.m_isInTheAir);
+		}
+	}
+
 }
 
 void ContactListener::HandlePlayerCollisionWithEnemy(entt::entity entity1, entt::entity entity2)
@@ -26,7 +44,7 @@ void ContactListener::HandlePlayerCollisionWithEnemy(entt::entity entity1, entt:
 		if (registry.valid(entity2) && registry.has<Enemy>(entity2))
 		{
 			Player player = registry.get<Player>(entity1);
-			if (!player.invincible)
+			if (!player.m_invincible)
 			{
 				Health health = registry.get<Health>(entity1);
 				health.hitpoints--;

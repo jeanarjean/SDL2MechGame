@@ -16,7 +16,7 @@ namespace AttackSystem {
 
 			if (currentTick - lastSwordSlashTick > 20)
 			{
-				player.invincible = false;
+				player.m_invincible = false;
 				registry.assign_or_replace<Player>(entity, player);
 			}
 
@@ -38,7 +38,7 @@ namespace AttackSystem {
 					b2Vec2 forceToApply = MouseUtil::GetVectorBetweenPositionAndMouse(body->GetPosition());
 					forceToApply.Normalize();
 					body->ApplyForce(b2Vec2(forceToApply.x * 2000.f, forceToApply.y * 2000.f), body->GetWorldCenter(), true);
-					player.invincible = true;
+					player.m_invincible = true;
 					registry.assign_or_replace<Player>(entity, player);
 					Mix_Chunk* music = Mix_LoadWAV("../resources/swordsheet1.wav");
 					Mix_PlayChannel(-1, music, 0);

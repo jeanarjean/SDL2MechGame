@@ -35,7 +35,10 @@ and may not be redistributed without written permission.*/
 #include "src/Component/TileComponent.h"
 
 
-using namespace std;
+#define main    SDL_main
+#undef main
+
+
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1600;
@@ -70,6 +73,7 @@ bool quit = false;
 b2Vec2 gravity(0.0f, -10.0f);
 b2World world(gravity);
 PrefabsFactory::PrefabsFactory* prefabsFactory;
+MovementSystem::MovementSystem* movementSystem;
 EnemyMovementSystem::EnemyMovementSystem enemyMovementSystem;
 AttackSystem::AttackSystem* attackSystem;
 GameWorldInitiator::GameWorldInitiator* gameWorldInitiator;
@@ -167,6 +171,7 @@ bool initSDL()
 }
 void InitOtherObjects()
 {
+	movementSystem = new MovementSystem::MovementSystem();
 	prefabsFactory = new PrefabsFactory::PrefabsFactory(gRenderer);
 	attackSystem = new AttackSystem::AttackSystem(prefabsFactory);
 	gameWorldInitiator = new GameWorldInitiator::GameWorldInitiator(prefabsFactory);
@@ -206,8 +211,8 @@ void InitMap()
 				for (const auto& object : objects)
 				{
 					float left = object.getAABB().left / tilesize.x;
-					float top = rows -  object.getAABB().top / tilesize.y;
-					prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(left, top), b2Vec2(0.9f, 0.9f));
+					float top = rows - object.getAABB().top / tilesize.y;
+					prefabsFactory->CreateBasicEnemy(registry, world, gRenderer, b2Vec2(left, 73), b2Vec2(0.9f, 0.9f));
 					//do stuff with object properties
 				}
 			}
@@ -222,7 +227,7 @@ void InitMap()
 						b2Vec2 position(x * tileSizeMultiplicator, cols * tileSizeMultiplicator - y * tileSizeMultiplicator);
 						b2Vec2 size(1.f, 1.f);
 
-						if (x == 5 && y == tile_width - 5)
+						if (x == 5 && y - 5 == tile_width)
 						{
 							prefabsFactory->CreatePlayerPrefab(registry, world, gRenderer, position, b2Vec2(0.9f, 0.9f));
 						}
@@ -239,8 +244,6 @@ void InitMap()
 								NULL, NULL, &ts_width, &ts_height);
 							auto region_x = (cur_gid % (ts_width / tile_width)) * tile_width;
 							auto region_y = (cur_gid / (ts_width / tile_height)) * tile_height;
-
-
 
 							const SDL_Rect tileZone{ region_x , region_y , tile_width, tile_height };
 							registry.assign<Renderable>(entity, Renderable{ tex->mTexture, (float)tileSizeMultiplicator, (float)tileSizeMultiplicator });
@@ -259,6 +262,9 @@ void InitMap()
 
 void DestoryOtherObjects()
 {
+	free(movementSystem);
+	movementSystem = nullptr;
+
 	free(prefabsFactory);
 	prefabsFactory = nullptr;
 
@@ -317,7 +323,7 @@ int main(int argc, char* args[])
 		{
 			Uint64 newTime = SDL_GetPerformanceCounter();
 			Uint64 frameTime = ((newTime - currentTime) * 1000) / SDL_GetPerformanceFrequency();
-			SDL_Log("%d ms frame time", frameTime);
+			//SDL_Log("%d ms frame time", frameTime);
 			if (frameTime > 16)
 				frameTime = 16;
 			currentTime = newTime;
@@ -335,10 +341,6 @@ int main(int argc, char* args[])
 				InputHandler::HandleInputs(registry, e);
 			}
 
-			MovementSystem::MovePlayer(registry);
-			attackSystem->PlayerAttack(currentTick, registry, world, gRenderer);
-			enemyMovementSystem.MoveEnemies(currentTick, registry, world, gRenderer);
-
 			accumulator += frameTime;
 			while (accumulator >= dt)
 			{
@@ -347,11 +349,16 @@ int main(int argc, char* args[])
 				t += dt;
 				accumulator -= dt;
 				currentTick++;
+
+				movementSystem->MovePlayer(currentTick, registry);
+				attackSystem->PlayerAttack(currentTick, registry, world, gRenderer);
+				enemyMovementSystem.MoveEnemies(currentTick, registry, world, gRenderer);
+
 			}
+
 			BulletDestroyerSystem::ProcessBullets(registry, world, gRenderer);
 			HealthSystem::ProcessHealth(registry, world, gRenderer);
 			GameProgressSystem::ProcessGameState(registry, world, gRenderer, font);
-
 
 			//Clear screen
 			SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
